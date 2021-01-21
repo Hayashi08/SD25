@@ -10,5 +10,3 @@
 1. git push
 ### プル
 1. git pull
-
-moriuchi
