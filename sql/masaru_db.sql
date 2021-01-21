@@ -1,5 +1,7 @@
 set names utf8;
 
+DROP DATABASE IF EXISTS masaru_db;
+
 create database masaru_db default character set = utf8;
 
 use masaru_db;
