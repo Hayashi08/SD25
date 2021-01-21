@@ -1,0 +1,84 @@
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>トップページ画面</title>
+        <link rel="stylesheet" href="../css/bootstrap.css">
+        <link rel="stylesheet" href="../css/common.css">
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="p-3">
+                <div class="col-12 p-4 main">
+                    <div class="row">
+                        <div class="offset-1 main_title">
+                            まさる堂
+                        </div>
+                    </div>
+                    <div class="row mt-3 mx-4">
+                        <a class="col-1 p-1 menu_title" href="../top.html">トップページ</a>
+                        <a class="col-1 p-1 menu_title" href="../user/top.html">会員管理</a>
+                        <a class="col-1 p-1 menu_title" href="../top.html">フロア管理</a>
+                        <a class="col-1 p-1 menu_title" href="top.html">在庫管理</a>
+                        <a class="col-1 p-1 menu_title" href="../order/top.html">注文管理</a>
+                        <a class="col-1 p-1 menu_title" href="../analyse/top.html">売上分析</a>
+                        <a class="col-1 p-1 menu_title" href="../employee/top.html">従業員管理</a>
+                        <a class="col-1 p-1 menu_title" href="../service/top.html">会員サービス</a>
+                        <a class="col-1 p-1 menu_title" href="../login/logout_confirm.html">ログアウト</a>
+                    </div>
+                </div>
+
+                <div class="offset-4 my-3 col-4 text-center main_title">
+                    発注登録
+                </div>
+
+                <div class="offset-1 col-10 p-5 main">
+                    <div class="offset-3 p-3 sub_title">
+                        各項目を入力してください
+                    </div>
+                    <table class="offset-3 col-6 table table-striped">
+                        <tr>
+                          <td class="field">発注ID</td>
+                          <td class="input-group"><input type="text" class="form-control"></td>
+                        </tr>
+                        <tr>
+                          <td class="field">ジャンル</td>
+                          <td class="input-group"><input type="text" class="form-control"></td>
+                        </tr>
+                        <tr>
+                          <td class="field">発注名</td>
+                          <td class="input-group"><input type="text" class="form-control"></td>
+                        </tr>
+                        <tr>
+                          <td class="field">数量</td>
+                          <td class="input-group"><input type="text" class="form-control"></td>
+                        </tr>
+                        <tr>
+                          <td class="field">発注日</td>
+                          <td class="input-group"><input type="text" class="form-control"></td>
+                        </tr>
+                        <td class="field">入荷予定日</td>
+                          <td class="input-group"><input type="text" class="form-control"></td>
+                        </tr>
+                    </table>
+
+                    <div class="row my-3">
+                        <div class="col-2 offset-4">
+                            <a class="btn btn-primary"  href="order_signup_confirm.html" role="button">確認</a>
+                        </div>
+                        <div class="col-2 offset-1">
+                            <a class="btn btn-primary" href="order_signup.html" role="button">クリア</a>
+                        </div>
+                        <div class="col-2 offset-1">
+                            <a class="btn btn-primary" href="order_signup_error.html" role="button">エラー</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="offset-8 col-3 my-3">
+                    <a class="btn btn-primary m-5" href="top.html" role="button">在庫管理トップ</a>
+                </div>
+
+            </div>
+        </div>
+    </body>
+</html>
