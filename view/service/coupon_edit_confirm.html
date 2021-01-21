@@ -1,0 +1,78 @@
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>クーポン編集確認画面</title>
+        <link rel="stylesheet" href="../css/bootstrap.css">
+        <link rel="stylesheet" href="../css/common.css">
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="p-3">
+                <div class="col-12 p-4 main">
+                    <div class="row">
+                        <div class="offset-1 main_title">
+                            まさる堂
+                        </div>
+                    </div>
+                    <div class="row mt-3 mx-4">
+                        <a class="col-1 p-1 menu_title" href="../top.html">トップページ</a>
+                        <a class="col-1 p-1 menu_title" href="../user/top.html">会員管理</a>
+                        <a class="col-1 p-1 menu_title" href="../floor/top.html">フロア管理</a>
+                        <a class="col-1 p-1 menu_title" href="../stock/top.html">在庫管理</a>
+                        <a class="col-1 p-1 menu_title" href="../order/top.html">注文管理</a>
+                        <a class="col-1 p-1 menu_title" href="../analyse/top.html">売上分析</a>
+                        <a class="col-1 p-1 menu_title" href="../employee/top.html">従業員管理</a>
+                        <a class="col-1 p-1 menu_title" href="top.html">会員サービス</a>
+                        <a class="col-1 p-1 menu_title" href="../login/logout_confirm.html">ログアウト</a>
+                    </div>
+                </div>
+
+                <div class="offset-4 my-3 col-4 text-center main_title">
+                    確認画面
+                </div>
+
+                <div class="offset-1 col-10 p-5 main">
+                    <div class="offset-3 p-3 sub_title">
+                        この内容に編集しますか
+                    </div>
+                    <table class="offset-3 col-6 table table-striped">
+                        <tr>
+                          <td class="field">クーポンID</td>
+                          <td class="input-group"><input type="text" class="form-control" placeholder="00001" readonly></td>
+                        </tr>
+                        <tr>
+                          <td class="field">タイトル</td>
+                          <td class="input-group"><input type="text" class="form-control" placeholder="レディースデイ" readonly></td>
+                        </tr>
+                        <tr>
+                          <td class="field">内容</td>
+                          <td class="input-group"><input type="text" class="form-control" placeholder="レディースデイ(毎週木曜日)室料10%引き" readonly></td>
+                        </tr>
+                        <tr>
+                          <td class="field">ジャンル</td>
+                          <td class="input-group"><input type="text" class="form-control" placeholder="室料" readonly></td>
+                        </tr>
+                        <tr>
+                          <td class="field">割引率</td>
+                          <td class="input-group"><input type="text" class="form-control" placeholder="10%" readonly></td>
+                        </tr>
+                        <tr>
+                          <td class="field">有効期限</td>
+                          <td class="input-group"><input type="text" class="form-control" placeholder="今年度" readonly></td>
+                        </tr>
+                    </table>
+
+                    <div class="row my-3">
+                        <div class="col-2 offset-4">
+                            <a class="btn btn-primary"  href="coupon_edit_conplete.html" role="button">登録</a>
+                        </div>
+                        <div class="col-2 offset-1">
+                            <a class="btn btn-primary" href="coupon_edit.html" role="button">戻る</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </body>
+</html>

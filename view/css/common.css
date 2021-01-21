@@ -1,0 +1,50 @@
+.container-fluid {
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.main {
+  z-index: 1;
+  padding: 2%;
+  border-radius: 20px;
+  background-color: rgba(0,0,0,0.2);
+}
+
+.main_title{
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.sub_title{
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.menu_title{
+  font-size: 0.9rem;
+}
+
+.field{
+  background-color: rgba(164,213,189,1.0);
+}
+
+.error{
+  color: rgba(255, 0, 0, 1.0);
+}
+
+.back_error{
+  background-color: rgba(255, 0, 0, 1.0);
+}
+
+.mb-a{
+  margin-bottom: 500px;
+}
+
+.pb-a{
+  padding-bottom: 500px;
+}
