@@ -2,8 +2,8 @@
     <head>
         <meta charset="utf-8">
         <title>トップページ</title>
-        <link rel="stylesheet" href="css/bootstrap.css">
-        <link rel="stylesheet" href="css/common.css">
+        <link rel="stylesheet" href="../view/css/bootstrap.css">
+        <link rel="stylesheet" href="../view/css/common.css">
     </head>
     <body>
         <div class="container-fluid">
@@ -15,15 +15,15 @@
                         </div>
                     </div>
                     <div class="row mt-3 mx-4">
-                        <a class="col-1 p-1 menu_title" href="top.html">トップページ</a>
-                        <a class="col-1 p-1 menu_title" href="user/top.html">会員管理</a>
-                        <a class="col-1 p-1 menu_title" href="floor/top.html">フロア管理</a>
-                        <a class="col-1 p-1 menu_title" href="stock/top.html">在庫管理</a>
-                        <a class="col-1 p-1 menu_title" href="order/top.html">注文管理</a>
-                        <a class="col-1 p-1 menu_title" href="analyse/top.html">売上分析</a>
-                        <a class="col-1 p-1 menu_title" href="employee/top.html">従業員管理</a>
-                        <a class="col-1 p-1 menu_title" href="service/top.html">会員サービス</a>
-                        <a class="col-1 p-1 menu_title" href="login/logout_confirm.html">ログアウト</a>
+                        <a class="col-1 p-1 menu_title" href="../view/top.html">トップページ</a>
+                        <a class="col-1 p-1 menu_title" href="../view/user/top.html">会員管理</a>
+                        <a class="col-1 p-1 menu_title" href="../view/floor/top.html">フロア管理</a>
+                        <a class="col-1 p-1 menu_title" href="../view/stock/top.html">在庫管理</a>
+                        <a class="col-1 p-1 menu_title" href="../view/order/top.html">注文管理</a>
+                        <a class="col-1 p-1 menu_title" href="../view/analyse/top.html">売上分析</a>
+                        <a class="col-1 p-1 menu_title" href="../view/employee/top.html">従業員管理</a>
+                        <a class="col-1 p-1 menu_title" href="../view/service/top.html">会員サービス</a>
+                        <a class="col-1 p-1 menu_title" href="../view/login/logout_confirm.html">ログアウト</a>
                     </div>
                 </div>
 
