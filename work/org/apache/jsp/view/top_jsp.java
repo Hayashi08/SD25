@@ -54,8 +54,8 @@ public final class top_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <head>\r\n");
       out.write("        <meta charset=\"utf-8\">\r\n");
       out.write("        <title>ããããã¼ã¸</title>\r\n");
-      out.write("        <link rel=\"stylesheet\" href=\"../view/css/bootstrap.css\">\r\n");
-      out.write("        <link rel=\"stylesheet\" href=\"../view/css/common.css\">\r\n");
+      out.write("        <link rel=\"stylesheet\" href=\"../static/css/bootstrap.css\">\r\n");
+      out.write("        <link rel=\"stylesheet\" href=\"../static/css/common.css\">\r\n");
       out.write("    </head>\r\n");
       out.write("    <body>\r\n");
       out.write("        <div class=\"container-fluid\">\r\n");
@@ -67,7 +67,7 @@ public final class top_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        </div>\r\n");
       out.write("                    </div>\r\n");
       out.write("                    <div class=\"row mt-3 mx-4\">\r\n");
-      out.write("                        <a class=\"col-1 p-1 menu_title\" href=\"../view/top.html\">ããããã¼ã¸</a>\r\n");
+      out.write("                        <a class=\"col-1 p-1 menu_title\" href=\"FrontController?class_name=situation.TopAction\">ããããã¼ã¸</a>\r\n");
       out.write("                        <a class=\"col-1 p-1 menu_title\" href=\"../view/user/top.html\">ä¼å¡ç®¡ç</a>\r\n");
       out.write("                        <a class=\"col-1 p-1 menu_title\" href=\"../view/floor/top.html\">ãã­ã¢ç®¡ç</a>\r\n");
       out.write("                        <a class=\"col-1 p-1 menu_title\" href=\"../view/stock/top.html\">å¨åº«ç®¡ç</a>\r\n");

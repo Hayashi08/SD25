@@ -2,8 +2,8 @@
     <head>
         <meta charset="utf-8">
         <title>トップページ</title>
-        <link rel="stylesheet" href="../view/css/bootstrap.css">
-        <link rel="stylesheet" href="../view/css/common.css">
+        <link rel="stylesheet" href="../static/css/bootstrap.css">
+        <link rel="stylesheet" href="../static/css/common.css">
     </head>
     <body>
         <div class="container-fluid">
@@ -15,7 +15,7 @@
                         </div>
                     </div>
                     <div class="row mt-3 mx-4">
-                        <a class="col-1 p-1 menu_title" href="../view/top.html">トップページ</a>
+                        <a class="col-1 p-1 menu_title" href="FrontController?class_name=situation.TopAction">トップページ</a>
                         <a class="col-1 p-1 menu_title" href="../view/user/top.html">会員管理</a>
                         <a class="col-1 p-1 menu_title" href="../view/floor/top.html">フロア管理</a>
                         <a class="col-1 p-1 menu_title" href="../view/stock/top.html">在庫管理</a>
