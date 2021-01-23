@@ -9,7 +9,7 @@ public class LoginAction extends Action{
 			HttpServletRequest request, HttpServletResponse response
 	) throws Exception{
 		
-	    return "/view/top.jsp";
+	    return "/view/situation/top.jsp";
 		
 	}
 

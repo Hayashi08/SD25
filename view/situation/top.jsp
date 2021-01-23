@@ -1,30 +1,14 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html lang="ja">
     <head>
-        <meta charset="utf-8">
         <title>トップページ</title>
-        <link rel="stylesheet" href="../static/css/bootstrap.css">
-        <link rel="stylesheet" href="../static/css/common.css">
+        <%@ include file="../head.jsp" %>
     </head>
     <body>
         <div class="container-fluid">
             <div class="p-3">
                 <div class="col p-4 main">
-                    <div class="row">
-                        <div class="offset-1 main_title">
-                            まさる堂
-                        </div>
-                    </div>
-                    <div class="row mt-3 mx-4">
-                        <a class="col-1 p-1 menu_title" href="FrontController?class_name=situation.TopAction">トップページ</a>
-                        <a class="col-1 p-1 menu_title" href="../view/user/top.html">会員管理</a>
-                        <a class="col-1 p-1 menu_title" href="../view/floor/top.html">フロア管理</a>
-                        <a class="col-1 p-1 menu_title" href="../view/stock/top.html">在庫管理</a>
-                        <a class="col-1 p-1 menu_title" href="../view/order/top.html">注文管理</a>
-                        <a class="col-1 p-1 menu_title" href="../view/analyse/top.html">売上分析</a>
-                        <a class="col-1 p-1 menu_title" href="../view/employee/top.html">従業員管理</a>
-                        <a class="col-1 p-1 menu_title" href="../view/service/top.html">会員サービス</a>
-                        <a class="col-1 p-1 menu_title" href="../view/login/logout_confirm.html">ログアウト</a>
-                    </div>
+                    <%@ include file="../header.jsp" %>
                 </div>
 
                 <div class="text-center my-3 col main_title">

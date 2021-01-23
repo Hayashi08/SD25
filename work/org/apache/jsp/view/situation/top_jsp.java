@@ -1,4 +1,4 @@
-package org.apache.jsp.view;
+package org.apache.jsp.view.situation;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -10,6 +10,11 @@ public final class top_jsp extends org.apache.jasper.runtime.HttpJspBase
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
 
   private static java.util.List _jspx_dependants;
+
+  static {
+    _jspx_dependants = new java.util.ArrayList(1);
+    _jspx_dependants.add("/view/situation/../head.jsp");
+  }
 
   private javax.el.ExpressionFactory _el_expressionfactory;
   private org.apache.AnnotationProcessor _jsp_annotationprocessor;
@@ -53,10 +58,13 @@ public final class top_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("<html lang=\"ja\">\r\n");
       out.write("    <head>\r\n");
-      out.write("        <meta charset=\"utf-8\">\r\n");
       out.write("        <title>トップページ</title>\r\n");
-      out.write("        <link rel=\"stylesheet\" href=\"../static/css/bootstrap.css\">\r\n");
-      out.write("        <link rel=\"stylesheet\" href=\"../static/css/common.css\">\r\n");
+      out.write("        ");
+      out.write("\r\n");
+      out.write("<meta charset=\"utf-8\">\r\n");
+      out.write("<link rel=\"stylesheet\" href=\"../static/css/bootstrap.css\">\r\n");
+      out.write("<link rel=\"stylesheet\" href=\"../static/css/common.css\">");
+      out.write("\r\n");
       out.write("    </head>\r\n");
       out.write("    <body>\r\n");
       out.write("        <div class=\"container-fluid\">\r\n");
@@ -76,7 +84,7 @@ public final class top_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        <a class=\"col-1 p-1 menu_title\" href=\"../view/analyse/top.html\">売上分析</a>\r\n");
       out.write("                        <a class=\"col-1 p-1 menu_title\" href=\"../view/employee/top.html\">従業員管理</a>\r\n");
       out.write("                        <a class=\"col-1 p-1 menu_title\" href=\"../view/service/top.html\">会員サービス</a>\r\n");
-      out.write("                        <a class=\"col-1 p-1 menu_title\" href=\"../\">ログアウト</a>\r\n");
+      out.write("                        <a class=\"col-1 p-1 menu_title\" href=\"../view/login/logout_confirm.html\">ログアウト</a>\r\n");
       out.write("                    </div>\r\n");
       out.write("                </div>\r\n");
       out.write("\r\n");
