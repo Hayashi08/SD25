@@ -1,0 +1,79 @@
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>予約情報更新 エラー</title>
+        <link rel="stylesheet" href="../css/bootstrap.css">
+        <link rel="stylesheet" href="../css/common.css">
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="p-3">
+                <div class="col p-4 main">
+                    <div class="row">
+                        <div class="offset-1 main_title">
+                            まさる堂
+                        </div>
+                    </div>
+                    <div class="row mt-3 mx-4">
+                        <a class="col-1 p-1 menu_title" href="../top.html">トップページ</a>
+                        <a class="col-1 p-1 menu_title" href="../user/top.html">会員管理</a>
+                        <a class="col-1 p-1 menu_title" href="../floor/top.html">フロア管理</a>
+                        <a class="col-1 p-1 menu_title" href="../stock/top.html">在庫管理</a>
+                        <a class="col-1 p-1 menu_title" href="../order/top.html">注文管理</a>
+                        <a class="col-1 p-1 menu_title" href="../analyse/top.html">売上分析</a>
+                        <a class="col-1 p-1 menu_title" href="../employee/top.html">従業員管理</a>
+                        <a class="col-1 p-1 menu_title" href="../service/top.html">会員サービス</a>
+                        <a class="col-1 p-1 menu_title" href="../login/logout_confirm.html">ログアウト</a>
+                    </div>
+                </div>
+
+                <div class="col main_title my-3 text-center">
+                    予約情報更新 エラー
+                </div>
+
+                <div class="main col-10 mx-auto">
+
+                    <div class="row">
+                        <table class="col-5 table mx-auto">
+                            <tr>
+                              <td class="field text-center h5 font-weight-bold">部屋番号</td>
+                              <td><input type="text" class="form-control" value="203" readonly></td>
+                            </tr>
+                            <tr>
+                              <td class="field text-center h5 font-weight-bold">利用者名</td>
+                              <td><input type="text" class="form-control" value="HAL 次郎" readonly></td>
+                            </tr>
+                            <tr>
+                              <td class="field text-center h5 font-weight-bold">利用人数</td>
+                              <td><input type="number" class="form-control" value="5" readonly></td>
+                            </tr>
+                            <tr>
+                              <td class="field text-center h5 font-weight-bold">日付</td>
+                              <td><input type="date" class="form-control" value="2020-10-08" readonly></td>
+                            </tr>
+                            <tr>
+                              <td class="field text-center h5 font-weight-bold">開始時間</td>
+                              <td><input type="time" class="form-control" value="14:00" readonly></td>
+                            </tr>
+                            <tr>
+                              <td class="back_error text-center h5 font-weight-bold">終了時間</td>
+                              <td><input type="text" class="form-control text-danger" value="入力されていません。" readonly></td>
+                            </tr>
+                            <tr>
+                              <td class="field text-center h5 font-weight-bold">フリータイム</td>
+                              <td class="text-center h5">なし</td>
+                            </tr>
+                        </table>
+                    </div>
+
+
+                    <div class="row my-3">
+                        <div class="col text-center">
+                          <a class="btn btn-primary" href="book_edit.html" role="button">リトライ</a>
+                        </div>
+                    </div>
+
+                </div>
+        </div>
+    </body>
+</html>
