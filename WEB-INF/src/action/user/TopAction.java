@@ -12,6 +12,7 @@ public class TopAction extends Action {
             HttpServletResponse response) throws Exception {
         
         return "/view/user/top.jsp";
+        
     }
 
 }

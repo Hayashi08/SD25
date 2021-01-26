@@ -23,4 +23,7 @@
 hs_err_pid*
 
 # tomcat
-.settings/
+.settings
+.classpath
+.project
+.tomcatplugin
