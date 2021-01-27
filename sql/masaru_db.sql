@@ -14,7 +14,7 @@ CREATE TABLE user (
 	user_birth DATE NOT NULL,
 	user_mail VARCHAR(32) DEFAULT '未入力',
 	user_tel CHAR(13) NOT NULL,
-	user_job VARCHAR(8) DEFAULT '未入力',
+	user_job VARCHAR(16) DEFAULT '未入力',
 	user_credit CHAR(1) DEFAULT '5',
 	user_rank CHAR(1) DEFAULT '1',
 	user_date DATE NOT NULL,
