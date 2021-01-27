@@ -9,18 +9,15 @@ use masaru_db;
 CREATE TABLE user (
 	user_id VARCHAR(16) NOT NULL,
 	user_pass VARCHAR(16) NOT NULL,
-	user_name1 VARCHAR(20) NOT NULL,
-	user_name2 VARCHAR(20) NOT NULL,
-	user_kana1 VARCHAR(20) NOT NULL,
-	user_kana2 VARCHAR(20) NOT NULL,
+	user_name VARCHAR(24) NOT NULL,
 	user_sex CHAR(1) NOT NULL,
 	user_birth DATE NOT NULL,
-	user_mail VARCHAR(50) DEFAULT '未入力',
+	user_mail VARCHAR(32) DEFAULT '未入力',
 	user_tel CHAR(13) NOT NULL,
-	user_job VARCHAR(100) DEFAULT '未入力',
+	user_job VARCHAR(8) DEFAULT '未入力',
 	user_credit CHAR(1) DEFAULT '5',
 	user_rank CHAR(1) DEFAULT '1',
-	user_limit DATE NOT NULL,
+	user_date DATE NOT NULL,
 	PRIMARY KEY (user_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
