@@ -113,12 +113,9 @@ CREATE TABLE sale_detail (
 CREATE TABLE employee (
 	employee_id CHAR(3) NOT NULL,
 	employee_pass VARCHAR(16) NOT NULL,
-	employee_name1 VARCHAR(20) NOT NULL,
-	employee_name2 VARCHAR(20) NOT NULL,
-	employee_kana1 VARCHAR(20) NOT NULL,
-	employee_kana2 VARCHAR(20) NOT NULL,
-	employee_class VARCHAR(10) NOT NULL,
-	employee_mail VARCHAR(50) NOT NULL,
+	employee_name VARCHAR(24) NOT NULL,
+	employee_class VARCHAR(12) NOT NULL,
+	employee_mail VARCHAR(32) NOT NULL,
 	employee_tel CHAR(13) NOT NULL,
 	PRIMARY KEY (employee_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
