@@ -1,6 +1,5 @@
 package dao;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -8,14 +7,10 @@ import tool.DAO;
 
 public class UserDAO extends DAO {
     
-    // プロパティ
-    private Connection connection = null;
-    
-    // コンストラクタでコネクションへ接続
+    // コンストラクタ
+    // 親コンストラクタを呼び出し
     public UserDAO() throws Exception {
-        
-        this.connection = this.getConnection();
-        
+        super();
     }
     
     // userテーブルへインサート
@@ -25,7 +20,7 @@ public class UserDAO extends DAO {
         if (checkUserId(id)) {
             return false;
         }
-        
+
         String sql = "insert into user values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, curdate())";
         PreparedStatement statement = this.connection.prepareStatement(sql);
         statement.setString(1, id);
@@ -40,6 +35,7 @@ public class UserDAO extends DAO {
         statement.setString(10, rank);
         statement.executeUpdate();
         
+        // ちゃんと閉じる！
         statement.close();
         return true;
         
@@ -59,16 +55,10 @@ public class UserDAO extends DAO {
             flag = true;
         }
         
+        // ちゃんと閉じる！
         statement.close();
         return flag;
         
     }
     
-    // コネクションの切断
-    public void close() throws Exception {
-        
-        this.connection.close();
-        
-    }
-
 }

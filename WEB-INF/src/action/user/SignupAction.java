@@ -27,6 +27,7 @@ public class SignupAction extends Action {
         
         UserDAO userDAO = new UserDAO();        
         boolean flag = userDAO.insert(id, pass, name, sex, birth, mail, tel, job, credit, rank);
+        // ちゃんと閉じる！
         userDAO.close();
         
         if (flag) {
