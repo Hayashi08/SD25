@@ -13,5 +13,4 @@ public class TopAction extends Action {
         
         return "/view/floor/top.jsp";
     }
-
 }
