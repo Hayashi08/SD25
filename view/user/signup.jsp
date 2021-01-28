@@ -26,19 +26,23 @@
                         <table class="offset-3 col-6 table table-striped">
                             <tr>
                               <td class="field">会員ID</td>
-                              <td class="input-group"><input type="text" class="form-control" name="id" required></td>
+                              <td class="input-group"><input type="text" class="form-control" name="id" maxlength="16" required></td>
                             </tr>
                             <tr>
                               <td class="field">会員パスワード</td>
-                              <td class="input-group"><input type="password" class="form-control" name="pass" required></td>
+                              <td class="input-group"><input type="password" class="form-control" name="pass" maxlength="16" required></td>
                             </tr>
                             <tr>
                               <td class="field">名前</td>
-                              <td class="input-group"><input type="text" class="form-control" name="name" required></td>
+                              <td class="input-group"><input type="text" class="form-control" name="name" maxlength="24" required></td>
                             </tr>
                             <tr>
                               <td class="field">性別</td>
-                              <td class="input-group"><input type="text" class="form-control" name="sex" required></td>
+                              <%-- <td class="input-group"><input type="text" class="form-control" name="sex" maxlength="1" required></td> --%>
+                              <td class="input-group">
+                                  <input type="radio" class="form-control" name="sex" value="男" checked>男
+                                  <input type="radio" class="form-control" name="sex" value="女">女
+                              </td>
                             </tr>
                             <tr>
                               <td class="field">生年月日</td>
@@ -48,11 +52,24 @@
                             </tr>
                             <tr>
                               <td class="field">メールアドレス</td>
-                              <td class="input-group"><input type="text" class="form-control" name="mail" required></td>
+                              <td class="input-group"><input type="text" class="form-control" name="mail" maxlength="32" required></td>
                             </tr>
                             <tr>
                               <td class="field">電話番号</td>
-                              <td class="input-group"><input type="text" class="form-control" name="tel" required></td>
+                              <td class="input-group"><input type="text" class="form-control" name="tel" maxlength="13" required></td>
+                            </tr>
+                            <tr>
+                              <td class="field">職業</td>
+                              <%-- <td class="input-group"><input type="text" class="form-control" name="job" maxlength="16" required></td> --%>
+                                 <td class="input-group">
+                                    <select name="job" size="1">
+                                        <option value="未入力" selected>未入力
+                                        <option value="学生">学生
+                                        <option value="会社員">会社員
+                                        <option value="主婦">主婦
+                                        <option value="シニア">シニア
+                                    </select>
+                                 </td>
                             </tr>
                             <tr>
                               <td class="field">信用度</td>
@@ -78,12 +95,7 @@
                                   </select>
                                 </td>
                             </tr>
-                            <tr>
-                              <td class="field">職業</td>
-                              <td class="input-group"><input type="text" class="form-control" name="job" required></td>
-                            </tr>
                         </table>
-
                         <div class="row my-3">
                             <div class="col-2 offset-4">
                                 <input type="submit" class="btn btn-primary" value="登録" role="button">
