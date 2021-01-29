@@ -16,56 +16,55 @@
                 </div>
 
                 <div class="offset-1 col-10 p-5 main">
+                  <form action="FrontController" method="POST">
+                    <input type="text" name="class_name" value="employee.SignupAction" hidden>
                     <div class="offset-3 p-3 sub_title">
                         各項目を入力してください
                     </div>
                     <table class="offset-3 col-6 table table-striped">
                         <tr>
                           <td class="field">従業員ID</td>
-                          <td class="input-group"><input type="text" class="form-control"></td>
+                          <td class="input-group"><input type="text" class="form-control" name="id" maxlength="3" required></td>
                         </tr>
                         <tr>
                           <td class="field">パスワード</td>
-                          <td class="input-group"><input type="password" class="form-control"></td>
+                          <td class="input-group"><input type="password" class="form-control" name="pass" maxlength="16" required></td>
+                        </tr>
+                        <tr>
+                          <td class="field">氏名</td>
+                          <td class="input-group"><input type="text" class="form-control" name="name" maxlength="24" required></td>
                         </tr>
                         <tr>
                           <td class="field">役職</td><!-- プルダウン -->
-                          <td class="input-group"><input type="text" class="form-control"></td>
-                        </tr>
-                        <tr>
-                          <td class="field">氏名(姓)</td>
-                          <td class="input-group"><input type="text" class="form-control"></td>
-                        </tr>
-                        <tr>
-                          <td class="field">氏名(名)</td>
-                          <td class="input-group"><input type="text" class="form-control"></td>
-                        </tr>
-                        <tr>
-                          <td class="field">カナ(姓)</td>
-                          <td class="input-group"><input type="text" class="form-control"></td>
-                        </tr>
-                        <tr>
-                          <td class="field">カナ(名)</td>
-                          <td class="input-group"><input type="text" class="form-control"></td>
+                          <td class="input-group">
+                              <select name="position" size="12">
+                                  <option value="未入力" selected>未入力
+                                  <option value="部長">部長
+                                  <option value="課長">課長
+                                  <option value="係長">係長
+                                  <option value="平社員">平社員
+                              </select>
+                          </td>
                         </tr>
                         <tr>
                           <td class="field">メールアドレス</td>
-                          <td class="input-group"><input type="text" class="form-control"></td>
+                          <td class="input-group"><input type="text" class="form-control" name="mail" maxlength="32" required></td>
                         </tr>
                         <tr>
                           <td class="field">電話番号</td>
-                          <td class="input-group"><input type="text" class="form-control"></td>
+                          <td class="input-group"><input type="text" class="form-control" name="tel" maxlength="13" required></td>
                         </tr>
                     </table>
 
                     <div class="row my-3">
                         <div class="col-2 offset-4">
-                            <a class="btn btn-primary"  href="FrontController?class_name=employee.SignupConpleteAction" role="button">登録</a>
+                            <input type="submit" class="btn btn-primary" value="登録" role="button">
                         </div>
                         <div class="col-2 offset-1">
-                            <a class="btn btn-primary" href="signup.html" role="button">クリア</a>
+                            <input type="reset" class="btn btn-primary" value="クリア" role="button">
                         </div>
                     </div>
+                  </form>
                 </div>
 
                 <div class="offset-8 col-3 my-3">
