@@ -14,6 +14,9 @@
                 <div class="offset-4 my-3 col-4 main_title text-center">
                     検索結果
                 </div>
+                
+                
+                    <%@ include file="../enhance.jsp" %>
 
                 <div class="offset-1 col-10 p-5 main">
                     <div class="row">
@@ -66,17 +69,17 @@
                         <tr>
                           <td>101</td>
                           <td>清掃済み</td>
-                          <td><a class="btn btn-primary" href="detail.html" role="button">詳細</a></td>
+                          <td><a class="btn btn-primary" href="FrontController?class_name=floor.FormDetailAction" role="button">詳細</a></td>
                         </tr>
                         <tr>
                           <td>202</td>
                           <td>清掃済み</td>
-                          <td><a class="btn btn-primary" href="detail.html" role="button">詳細</a></td>
+                          <td><a class="btn btn-primary" href="FrontController?class_name=floor.FormDetailAction" role="button">詳細</a></td>
                         </tr>
                         <tr>
                           <td>205</td>
                           <td>清掃済み</td>
-                          <td><a class="btn btn-primary" href="detail.html" role="button">詳細</a></td>
+                          <td><a class="btn btn-primary" href="FrontController?class_name=floor.FormDetailAction" role="button">詳細</a></td>
                         </tr>
                     </table>
                 </div>
