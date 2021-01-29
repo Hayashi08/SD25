@@ -39,7 +39,7 @@
                     </div>
                     <div class="row">
                         <div class="offset-5 mt-3">
-                            <a class="btn btn-primary"  href="FrontController?class_name=employee.SignupAction" role="button">従業員登録</a>
+                            <a class="btn btn-primary"  href="FrontController?class_name=employee.FormAction" role="button">従業員登録</a>
                         </div>
                     </div>
                 </div>
