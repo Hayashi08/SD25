@@ -24,7 +24,7 @@
                     <table class="offset-3 col-6 table table-striped">
                         <tr>
                           <td class="field">従業員ID</td>
-                          <td class="input-group"><input type="text" class="form-control" name="id" maxlength="3" required></td>
+                          <td class="input-group"><input type="text" class="form-control" id="id" name="id" maxlength="3" required></td>
                         </tr>
                         <tr>
                           <td class="field">パスワード</td>
@@ -37,12 +37,13 @@
                         <tr>
                           <td class="field">役職</td><!-- プルダウン -->
                           <td class="input-group">
-                              <select name="position" size="12">
+                              <select name="position" size="1">
                                   <option value="未入力" selected>未入力
-                                  <option value="部長">部長
-                                  <option value="課長">課長
-                                  <option value="係長">係長
-                                  <option value="平社員">平社員
+                                  <option value="SV">SV
+                                  <option value="店長">店長
+                                  <option value="副店長">副店長
+                                  <option value="社員">社員
+                                  <option value="アルバイト">アルバイト
                               </select>
                           </td>
                         </tr>
@@ -70,8 +71,14 @@
                 <div class="offset-8 col-3 my-3">
                     <a class="btn btn-primary m-5" href="javascript:history.back();" role="button">戻る</a>
                 </div>
-
             </div>
         </div>
+        <script type="text/javascript">
+            $(function () {
+              $('#btn').click(function() {
+                $('#modal_id').val($('#id').val());
+              }
+            )});
+        </script>
     </body>
 </html>
