@@ -90,15 +90,15 @@ public class UserDAO extends DAO {
             UserBean userBean = new UserBean();
             
             // カラムの値をBeanに格納
-            userBean.setId(rSet.getString("user_id"));
-            userBean.setPass(rSet.getString("user_pass"));
-            userBean.setName(rSet.getString("user_name"));
-            userBean.setSex(rSet.getString("user_sex"));
-            userBean.setBirth(rSet.getString("user_birth"));
-            userBean.setMail(rSet.getString("user_mail"));
-            userBean.setTel(rSet.getString("user_tel"));
-            userBean.setJob(rSet.getString("user_job"));
-            userBean.setCredit(rSet.getString("user_credit"));
+            userBean.setId(rSet.getString(1));
+            userBean.setPass(rSet.getString(2));
+            userBean.setName(rSet.getString(3));
+            userBean.setSex(rSet.getString(4));
+            userBean.setBirth(rSet.getString(5));
+            userBean.setMail(rSet.getString(6));
+            userBean.setTel(rSet.getString(7));
+            userBean.setJob(rSet.getString(8));
+            userBean.setCredit(rSet.getString(9));
             userBean.setRank(rSet.getString(10));
             userBean.setDate(rSet.getString(11));
             
