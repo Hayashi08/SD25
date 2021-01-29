@@ -15,9 +15,24 @@
                     会員登録完了
                 </div>
 
-                <div class="offset-8 col-3 my-3">
-                    <a class="btn btn-primary m-5" href="FrontController?class_name=situation.TopAction" role="button">トップページへ</a>
+                <div class="main col-10 mx-auto pt-3 text-center">
+                    <div class="row">
+                        <div class="col mt-5">
+                            <h1>登録完了しました。</h1>
+                        </div>
+                    </div>
+                    
+                    <div class="row my-5">
+                        <div class="col">
+                            <a class="btn btn-primary m-5" href="FrontController?class_name=situation.TopAction" role="button">トップページへ</a>
+                        </div>
+                    </div>
                 </div>
+
+
+                <%-- <div class="offset-8 col-3 my-3">
+                    <a class="btn btn-primary m-5" href="FrontController?class_name=situation.TopAction" role="button">トップページへ</a>
+                </div> --%>
 
             </div>
         </div>

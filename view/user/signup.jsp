@@ -38,10 +38,15 @@
                             </tr>
                             <tr>
                               <td class="field">性別</td>
-                              <%-- <td class="input-group"><input type="text" class="form-control" name="sex" maxlength="1" required></td> --%>
                               <td class="input-group">
-                                  <input type="radio" class="form-control" name="sex" value="男" checked>男
-                                  <input type="radio" class="form-control" name="sex" value="女">女
+                                  <div class="form-check">
+                                      <input type="radio" class="form-check-input" id="male" name="sex" value="男" checked>
+                                      <label class="form-check-label" for="male">男</label>
+                                  </div>
+                                  <div class="form-check ml-3">
+                                      <input type="radio" class="form-check-input" id="female" name="sex" value="女">
+                                      <label class="form-check-label" for="female">女</label>
+                                  </div>
                               </td>
                             </tr>
                             <tr>
@@ -52,7 +57,7 @@
                             </tr>
                             <tr>
                               <td class="field">メールアドレス</td>
-                              <td class="input-group"><input type="text" class="form-control" name="mail" maxlength="32" required></td>
+                              <td class="input-group"><input type="email" class="form-control" name="mail" maxlength="32" required></td>
                             </tr>
                             <tr>
                               <td class="field">電話番号</td>
