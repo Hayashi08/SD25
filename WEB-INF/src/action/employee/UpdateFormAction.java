@@ -10,12 +10,12 @@ import bean.EmployeeBean;
 import tool.Action;
 import dao.EmployeeDAO;
 
-public class DetailAction extends Action {
+public class UpdateFormAction extends Action {
 
     @Override
     public String execute(HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-
+    	
         // パラメータの取得
         String keyword = request.getParameter("keyword");
         
@@ -29,7 +29,7 @@ public class DetailAction extends Action {
         // Beanのリスト(検索結果)をセット
         request.setAttribute("employeeBeans", employeeBeans);
         
-        return "/view/employee/detail.jsp";
+        return "/view/employee/update.jsp";
     }
 
 }

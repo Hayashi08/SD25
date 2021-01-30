@@ -52,7 +52,7 @@
 
                     <div class="row my-3">
                         <div class="col-2 offset-4">
-                            <a class="btn btn-primary"  href="edit.html" role="button">編集</a>
+                            <a class="btn btn-primary"  href="FrontController?class_name=employee.UpdateFormAction&keyword=<%=employeeBeans.get(0).getId()%>" role="button">編集</a>
                         </div>
                         <div class="btn btn-primary" id="btn" data-toggle="modal" data-target="#modal1">
                             削除
