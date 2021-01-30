@@ -2,6 +2,9 @@ package dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import bean.EmployeeBean;
 
 import tool.DAO;
 
@@ -45,9 +48,9 @@ public class EmployeeDAO extends DAO {
         String sql = "select * from employee where employee_id like ?";
         PreparedStatement statement = this.connection.prepareStatement(sql);
         statement.setString(1, employee_id);
-        ResultSet rSet = statement.executeQuery();
+        ResultSet rs = statement.executeQuery();
         
-        if (rSet.next()) {
+        if (rs.next()) {
             flag = true;
         }
         
@@ -57,4 +60,40 @@ public class EmployeeDAO extends DAO {
         
     }
     
+    // 従業員検索
+    public ArrayList<EmployeeBean> select(String keyword) throws Exception {
+        
+        // Beanのリスト
+        ArrayList<EmployeeBean> employeeBeans = new ArrayList<EmployeeBean>();
+        
+        // SQL文
+        String sql = "select * from employee where employee_id like ?";
+        // STATEMENTの生成
+        PreparedStatement statement = this.connection.prepareStatement(sql);
+        // パラメータの挿入(ワイルドカード使用)
+        statement.setString(1, "%" + keyword + "%");
+        // 検索結果を受け取る
+        ResultSet rs = statement.executeQuery();
+        
+        // 検索結果をBeanのリストに格納
+        while (rs.next()) {
+            // Beanの生成
+            EmployeeBean employeeBean = new EmployeeBean();
+            
+            // カラムの値をBeanに格納
+            employeeBean.setId(rs.getString(1));
+            employeeBean.setPass(rs.getString(2));
+            employeeBean.setName(rs.getString(3));
+            employeeBean.setPosition(rs.getString(4));
+            employeeBean.setMail(rs.getString(5));
+            employeeBean.setTel(rs.getString(6));
+            
+            // Beanをリストに追加
+            employeeBeans.add(employeeBean);
+        }
+        
+        return employeeBeans;
+        
+    }
+
 }
