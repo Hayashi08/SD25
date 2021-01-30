@@ -26,7 +26,7 @@
                         </div>
                         <div class="row mt-4">
                             <div class="input-group offset-3 col-6">
-                                <input type="serch" name="keyword" class="form-control" maxlength="16" placeholder="従業員IDを入力してください" required>
+                                <input type="serch" name="keyword" class="form-control" maxlength="16" required>
                                 <div class="input-group-append">
                                     <input type="submit" class="btn btn-primary" value="検索" role="button">
                                 </div>
