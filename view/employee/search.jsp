@@ -47,11 +47,13 @@
                         <tr>
                           <th class="field">従業員ID</th>
                           <th class="field">氏名</th>
+                          <th class="field">詳細</th>
                         </tr>
                         <% for (int i=0; i < employeeBeans.size(); i++) { %>
                             <tr>
                                 <td><%= employeeBeans.get(i).getId() %></td>
                                 <td><%= employeeBeans.get(i).getName() %></td>
+                                <td><a class="btn btn-primary" href="FrontController?class_name=employee.DetailAction&keyword=<%=employeeBeans.get(i).getId()%>" role="button">詳細</a></td>
                             </tr>
                         <% } %>
                     </table>

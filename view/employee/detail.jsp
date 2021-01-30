@@ -1,4 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="bean.EmployeeBean" %>
+<%
+
+    ArrayList<EmployeeBean> employeeBeans = (ArrayList<EmployeeBean>)request.getAttribute("employeeBeans");
+
+%>
 <html lang="ja">
     <head>
         <title>従業員詳細</title>
@@ -17,42 +24,32 @@
 
                 <div class="offset-1 col-10 p-5 main">
                     <table class="offset-3 col-6 table table-striped">
-                        <tr>
-                          <td class="field">従業員ID</td>
-                          <td class="input-group">E00</td>
-                        </tr>
-                        <tr>
-                          <td class="field">パスワード</td>
-                          <td class="input-group">halmasaru123</td>
-                        </tr>
-                        <tr>
-                          <td class="field">役職</td>
-                          <td class="input-group">店長</td>
-                        </tr>
-                        <tr>
-                          <td class="field">氏名(姓)</td>
-                          <td class="input-group">HAL</td>
-                        </tr>
-                        <tr>
-                          <td class="field">氏名(名)</td>
-                          <td class="input-group">マサル</td>
-                        </tr>
-                        <tr>
-                          <td class="field">カナ(姓)</td>
-                          <td class="input-group">ハル</td>
-                        </tr>
-                        <tr>
-                          <td class="field">カナ(名)</td>
-                          <td class="input-group">マサル</td>
-                        </tr>
-                        <tr>
-                          <td class="field">メールアドレス</td>
-                          <td class="input-group">masaru123@gmail.com</td>
-                        </tr>
-                        <tr>
-                          <td class="field">電話番号</td>
-                          <td class="input-group">0564-12-3456</td>
-                        </tr>
+                        <% for (int i=0; i < employeeBeans.size(); i++) { %>
+                            <tr>
+                              <td class="field">従業員ID</td>
+                              <td class="input-group"><%= employeeBeans.get(i).getId() %></td>
+                            </tr>
+                            <tr>
+                              <td class="field">パスワード</td>
+                              <td class="input-group"><%= employeeBeans.get(i).getPass() %></td>
+                            </tr>
+                            <tr>
+                              <td class="field">氏名</td>
+                              <td class="input-group"><%= employeeBeans.get(i).getName() %></td>
+                            </tr>
+                            <tr>
+                              <td class="field">役職</td>
+                              <td class="input-group"><%= employeeBeans.get(i).getPosition() %></td>
+                            </tr>
+                            <tr>
+                              <td class="field">メールアドレス</td>
+                              <td class="input-group"><%= employeeBeans.get(i).getMail() %></td>
+                            </tr>
+                            <tr>
+                              <td class="field">電話番号</td>
+                              <td class="input-group"><%= employeeBeans.get(i).getTel() %></td>
+                            </tr>
+                        <% } %>
                     </table>
 
                     <div class="row my-3">

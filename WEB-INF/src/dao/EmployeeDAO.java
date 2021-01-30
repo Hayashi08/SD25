@@ -67,11 +67,13 @@ public class EmployeeDAO extends DAO {
         ArrayList<EmployeeBean> employeeBeans = new ArrayList<EmployeeBean>();
         
         // SQL文
-        String sql = "select * from employee where employee_id like ?";
+        String sql = "select * from employee where employee_id like ? or employee_name like ? or employee_position like ?";
         // STATEMENTの生成
         PreparedStatement statement = this.connection.prepareStatement(sql);
         // パラメータの挿入(ワイルドカード使用)
         statement.setString(1, "%" + keyword + "%");
+        statement.setString(2, "%" + keyword + "%");
+        statement.setString(3, "%" + keyword + "%");
         // 検索結果を受け取る
         ResultSet rs = statement.executeQuery();
         
