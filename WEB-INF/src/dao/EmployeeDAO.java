@@ -98,4 +98,16 @@ public class EmployeeDAO extends DAO {
         
     }
 
+    // 従業員削除
+    public boolean delete(String keyword) throws Exception {
+
+        String sql = "delete from employee where employee_id = " + keyword;
+        PreparedStatement statement = this.connection.prepareStatement(sql);
+        statement.executeUpdate();
+        
+        // ちゃんと閉じる！
+        statement.close();
+        return true;
+        
+    }
 }
