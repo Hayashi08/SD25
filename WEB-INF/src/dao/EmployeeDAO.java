@@ -162,4 +162,21 @@ public class EmployeeDAO extends DAO {
         statement.close();
         
     }
+
+    // シフト登録処理
+    public boolean insertShift(String employee_id, String date, String start, String end) throws Exception {
+        
+        String sql = "insert into shift values ( 0, ?, ?, ?, ?)";
+        PreparedStatement statement = this.connection.prepareStatement(sql);
+        statement.setString(1, employee_id);
+        statement.setString(2, date);
+        statement.setString(3, start);
+        statement.setString(4, end);
+        statement.executeUpdate();
+        
+        // ちゃんと閉じる！
+        statement.close();
+        return true;
+        
+    }
 }

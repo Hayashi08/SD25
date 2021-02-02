@@ -15,11 +15,11 @@ public class ShiftSignupAction extends Action {
         // パラメータの取得
         String employee_id = request.getParameter("employee_id");
         String date = request.getParameter("date");
-        String start = request.getParameter("start");
-        String end = request.getParameter("end");
+        String start = request.getParameter("start_hh") + ":" + request.getParameter("start_mm");
+        String end = request.getParameter("end_hh") + ":" + request.getParameter("end_mm");
         
         EmployeeDAO employeeDAO = new EmployeeDAO();
-        boolean flag = employeeDAO.shift_insert(employee_id, date, start, end);
+        boolean flag = employeeDAO.insertShift(employee_id, date, start, end);
         // ちゃんと閉じる！
         employeeDAO.close();
         

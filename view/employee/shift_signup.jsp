@@ -43,7 +43,7 @@
                   <td class="field">開始時刻</td>
                   <td class="input-group row">
                       <div class="offset-2 col-3">
-                          <select id="start" size="1">
+                          <select name="start_hh" size="1">
                               <option value="09" selected>9時
                               <option value="10">10時
                               <option value="11">11時
@@ -62,7 +62,7 @@
                           </select>
                       </div>
                       <div class="offset-2 col-3">
-                          <select id="start" size="1">
+                          <select name="start_mm" size="1">
                               <option value="00" selected>0分
                               <option value="10">10分
                               <option value="20">20分
@@ -77,7 +77,7 @@
                   <td class="field">終了時刻</td>
                   <td class="input-group row">
                       <div class="offset-2 col-3">
-                          <select id="end" size="1">
+                          <select name="end_hh" size="1">
                               <option value="12" selected>12時
                               <option value="13">13時
                               <option value="14">14時
@@ -96,7 +96,7 @@
                           </select>
                       </div>
                       <div class="offset-2 col-3">
-                          <select id="start" size="1">
+                          <select name="end_mm" size="1">
                               <option value="00" selected>0分
                               <option value="10">10分
                               <option value="20">20分
@@ -120,17 +120,6 @@
     <%@ include file="../ModalCloseTab.jsp" %>
     <%@ include file="../enhance.jsp" %>
     <script>
-        $(function () {
-          $('#btn').click(function() {
-            $('#modal_id').val($('#id').val());
-            $('#modal_pass').val($('#pass').val());
-            $('#modal_name').val($('#name').val());
-            $('#modal_position').val($('#position').val());
-            $('#modal_mail').val($('#mail').val());
-            $('#modal_tel').val($('#tel').val());
-          });
-        });
-
         document.addEventListener('DOMContentLoaded', function() {
           var today = new Date();
           var y = today.getFullYear();
