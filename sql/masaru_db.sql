@@ -114,7 +114,7 @@ CREATE TABLE employee (
 	employee_id CHAR(3) NOT NULL,
 	employee_pass VARCHAR(16) NOT NULL,
 	employee_name VARCHAR(24) NOT NULL,
-	employee_class VARCHAR(12) NOT NULL,
+	employee_position VARCHAR(12) NOT NULL,
 	employee_mail VARCHAR(32) NOT NULL,
 	employee_tel CHAR(13) NOT NULL,
 	PRIMARY KEY (employee_id)

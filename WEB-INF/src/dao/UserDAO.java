@@ -2,14 +2,17 @@ package dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import bean.UserBean;
 
 import tool.DAO;
 
 public class UserDAO extends DAO {
     
     // コンストラクタ
-    // 親コンストラクタを呼び出し
     public UserDAO() throws Exception {
+        // 親コンストラクタを呼び出し
         super();
     }
     
@@ -18,11 +21,15 @@ public class UserDAO extends DAO {
         
         // ユーザーIDが重複してないか確認
         if (checkUserId(id)) {
+            // インサート失敗
             return false;
         }
 
+        // SQL文
         String sql = "insert into user values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, curdate())";
+        // STATEMENTの作成
         PreparedStatement statement = this.connection.prepareStatement(sql);
+        // パラメータの挿入
         statement.setString(1, id);
         statement.setString(2, pass);
         statement.setString(3, name);
@@ -33,10 +40,12 @@ public class UserDAO extends DAO {
         statement.setString(8, job);
         statement.setString(9, credit);
         statement.setString(10, rank);
+        // SQL文を実行
         statement.executeUpdate();
         
         // ちゃんと閉じる！
         statement.close();
+        // インサート成功
         return true;
         
     }
@@ -55,10 +64,50 @@ public class UserDAO extends DAO {
             flag = true;
         }
         
-        // ちゃんと閉じる！
         statement.close();
         
         return flag;
+        
+    }
+    
+    // 会員検索
+    public ArrayList<UserBean> select(String keyword) throws Exception {
+        
+        // Beanのリスト
+        ArrayList<UserBean> userBeans = new ArrayList<UserBean>();
+        
+        // SQL文
+        String sql = "select * from user where user_id like ?";
+        // STATEMENTの生成
+        PreparedStatement statement = this.connection.prepareStatement(sql);
+        // パラメータの挿入(ワイルドカード使用)
+        statement.setString(1, "%" + keyword + "%");
+        // 検索結果を受け取る
+        ResultSet rSet = statement.executeQuery();
+        
+        // 検索結果をBeanのリストに格納
+        while (rSet.next()) {
+            // Beanの生成
+            UserBean userBean = new UserBean();
+            
+            // カラムの値をBeanに格納
+            userBean.setId(rSet.getString(1));
+            userBean.setPass(rSet.getString(2));
+            userBean.setName(rSet.getString(3));
+            userBean.setSex(rSet.getString(4));
+            userBean.setBirth(rSet.getString(5));
+            userBean.setMail(rSet.getString(6));
+            userBean.setTel(rSet.getString(7));
+            userBean.setJob(rSet.getString(8));
+            userBean.setCredit(rSet.getString(9));
+            userBean.setRank(rSet.getString(10));
+            userBean.setDate(rSet.getString(11));
+            
+            // Beanをリストに追加
+            userBeans.add(userBean);
+        }
+        
+        return userBeans;
         
     }
     

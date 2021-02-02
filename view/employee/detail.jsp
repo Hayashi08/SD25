@@ -1,4 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="bean.EmployeeBean" %>
+<%
+
+    ArrayList<EmployeeBean> employeeBeans = (ArrayList<EmployeeBean>)request.getAttribute("employeeBeans");
+
+%>
 <html lang="ja">
     <head>
         <title>従業員詳細</title>
@@ -19,48 +26,36 @@
                     <table class="offset-3 col-6 table table-striped">
                         <tr>
                           <td class="field">従業員ID</td>
-                          <td class="input-group">E00</td>
+                          <td class="input-group"><%= employeeBeans.get(0).getId() %></td>
                         </tr>
                         <tr>
                           <td class="field">パスワード</td>
-                          <td class="input-group">halmasaru123</td>
+                          <td class="input-group"><%= employeeBeans.get(0).getPass() %></td>
+                        </tr>
+                        <tr>
+                          <td class="field">氏名</td>
+                          <td class="input-group"><%= employeeBeans.get(0).getName() %></td>
                         </tr>
                         <tr>
                           <td class="field">役職</td>
-                          <td class="input-group">店長</td>
-                        </tr>
-                        <tr>
-                          <td class="field">氏名(姓)</td>
-                          <td class="input-group">HAL</td>
-                        </tr>
-                        <tr>
-                          <td class="field">氏名(名)</td>
-                          <td class="input-group">マサル</td>
-                        </tr>
-                        <tr>
-                          <td class="field">カナ(姓)</td>
-                          <td class="input-group">ハル</td>
-                        </tr>
-                        <tr>
-                          <td class="field">カナ(名)</td>
-                          <td class="input-group">マサル</td>
+                          <td class="input-group"><%= employeeBeans.get(0).getPosition() %></td>
                         </tr>
                         <tr>
                           <td class="field">メールアドレス</td>
-                          <td class="input-group">masaru123@gmail.com</td>
+                          <td class="input-group"><%= employeeBeans.get(0).getMail() %></td>
                         </tr>
                         <tr>
                           <td class="field">電話番号</td>
-                          <td class="input-group">0564-12-3456</td>
+                          <td class="input-group"><%= employeeBeans.get(0).getTel() %></td>
                         </tr>
                     </table>
 
                     <div class="row my-3">
                         <div class="col-2 offset-4">
-                            <a class="btn btn-primary"  href="edit.html" role="button">編集</a>
+                            <a class="btn btn-primary"  href="FrontController?class_name=employee.UpdateFormAction&keyword=<%=employeeBeans.get(0).getId()%>" role="button">編集</a>
                         </div>
-                        <div class="col-2 offset-1">
-                            <a class="btn btn-primary" href="delete_confirm.html" role="button">削除</a>
+                        <div class="btn btn-primary" id="btn" data-toggle="modal" data-target="#modal1">
+                            削除
                         </div>
                     </div>
                 </div>
@@ -71,5 +66,26 @@
 
             </div>
         </div>
+        <%@ include file="../ModalOpenTab.jsp" %>
+            <table class="offset-1 col-10 table table-striped">
+                <tr>
+                  <td class="field">従業員ID</td>
+                  <td class="input-group"><%= employeeBeans.get(0).getId() %></td>
+                </tr>
+                <tr>
+                  <td class="field">氏名</td>
+                  <td class="input-group"><%= employeeBeans.get(0).getName() %></td>
+                </tr>
+            </table>
+            <div class="row">
+                <div class="col-3 offset-3">
+                    <a class="btn btn-primary" href="FrontController?class_name=employee.DeleteAction&keyword=<%=employeeBeans.get(0).getId()%>" role="button">削除</a>
+                </div>
+                <div class="col-3 offset-1">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                </div>
+            </div>
+        <%@ include file="../ModalCloseTab.jsp" %>
+        <%@ include file="../enhance.jsp" %>
     </body>
 </html>

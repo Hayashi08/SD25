@@ -2,8 +2,10 @@ package dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import tool.DAO;
+import bean.EmployeeBean;
 
 public class EmployeeDAO extends DAO {
     
@@ -13,7 +15,7 @@ public class EmployeeDAO extends DAO {
         super();
     }
     
-    // employeeテーブルへインサート
+    // 従業員登録処理
     public boolean insert(String id, String pass, String name, String position, String mail, String tel) throws Exception {
         
         // 従業員IDが重複してないか確認
@@ -45,9 +47,9 @@ public class EmployeeDAO extends DAO {
         String sql = "select * from employee where employee_id like ?";
         PreparedStatement statement = this.connection.prepareStatement(sql);
         statement.setString(1, employee_id);
-        ResultSet rSet = statement.executeQuery();
+        ResultSet rs = statement.executeQuery();
         
-        if (rSet.next()) {
+        if (rs.next()) {
             flag = true;
         }
         
@@ -57,4 +59,73 @@ public class EmployeeDAO extends DAO {
         
     }
     
+    // 従業員検索処理
+    public ArrayList<EmployeeBean> select(String keyword) throws Exception {
+        
+        // Beanのリスト
+        ArrayList<EmployeeBean> employeeBeans = new ArrayList<EmployeeBean>();
+        
+        // SQL文
+        String sql = "select * from employee where employee_id like ? or employee_name like ? or employee_position like ?";
+        // STATEMENTの生成
+        PreparedStatement statement = this.connection.prepareStatement(sql);
+        // パラメータの挿入(ワイルドカード使用)
+        statement.setString(1, "%" + keyword + "%");
+        statement.setString(2, "%" + keyword + "%");
+        statement.setString(3, "%" + keyword + "%");
+        // 検索結果を受け取る
+        ResultSet rs = statement.executeQuery();
+        
+        // 検索結果をBeanのリストに格納
+        while (rs.next()) {
+            // Beanの生成
+            EmployeeBean employeeBean = new EmployeeBean();
+            
+            // カラムの値をBeanに格納
+            employeeBean.setId(rs.getString(1));
+            employeeBean.setPass(rs.getString(2));
+            employeeBean.setName(rs.getString(3));
+            employeeBean.setPosition(rs.getString(4));
+            employeeBean.setMail(rs.getString(5));
+            employeeBean.setTel(rs.getString(6));
+            
+            // Beanをリストに追加
+            employeeBeans.add(employeeBean);
+        }
+        
+        return employeeBeans;
+        
+    }
+
+    // 従業員更新処理
+    public boolean update(String id, String pass, String name, String position, String mail, String tel) throws Exception {
+
+        String sql = "update employee set employee_pass = ?, employee_name = ?, employee_position = ?, employee_mail = ?, employee_tel = ? where employee_id = ?";
+        PreparedStatement statement = this.connection.prepareStatement(sql);
+        statement.setString(1, pass);
+        statement.setString(2, name);
+        statement.setString(3, position);
+        statement.setString(4, mail);
+        statement.setString(5, tel);
+        statement.setString(6, id);
+        statement.executeUpdate();
+        
+        // ちゃんと閉じる！
+        statement.close();
+        return true;
+        
+    }
+
+    // 従業員削除処理
+    public boolean delete(String keyword) throws Exception {
+
+        String sql = "delete from employee where employee_id = " + keyword;
+        PreparedStatement statement = this.connection.prepareStatement(sql);
+        statement.executeUpdate();
+        
+        // ちゃんと閉じる！
+        statement.close();
+        return true;
+        
+    }
 }
