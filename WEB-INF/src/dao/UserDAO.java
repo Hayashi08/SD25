@@ -57,6 +57,7 @@ public class UserDAO extends DAO {
         
         // ちゃんと閉じる！
         statement.close();
+        
         return flag;
         
     }
