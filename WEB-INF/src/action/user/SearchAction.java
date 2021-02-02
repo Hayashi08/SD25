@@ -11,7 +11,7 @@ import dao.UserDAO;
 
 import tool.Action;
 
-public class SerchAction extends Action {
+public class SearchAction extends Action {
 
     @Override
     public String execute(HttpServletRequest request,
@@ -23,7 +23,7 @@ public class SerchAction extends Action {
         // DAOの生成
         UserDAO userDAO = new UserDAO();
         // DAOメソッドの実行
-        ArrayList<UserBean> userBeans = userDAO.select(keyword);
+        ArrayList<UserBean> userBeans = userDAO.search(keyword);
         // ちゃんと閉じる！
         userDAO.close();
         

@@ -18,7 +18,7 @@
                 <div class="offset-1 col-10 p-5 main">
 
                     <form action="FrontController" method="POST">
-                        <input type="text" name="class_name" value="user.SerchAction" hidden>
+                        <input type="text" name="class_name" value="user.SearchAction" hidden>
 
                         <div class="row">
                             <div class="offset-3 sub_title">

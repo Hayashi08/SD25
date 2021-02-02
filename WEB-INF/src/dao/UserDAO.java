@@ -70,7 +70,7 @@ public class UserDAO extends DAO {
     }
     
     // 会員検索
-    public ArrayList<UserBean> select(String keyword) throws Exception {
+    public ArrayList<UserBean> search(String keyword) throws Exception {
         
         // Beanのリスト
         ArrayList<UserBean> userBeans = new ArrayList<UserBean>();
