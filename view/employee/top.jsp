@@ -22,7 +22,7 @@
                           <a class="btn btn-primary"  href="FrontController?class_name=employee.EmployeeIndexAction" role="button">従業員管理</a>
                       </div>
                       <div class="col-2 offset-2">
-                          <a class="btn btn-primary"  href="FrontController?class_name=employee.TopAction" role="button">シフト管理</a>
+                          <a class="btn btn-primary"  href="FrontController?class_name=employee.ShiftIndexAction" role="button">シフト管理</a>
                       </div>
                     </div>
                 </div>
