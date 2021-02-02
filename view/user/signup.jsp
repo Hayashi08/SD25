@@ -61,7 +61,7 @@
                             </tr>
                             <tr>
                               <td class="field">電話番号</td>
-                              <td class="input-group"><input type="text" class="form-control" name="tel" maxlength="13" required></td>
+                              <td class="input-group"><input type="tel" class="form-control" name="tel" maxlength="13" required></td>
                             </tr>
                             <tr>
                               <td class="field">職業</td>

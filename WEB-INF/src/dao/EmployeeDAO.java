@@ -44,7 +44,7 @@ public class EmployeeDAO extends DAO {
         
         boolean flag = false;
         
-        String sql = "select * from employee where employee_id like ?";
+        String sql = "select * from employee where employee_id = ?";
         PreparedStatement statement = this.connection.prepareStatement(sql);
         statement.setString(1, employee_id);
         ResultSet rs = statement.executeQuery();
@@ -60,7 +60,7 @@ public class EmployeeDAO extends DAO {
     }
     
     // 従業員検索処理
-    public ArrayList<EmployeeBean> select(String keyword) throws Exception {
+    public ArrayList<EmployeeBean> search(String keyword) throws Exception {
         
         // Beanのリスト
         ArrayList<EmployeeBean> employeeBeans = new ArrayList<EmployeeBean>();
@@ -93,8 +93,42 @@ public class EmployeeDAO extends DAO {
             employeeBeans.add(employeeBean);
         }
         
+        // ちゃんと閉じる！
+        statement.close();
         return employeeBeans;
         
+    }
+    
+    // 従業員詳細
+    public EmployeeBean detail(String id) throws Exception {
+        
+        // Beanの生成
+        EmployeeBean employeeBean = new EmployeeBean();
+        
+        // SQL文
+        String sql = "select * from employee where employee_id = ?";
+        // STATEMENTの生成
+        PreparedStatement statement = this.connection.prepareStatement(sql);
+        // パラメータの挿入
+        statement.setString(1, id);
+        // 詳細情報取得
+        ResultSet rs = statement.executeQuery();
+        
+        // 詳細情報をBeanに格納
+        if (rs.next()) {
+            
+            employeeBean.setId(rs.getString(1));
+            employeeBean.setPass(rs.getString(2));
+            employeeBean.setName(rs.getString(3));
+            employeeBean.setPosition(rs.getString(4));
+            employeeBean.setMail(rs.getNString(5));
+            employeeBean.setTel(rs.getString(6));
+            
+        }
+        
+        // ちゃんと閉じる！
+        statement.close();
+        return employeeBean;
     }
 
     // 従業員更新処理
@@ -117,15 +151,15 @@ public class EmployeeDAO extends DAO {
     }
 
     // 従業員削除処理
-    public boolean delete(String keyword) throws Exception {
+    public void delete(String id) throws Exception {
 
-        String sql = "delete from employee where employee_id = " + keyword;
+        String sql = "delete from employee where employee_id = ?";
         PreparedStatement statement = this.connection.prepareStatement(sql);
+        statement.setString(1, id);
         statement.executeUpdate();
         
         // ちゃんと閉じる！
         statement.close();
-        return true;
         
     }
 }

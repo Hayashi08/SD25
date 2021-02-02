@@ -53,7 +53,7 @@
                             <tr>
                                 <td><%= employeeBeans.get(i).getId() %></td>
                                 <td><%= employeeBeans.get(i).getName() %></td>
-                                <td><a class="btn btn-primary" href="FrontController?class_name=employee.DetailAction&keyword=<%=employeeBeans.get(i).getId()%>" role="button">詳細</a></td>
+                                <td><a class="btn btn-primary" href="FrontController?class_name=employee.DetailAction&id=<%=employeeBeans.get(i).getId()%>" role="button">詳細</a></td>
                             </tr>
                         <% } %>
                     </table>

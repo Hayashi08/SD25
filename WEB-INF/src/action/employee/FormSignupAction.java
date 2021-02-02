@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import tool.Action;
 
-public class FormAction extends Action {
+public class FormSignupAction extends Action {
 
     @Override
     public String execute(HttpServletRequest request,

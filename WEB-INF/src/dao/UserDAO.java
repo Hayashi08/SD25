@@ -55,7 +55,7 @@ public class UserDAO extends DAO {
         
         boolean flag = false;
         
-        String sql = "select * from user where user_id like ?";
+        String sql = "select * from user where user_id = ?";
         PreparedStatement statement = this.connection.prepareStatement(sql);
         statement.setString(1, user_id);
         ResultSet rSet = statement.executeQuery();

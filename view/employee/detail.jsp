@@ -1,9 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ page import="bean.EmployeeBean" %>
 <%
 
-    ArrayList<EmployeeBean> employeeBeans = (ArrayList<EmployeeBean>)request.getAttribute("employeeBeans");
+    EmployeeBean employeeBean = (EmployeeBean)request.getAttribute("employeeBean");
 
 %>
 <html lang="ja">
@@ -26,33 +25,33 @@
                     <table class="offset-3 col-6 table table-striped">
                         <tr>
                           <td class="field">従業員ID</td>
-                          <td class="input-group"><%= employeeBeans.get(0).getId() %></td>
+                          <td class="input-group"><%= employeeBean.getId() %></td>
                         </tr>
                         <tr>
                           <td class="field">パスワード</td>
-                          <td class="input-group"><%= employeeBeans.get(0).getPass() %></td>
+                          <td class="input-group"><%= employeeBean.getPass() %></td>
                         </tr>
                         <tr>
                           <td class="field">氏名</td>
-                          <td class="input-group"><%= employeeBeans.get(0).getName() %></td>
+                          <td class="input-group"><%= employeeBean.getName() %></td>
                         </tr>
                         <tr>
                           <td class="field">役職</td>
-                          <td class="input-group"><%= employeeBeans.get(0).getPosition() %></td>
+                          <td class="input-group"><%= employeeBean.getPosition() %></td>
                         </tr>
                         <tr>
                           <td class="field">メールアドレス</td>
-                          <td class="input-group"><%= employeeBeans.get(0).getMail() %></td>
+                          <td class="input-group"><%= employeeBean.getMail() %></td>
                         </tr>
                         <tr>
                           <td class="field">電話番号</td>
-                          <td class="input-group"><%= employeeBeans.get(0).getTel() %></td>
+                          <td class="input-group"><%= employeeBean.getTel() %></td>
                         </tr>
                     </table>
 
                     <div class="row my-3">
                         <div class="col-2 offset-4">
-                            <a class="btn btn-primary"  href="FrontController?class_name=employee.UpdateFormAction&keyword=<%=employeeBeans.get(0).getId()%>" role="button">編集</a>
+                            <a class="btn btn-primary"  href="FrontController?class_name=employee.FormUpdateAction&id=<%=employeeBean.getId()%>" role="button">編集</a>
                         </div>
                         <div class="btn btn-primary" id="btn" data-toggle="modal" data-target="#modal1">
                             削除
@@ -70,16 +69,16 @@
             <table class="offset-1 col-10 table table-striped">
                 <tr>
                   <td class="field">従業員ID</td>
-                  <td class="input-group"><%= employeeBeans.get(0).getId() %></td>
+                  <td class="input-group"><%= employeeBean.getId() %></td>
                 </tr>
                 <tr>
                   <td class="field">氏名</td>
-                  <td class="input-group"><%= employeeBeans.get(0).getName() %></td>
+                  <td class="input-group"><%= employeeBean.getName() %></td>
                 </tr>
             </table>
             <div class="row">
                 <div class="col-3 offset-3">
-                    <a class="btn btn-primary" href="FrontController?class_name=employee.DeleteAction&keyword=<%=employeeBeans.get(0).getId()%>" role="button">削除</a>
+                    <a class="btn btn-primary" href="FrontController?class_name=employee.DeleteAction&id=<%=employeeBean.getId()%>" role="button">削除</a>
                 </div>
                 <div class="col-3 offset-1">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>

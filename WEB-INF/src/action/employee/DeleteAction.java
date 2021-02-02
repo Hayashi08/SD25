@@ -13,20 +13,16 @@ public class DeleteAction extends Action {
             HttpServletResponse response) throws Exception {
 
         // パラメータの取得
-        String keyword = request.getParameter("keyword");
+        String id = request.getParameter("id");
         
         // DAOの生成
         EmployeeDAO employeeDAO = new EmployeeDAO();
-        boolean flag = employeeDAO.delete(keyword);
+        employeeDAO.delete(id);
         // ちゃんと閉じる！
         employeeDAO.close();
         
-        if (flag) {
-            return "/view/employee/delete_complete.jsp";
-        }
-        else {
-            return "/view/employee/delete_error.jsp";
-        }
+        return "/view/employee/delete_complete.jsp";
+        
     }
 
 }

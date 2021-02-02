@@ -1,14 +1,11 @@
 package action.employee;
 
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bean.EmployeeBean;
-
 import tool.Action;
 import dao.EmployeeDAO;
+import bean.EmployeeBean;
 
 public class DetailAction extends Action {
 
@@ -17,17 +14,17 @@ public class DetailAction extends Action {
             HttpServletResponse response) throws Exception {
 
         // パラメータの取得
-        String keyword = request.getParameter("keyword");
+        String id = request.getParameter("id");
         
         // DAOの生成
         EmployeeDAO employeeDAO = new EmployeeDAO();
         // DAOメソッドの実行
-        ArrayList<EmployeeBean> employeeBeans = employeeDAO.select(keyword);
+        EmployeeBean employeeBean = employeeDAO.detail(id);
         // ちゃんと閉じる！
         employeeDAO.close();
         
         // Beanのリスト(検索結果)をセット
-        request.setAttribute("employeeBeans", employeeBeans);
+        request.setAttribute("employeeBean", employeeBean);
         
         return "/view/employee/detail.jsp";
     }

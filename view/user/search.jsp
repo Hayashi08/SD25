@@ -58,7 +58,7 @@
                 </div>
 
                 <div class="offset-8 col-3 my-3">
-                    <a class="btn btn-primary m-5" href="FrontController?class_name=user.TopAction" role="button">トップページへ</a>
+                    <a class="btn btn-primary m-5" href="FrontController?class_name=user.TopAction" role="button">会員管理トップへ</a>
                 </div>
 
             </div>

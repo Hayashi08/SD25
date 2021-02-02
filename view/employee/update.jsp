@@ -1,9 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ page import="bean.EmployeeBean" %>
 <%
 
-    ArrayList<EmployeeBean> employeeBeans = (ArrayList<EmployeeBean>)request.getAttribute("employeeBeans");
+    EmployeeBean employeeBean = (EmployeeBean)request.getAttribute("employeeBean");
 
 %>
 <html lang="ja">
@@ -29,36 +28,29 @@
                     <table class="offset-3 col-6 table table-striped">
                         <tr>
                           <td class="field">従業員ID</td>
-                          <td class="input-group"><input type="text" class="form-control" id="id" maxlength="3" value="<%= employeeBeans.get(0).getId() %>" readonly></td>
+                          <td class="input-group"><input type="text" class="form-control" id="id" maxlength="3" value="<%= employeeBean.getId() %>" readonly></td>
                         </tr>
                         <tr>
                           <td class="field">パスワード</td>
-                          <td class="input-group"><input type="password" class="form-control" id="pass" maxlength="16" value="<%= employeeBeans.get(0).getPass() %>" required></td>
+                          <td class="input-group"><input type="password" class="form-control" id="pass" maxlength="16" value="<%= employeeBean.getPass() %>" required></td>
                         </tr>
                         <tr>
                           <td class="field">氏名</td>
-                          <td class="input-group"><input type="text" class="form-control" id="name" maxlength="24" value="<%= employeeBeans.get(0).getName() %>" required></td>
+                          <td class="input-group"><input type="text" class="form-control" id="name" maxlength="24" value="<%= employeeBean.getName() %>" required></td>
                         </tr>
                         <tr>
-                          <td class="field">役職</td><!-- プルダウン -->
+                          <td class="field">役職</td>
                           <td class="input-group">
-                              <select id="position" size="1">
-                                  <option value="未入力" selected>未入力
-                                  <option value="SV">SV
-                                  <option value="店長">店長
-                                  <option value="副店長">副店長
-                                  <option value="社員">社員
-                                  <option value="アルバイト">アルバイト
-                              </select>
+                              <input type="text" class="form-control" id="position" maxlength="24" value="<%= employeeBean.getPosition() %>" readonly>
                           </td>
                         </tr>
                         <tr>
                           <td class="field">メールアドレス</td>
-                          <td class="input-group"><input type="text" class="form-control" id="mail" maxlength="32" value="<%= employeeBeans.get(0).getMail() %>" required></td>
+                          <td class="input-group"><input type="text" class="form-control" id="mail" maxlength="32" value="<%= employeeBean.getMail() %>" required></td>
                         </tr>
                         <tr>
                           <td class="field">電話番号</td>
-                          <td class="input-group"><input type="text" class="form-control" id="tel" maxlength="13" value="<%= employeeBeans.get(0).getTel() %>" required></td>
+                          <td class="input-group"><input type="text" class="form-control" id="tel" maxlength="13" value="<%= employeeBean.getTel() %>" required></td>
                         </tr>
                     </table>
 
@@ -89,7 +81,7 @@
                     </tr>
                     <tr>
                       <td class="field">パスワード</td>
-                      <td class="input-group"><input type="password" class="form-control" id="modal_pass" name="pass" maxlength="16" required></td>
+                      <td class="input-group"><input type="password" class="form-control" id="modal_pass" name="pass" maxlength="16" readonly></td>
                     </tr>
                     <tr>
                       <td class="field">氏名</td>
@@ -97,7 +89,7 @@
                     </tr>
                     <tr>
                       <td class="field">役職</td>
-                      <td class="input-group"><input type="text" class="form-control" id="modal_position" name="position" maxlength="24" required></td>
+                      <td class="input-group"><input type="text" class="form-control" id="modal_position" name="position" maxlength="24" readonly></td>
                     </tr>
                     <tr>
                       <td class="field">メールアドレス</td>

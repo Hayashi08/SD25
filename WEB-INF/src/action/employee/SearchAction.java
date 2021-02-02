@@ -23,7 +23,7 @@ public class SearchAction extends Action {
         // DAOの生成
         EmployeeDAO employeeDAO = new EmployeeDAO();
         // DAOメソッドの実行
-        ArrayList<EmployeeBean> employeeBeans = employeeDAO.select(keyword);
+        ArrayList<EmployeeBean> employeeBeans = employeeDAO.search(keyword);
         // ちゃんと閉じる！
         employeeDAO.close();
         
