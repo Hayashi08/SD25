@@ -65,6 +65,7 @@ public class UserDAO extends DAO {
         }
         
         statement.close();
+        
         return flag;
         
     }
