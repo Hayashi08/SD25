@@ -180,18 +180,25 @@ public class EmployeeDAO extends DAO {
         
     }
 
-    // 従業員検索処理
+    //  シフト検索処理
     public ArrayList<EmployeeBean> searchShift(String id) throws Exception {
-        
+        PreparedStatement statement;
         // Beanのリスト
         ArrayList<EmployeeBean> employeeBeans = new ArrayList<EmployeeBean>();
         
-        // SQL文
-        String sql = "select * from shift where employee_id = ?";
-        // STATEMENTの生成
-        PreparedStatement statement = this.connection.prepareStatement(sql);
-        // パラメータの挿入(ワイルドカード使用)
-        statement.setString(1, id);
+        if (id == "*") {
+            // SQL文
+            String sql = "select * from shift";
+            // STATEMENTの生成
+            statement = this.connection.prepareStatement(sql);
+        }else{
+            // SQL文
+            String sql = "select * from shift where employee_id = ?";
+            // STATEMENTの生成
+            statement = this.connection.prepareStatement(sql);
+            // パラメータの挿入(ワイルドカード使用)
+            statement.setString(1, id);
+        }
         // 検索結果を受け取る
         ResultSet rs = statement.executeQuery();
         
