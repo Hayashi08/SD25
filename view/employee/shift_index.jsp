@@ -77,7 +77,7 @@
 
           var calendar = new FullCalendar.Calendar(calendarEl, {
             initialDate: y + '-' + m + '-' + d,
-            initialView: 'timeGridWeek',
+            initialView: 'timeGridDay',
             nowIndicator: true,
             headerToolbar: {
               left: 'prev,next today',
@@ -104,23 +104,23 @@
             events: [
               <% for (int i=0; i < employeeBeans.size()-1; i++) { %>
               {
-                id: '<%= i %>',
+                title: '<%= employeeBeans.get(i).getId() %>',
                 start: '<%= employeeBeans.get(i).getDate() %>T<%= employeeBeans.get(i).getStart() %>',
                 end: '<%= employeeBeans.get(i).getDate() %>T<%= employeeBeans.get(i).getEnd() %>'
               },
               <% } %>
               {
-                id: 'employeeBeans.size()-1',
+                title: '<%= employeeBeans.get(employeeBeans.size()-1).getId() %>',
                 start: '<%= employeeBeans.get(employeeBeans.size()-1).getDate() %>T<%= employeeBeans.get(employeeBeans.size()-1).getStart() %>',
                 end: '<%= employeeBeans.get(employeeBeans.size()-1).getDate() %>T<%= employeeBeans.get(employeeBeans.size()-1).getEnd() %>'
               }
             ],
-            eventClick: function(event) { //イベントをクリックすると発動
+            eventClick: function(info) { //イベントをクリックすると発動
                 $('#modal1').modal('show');
-                $('#modal_id').val();
-                $('#modal_date').val();
-                $('#modal_start').val(event.startStr);
-                $('#modal_end').val(event.endStr);
+                $('#modal_id').val(info.event.title);
+                $('#modal_date').val(info.event.startStr.slice( 0, -9 ));
+                $('#modal_start').val(info.event.startStr.slice( 11, 16 ));
+                $('#modal_end').val(info.event.endStr.slice( 11, 16 ));
             }
           });
 

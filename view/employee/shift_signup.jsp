@@ -134,12 +134,18 @@
 
           var calendar = new FullCalendar.Calendar(calendarEl, {
             initialDate: y + '-' + m + '-' + d,
-            initialView: 'timeGridWeek',
+            initialView: 'dayGridMonth',
             nowIndicator: true,
             headerToolbar: {
               left: 'prev,next today',
               center: 'title',
-              right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+              right: 'dayGridMonth'
+            },
+            views: {
+              timeGridDay: {
+                slotMinTime: '08:00:00',
+                slotMaxTime: '26:00:00'
+              }
             },
             dateClick: function(info) {
                 $('#modal1').modal('show');
