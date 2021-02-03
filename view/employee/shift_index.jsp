@@ -1,9 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="bean.EmployeeBean" %>
+<%@ page import="bean.ShiftBean" %>
 <%
 
-    ArrayList<EmployeeBean> employeeBeans = (ArrayList<EmployeeBean>)request.getAttribute("employeeBeans");
+    ArrayList<ShiftBean> shiftBeans = (ArrayList<ShiftBean>)request.getAttribute("shiftBeans");
 
 %>
 <html lang="ja">
@@ -48,20 +48,20 @@
     <%@ include file="../ModalOpenTab.jsp" %>
         <table class="offset-1 col-10 table table-striped">
             <tr>
-              <td class="field">従業員ID</td>
-              <td class="input-group"><input type="text" class="form-control" id="modal_id" maxlength="3" readonly></td>
+              <td class="field">従業員名</td>
+              <td class="input-group"><input type="text" class="form-control" id="modal_name" readonly></td>
             </tr>
             <tr>
               <td class="field">日付</td>
-              <td class="input-group"><input type="text" class="form-control" id="modal_date" maxlength="3" readonly></td>
+              <td class="input-group"><input type="text" class="form-control" id="modal_date" readonly></td>
             </tr>
             <tr>
               <td class="field">開始時刻</td>
-              <td class="input-group"><input type="text" class="form-control" id="modal_start" maxlength="3" readonly></td>
+              <td class="input-group"><input type="text" class="form-control" id="modal_start" readonly></td>
             </tr>
             <tr>
               <td class="field">終了時刻</td>
-              <td class="input-group"><input type="text" class="form-control" id="modal_end" maxlength="3" readonly></td>
+              <td class="input-group"><input type="text" class="form-control" id="modal_end" readonly></td>
             </tr>
         </table>
     <%@ include file="../ModalCloseTab.jsp" %>
@@ -90,10 +90,6 @@
                 slotMaxTime: '26:00:00'
               }
             },
-            dateClick: function(info) {
-                $('#modal1').modal('show');
-                $('#modal_date').val(info.dateStr);
-            },
             timeZone: 'Asia/Tokyo',
             locale: 'ja',
             navLinks: true,
@@ -102,22 +98,22 @@
             selectMirror: true,
             dayMaxEvents: true,
             events: [
-              <% for (int i=0; i < employeeBeans.size()-1; i++) { %>
+              <% for (int i=0; i < shiftBeans.size()-1; i++) { %>
               {
-                title: '<%= employeeBeans.get(i).getId() %>',
-                start: '<%= employeeBeans.get(i).getDate() %>T<%= employeeBeans.get(i).getStart() %>',
-                end: '<%= employeeBeans.get(i).getDate() %>T<%= employeeBeans.get(i).getEnd() %>'
+                title: '<%= shiftBeans.get(i).getName() %>',
+                start: '<%= shiftBeans.get(i).getDate() %>T<%= shiftBeans.get(i).getStart() %>',
+                end: '<%= shiftBeans.get(i).getDate() %>T<%= shiftBeans.get(i).getEnd() %>'
               },
               <% } %>
               {
-                title: '<%= employeeBeans.get(employeeBeans.size()-1).getId() %>',
-                start: '<%= employeeBeans.get(employeeBeans.size()-1).getDate() %>T<%= employeeBeans.get(employeeBeans.size()-1).getStart() %>',
-                end: '<%= employeeBeans.get(employeeBeans.size()-1).getDate() %>T<%= employeeBeans.get(employeeBeans.size()-1).getEnd() %>'
+                title: '<%= shiftBeans.get(shiftBeans.size()-1).getName() %>',
+                start: '<%= shiftBeans.get(shiftBeans.size()-1).getDate() %>T<%= shiftBeans.get(shiftBeans.size()-1).getStart() %>',
+                end: '<%= shiftBeans.get(shiftBeans.size()-1).getDate() %>T<%= shiftBeans.get(shiftBeans.size()-1).getEnd() %>'
               }
             ],
             eventClick: function(info) { //イベントをクリックすると発動
                 $('#modal1').modal('show');
-                $('#modal_id').val(info.event.title);
+                $('#modal_name').val(info.event.title);
                 $('#modal_date').val(info.event.startStr.slice( 0, -9 ));
                 $('#modal_start').val(info.event.startStr.slice( 11, 16 ));
                 $('#modal_end').val(info.event.endStr.slice( 11, 16 ));

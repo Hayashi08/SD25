@@ -1,10 +1,13 @@
 package action.employee;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import tool.Action;
-import dao.EmployeeDAO;
+import dao.ShiftDAO;
+import bean.ShiftBean;
 
 public class ShiftSignupAction extends Action {
 
@@ -18,17 +21,19 @@ public class ShiftSignupAction extends Action {
         String start = request.getParameter("start_hh") + ":" + request.getParameter("start_mm");
         String end = request.getParameter("end_hh") + ":" + request.getParameter("end_mm");
         
-        EmployeeDAO employeeDAO = new EmployeeDAO();
-        boolean flag = employeeDAO.insertShift(employee_id, date, start, end);
+        // DAOの生成
+        ShiftDAO shiftDAO = new ShiftDAO();
+        // DAOメソッドの実行
+        shiftDAO.insert(employee_id, date, start, end);
+        ArrayList<ShiftBean> shiftBeans = shiftDAO.search("102");
         // ちゃんと閉じる！
-        employeeDAO.close();
+        shiftDAO.close();
         
-        if (flag) {
-            return "/view/employee/shift_signup_complete.jsp";
-        }
-        else {
-            return "/view/employee/shift_signup_error.jsp";
-        }
+        // Beanのリスト(検索結果)をセット
+        request.setAttribute("shiftBeans", shiftBeans);
+        
+        return "/view/employee/shift_signup.jsp";
+
     }
 
 }

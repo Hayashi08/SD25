@@ -6,8 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import tool.Action;
-import dao.EmployeeDAO;
-import bean.EmployeeBean;
+import dao.ShiftDAO;
+import bean.ShiftBean;
 
 public class ShiftFormAction extends Action {
 
@@ -16,14 +16,14 @@ public class ShiftFormAction extends Action {
             HttpServletResponse response) throws Exception {
 
         // DAOの生成
-        EmployeeDAO employeeDAO = new EmployeeDAO();
+        ShiftDAO shiftDAO = new ShiftDAO();
         // DAOメソッドの実行
-        ArrayList<EmployeeBean> employeeBeans = employeeDAO.searchShift("101");
+        ArrayList<ShiftBean> shiftBeans = shiftDAO.search("102");
         // ちゃんと閉じる！
-        employeeDAO.close();
+        shiftDAO.close();
         
         // Beanのリスト(検索結果)をセット
-        request.setAttribute("employeeBeans", employeeBeans);
+        request.setAttribute("shiftBeans", shiftBeans);
 
         return "/view/employee/shift_signup.jsp";
     }
