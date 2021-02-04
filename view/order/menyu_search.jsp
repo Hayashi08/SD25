@@ -5,9 +5,6 @@
 
     ArrayList<OrderBean> orderBeans = (ArrayList<OrderBean>)request.getAttribute("OrderBeans");
 
-        for (int i=0; i < orderBeans.size(); i++) {
-	        System.out.println(orderBeans.get(i).getMenu_id());
-    	}
 %>
 
 
@@ -60,7 +57,13 @@
                             <tr>
                                 <td><%= orderBeans.get(i).getMenu_id() %></td>
                                 <td><%= orderBeans.get(i).getMenu_name() %></td>
-                                <td></td>
+                                <td>
+		                          	<a class="btn btn-primary" 
+		                          		href="FrontController?class_name=order.FormMenyuDetailAction&id=<%=orderBeans.get(i).getMenu_id()%>"
+		                          	 	role="button">
+		                          		詳細
+		                          	</a>
+                                </td>
                             </tr>
                         <% } %>
                     </table>

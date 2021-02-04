@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import bean.EmployeeBean;
 import bean.OrderBean;
 
 import tool.DAO;
@@ -71,6 +72,52 @@ public class OrderDAO extends DAO {
         return orderBeans;
         
     }
+
+    // 従業員詳細
+    public OrderBean detail(String id) throws Exception {
+        
+        // Beanの生成
+        OrderBean orderBean = new OrderBean();
+        
+        // SQL文
+        String sql = "select * from menu where menu_id = ?";
+        // STATEMENTの生成
+        PreparedStatement statement = this.connection.prepareStatement(sql);
+        // パラメータの挿入
+        statement.setString(1, id);
+        // 詳細情報取得
+        ResultSet rs = statement.executeQuery();
+        
+        // 詳細情報をBeanに格納
+        if (rs.next()) {
+            orderBean.setMenu_id(Integer.parseInt(rs.getString(1)));
+            orderBean.setMenu_name(rs.getString(2));
+            orderBean.setMenu_genre(rs.getString(3));
+            orderBean.setMenu_price(Integer.parseInt(rs.getString(4)));
+            orderBean.setMenu_create(rs.getString(5));
+            orderBean.setMenu_update(rs.getString(6));
+            orderBean.setMenu_des(rs.getString(7));
+            orderBean.setMenu_allergy(rs.getString(8));
+        }
+        
+        // ちゃんと閉じる！
+        statement.close();
+        return orderBean;
+    }
+
+    // 削除処理
+    public void delete(String id) throws Exception {
+
+        String sql = "delete from menu where menu_id = ?";
+        PreparedStatement statement = this.connection.prepareStatement(sql);
+        statement.setString(1, id);
+        statement.executeUpdate();
+        
+        // ちゃんと閉じる！
+        statement.close();
+        
+    }
+
     
     
 }
