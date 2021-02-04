@@ -24,16 +24,16 @@
                     </div>
                     <div class="row my-3">
                         <div class="col-2 offset-1">
-                            <a class="btn btn-primary"  href="signup.jsp" role="button">在庫登録</a>
+                            <a class="btn btn-primary"  href="FrontController?class_name=stock.FormSignupAction" role="button">在庫登録</a>
                         </div>
                         <div class="col-2 offset-1">
-                            <a class="btn btn-primary" href="search.html" role="button">在庫管理</a>
+                            <a class="btn btn-primary" href="FrontController?class_name=stock.SearchAction" role="button">在庫管理</a>
                         </div>
                         <div class="col-2 offset-1">
-                            <a class="btn btn-primary" href="order_signup.html" role="button">発注登録</a>
+                            <a class="btn btn-primary" href="FrontController?class_name=user.FormSignupAction" role="button">発注登録</a>
                         </div>
                         <div class="col-2 offset-1">
-                            <a class="btn btn-primary" href="order_search.html" role="button">発注管理</a>
+                            <a class="btn btn-primary" href="FrontController?class_name=user.FormSignupAction" role="button">発注管理</a>
                         </div>
                     </div>
                     <div class="row mt-5">
