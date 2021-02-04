@@ -1,10 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html lang="ja">
     <head>
-        <meta charset="utf-8">
         <title>注文登録</title>
-        <link rel="stylesheet" href="../css/bootstrap.css">
-        <link rel="stylesheet" href="../css/common.css">
+        <%@ include file="../head.jsp" %>
     </head>
     <body>
         <div class="container-fluid">
@@ -30,7 +28,7 @@
                         <tr>
                           <td><input type="text" class="form-control"></td>
                           <td><input type="text" class="form-control"></td>
-                          <td><input type="text" class="form-control"></td>
+                          <td><input type="time" class="form-control"></td>
                         </tr>
                     </table>
                     <br>
@@ -41,7 +39,7 @@
                         </tr>
                         <tr>
                           <td><input type="text" class="form-control"></td>
-                          <td><input type="text" class="form-control"></td>
+                          <td><input type="number" class="form-control"></td>
                         </tr>
                     </table>
 
@@ -52,14 +50,11 @@
                         <div class="col-2 offset-1">
                             <a class="btn btn-primary" href="tyuumonnzyoukyou_signup.html" role="button">クリア</a>
                         </div>
-                        <div class="col-2 offset-1">
-                            <a class="btn btn-primary" href="tyuumonnzyoukyou_signup_error.html" role="button">エラー</a>
-                        </div>
                     </div>
                 </div>
 
                 <div class="offset-8 col-3 my-3">
-                    <a class="btn btn-primary m-5" href="tyuumonnzyoukyou_top.html" role="button">戻る</a>
+                    <a class="btn btn-primary m-5" href="javascript:history.back();" role="button">戻る</a>
                 </div>
 
             </div>

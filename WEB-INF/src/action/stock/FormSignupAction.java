@@ -1,17 +1,17 @@
-package action.order;
+package action.stock;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import tool.Action;
 
-public class Miteikyou_TopAction extends Action {
+public class FormSignupAction extends Action {
 
 	@Override
 	public String execute(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		
-		return "/view/order/miteikyou_top.jsp";
+		// TODO 自動生成されたメソッド・スタブ
+		return "/view/stock/signup.jsp";
 	}
 
 }

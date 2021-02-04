@@ -34,7 +34,7 @@
                         </div>
                         <div class="row mt-4">
                             <div class="input-group offset-3 col-6">
-                                <input type="serch" name="keyword" class="form-control" maxlength="16" placeholder="会員IDを入力してください" required>
+                                <input type="search" name="keyword" class="form-control" maxlength="16" placeholder="会員IDを入力してください" required>
                                 <div class="input-group-append">
                                     <input type="submit" class="btn btn-primary" value="検索" role="button">
                                 </div>

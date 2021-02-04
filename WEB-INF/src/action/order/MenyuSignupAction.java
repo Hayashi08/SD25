@@ -9,7 +9,7 @@ import dao.UserDAO;
 import sun.security.util.Length;
 import tool.Action;
 
-public class SignupAction2 extends Action {
+public class MenyuSignupAction extends Action {
 
 	@Override
 	public String execute(HttpServletRequest request,
