@@ -5,13 +5,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import tool.Action;
 
-public class FormSignupAction extends Action {
+public class FormMenyuSignupAction extends Action {
 
     @Override
     public String execute(HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         
-        return "/view/order/signup.jsp";
+        return "/view/order/menyu_signup.jsp";
     }
 
 }

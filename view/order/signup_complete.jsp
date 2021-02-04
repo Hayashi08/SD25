@@ -16,7 +16,7 @@
                 </div>
 
                 <div class="offset-8 col-3 my-3">
-                    <a class="btn btn-primary m-5" href="menyu_top.html" role="button">注文管理トップへ</a>
+                    <a class="btn btn-primary m-5" href="FrontController?class_name=order.TopAction" role="button">注文管理トップへ</a>
                 </div>
 
             </div>

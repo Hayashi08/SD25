@@ -21,7 +21,7 @@
                     </div>
                     
                     <form action="FrontController" method="POST">
-                        <input type="text" name="class_name" value="order.SignupAction" hidden>
+                        <input type="text" name="class_name" value="order.MenyuSignupAction" hidden>
                     
                     <table class="offset-3 col-6 table table-striped">
                         <tr>
