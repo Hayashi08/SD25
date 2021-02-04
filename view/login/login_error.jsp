@@ -1,9 +1,8 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html lang="ja">
     <head>
-        <meta charset="utf-8">
         <title>ログイン エラー</title>
-        <link rel="stylesheet" href="../css/bootstrap.css">
-        <link rel="stylesheet" href="../css/common.css">
+        <%@ include file="../head.jsp" %>
     </head>
     <body>
         <div class="container-fluid">
@@ -22,7 +21,7 @@
                 
                 <div class="row my-5">
                     <div class="col">
-                      <a class="btn btn-primary"  href="../top.html" role="button">リトライ</a>
+                      <a class="btn btn-primary"  href="../index.html" role="button">リトライ</a>
                     </div>
                 </div>
             </div>
