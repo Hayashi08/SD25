@@ -278,6 +278,8 @@
             selectable: true,
             selectMirror: true,
             dayMaxEvents: true,
+            <% if (shiftBeans.size() == 0) { %>
+            <% }else{ %>
             events: [
               <% for (int i=0; i < shiftBeans.size()-1; i++) { %>
               {
@@ -294,6 +296,7 @@
                 end: '<%= shiftBeans.get(shiftBeans.size()-1).getDate() %>T<%= shiftBeans.get(shiftBeans.size()-1).getEnd() %>'
               }
             ],
+            <% } %>
             eventClick: function(info) { //イベントをクリックすると発動
                 $('#modal_display').modal('show');
                 $('#modal_name').val(info.event.title);
