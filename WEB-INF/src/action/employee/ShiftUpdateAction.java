@@ -24,7 +24,7 @@ public class ShiftUpdateAction extends Action {
         ShiftDAO shiftDAO = new ShiftDAO();
         // DAOメソッドの実行
         shiftDAO.update(id, start, end);
-        ArrayList<ShiftBean> shiftBeans = shiftDAO.search("102");
+        ArrayList<ShiftBean> shiftBeans = shiftDAO.search("103");
         // ちゃんと閉じる！
         shiftDAO.close();
         

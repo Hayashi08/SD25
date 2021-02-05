@@ -1,13 +1,14 @@
-package action.employee;
+package action.order;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import tool.Action;
-import dao.EmployeeDAO;
-import bean.EmployeeBean;
+import bean.OrderBean;
+import dao.OrderDAO;
 
-public class DetailAction extends Action {
+import tool.Action;
+
+public class FormMenyuDetailAction extends Action {
 
     @Override
     public String execute(HttpServletRequest request,
@@ -15,19 +16,20 @@ public class DetailAction extends Action {
 
         // パラメータの取得
         String id = request.getParameter("id");
-        System.out.println(id);
         
         // DAOの生成
-        EmployeeDAO employeeDAO = new EmployeeDAO();
+        OrderDAO orderDAO = new OrderDAO();
+        
         // DAOメソッドの実行
-        EmployeeBean employeeBean = employeeDAO.detail(id);
+        OrderBean orderBean = orderDAO.detail(id);
+        
         // ちゃんと閉じる！
-        employeeDAO.close();
+        orderDAO.close();
         
         // Beanのリスト(検索結果)をセット
-        request.setAttribute("employeeBean", employeeBean);
+        request.setAttribute("orderBean", orderBean);
         
-        return "/view/employee/detail.jsp";
+        return "/view/order/menyu_detail.jsp";
     }
 
 }

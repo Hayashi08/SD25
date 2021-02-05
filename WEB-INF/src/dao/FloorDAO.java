@@ -2,8 +2,10 @@ package dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import tool.DAO;
+import bean.FloorBean;
 
 public class FloorDAO extends DAO {
     
@@ -55,4 +57,109 @@ public class FloorDAO extends DAO {
         
     }
     
+
+// フロア検索処理
+	public ArrayList<FloorBean> search(String keyword) throws Exception {
+	    
+	    // Beanのリスト
+	    ArrayList<FloorBean> floorBeans = new ArrayList<FloorBean>();
+	    
+	    // SQL文
+	    String sql = "select * from floor where floor_id like ?";
+	    // STATEMENTの生成
+	    PreparedStatement statement = this.connection.prepareStatement(sql);
+	    // パラメータの挿入(ワイルドカード使用)
+	    statement.setString(1, "%" + keyword + "%");
+	    // 検索結果を受け取る
+	    ResultSet rs = statement.executeQuery();
+	    
+	    // 検索結果をBeanのリストに格納
+	    while (rs.next()) {
+	        // Beanの生成
+	    	FloorBean floorBean = new FloorBean();
+	        
+	        // カラムの値をBeanに格納
+	        floorBean.setId(rs.getString(1));
+	        floorBean.setCap(rs.getInt(2));
+	        floorBean.setMachine(rs.getString(3));
+	        floorBean.setState(rs.getString(4));
+	        floorBean.setDevice(rs.getString(5));
+	        
+	        // Beanをリストに追加
+	        floorBeans.add(floorBean);
+	    }
+	    
+        
+        // ちゃんと閉じる！
+        statement.close();
+        return floorBeans;
+	    
+	}
+	
+	
+    // 部屋詳細
+    public FloorBean detail(String id) throws Exception {
+        
+        // Beanの生成
+        FloorBean floorBean = new FloorBean();
+        
+        // SQL文
+        String sql = "select * from floor where floor_id = ?";
+        // STATEMENTの生成
+        PreparedStatement statement = this.connection.prepareStatement(sql);
+        // パラメータの挿入
+        statement.setString(1, id);
+        // 詳細情報取得
+        ResultSet rs = statement.executeQuery();
+        
+        // 詳細情報をBeanに格納
+        if (rs.next()) {
+            
+	        floorBean.setId(rs.getString(1));
+	        floorBean.setCap(rs.getInt(2));
+	        floorBean.setMachine(rs.getString(3));
+	        floorBean.setState(rs.getString(4));
+	        floorBean.setDevice(rs.getString(5));
+            
+
+        }
+        
+        // ちゃんと閉じる！
+        statement.close();
+        return floorBean;
+    }
+    
+    
+    // フロア更新処理
+    public boolean update(String id,Integer cap,String machine,String state) throws Exception {
+
+        String sql = "update floor set floor_id = ?, floor_cap = ?, floor_machine = ?, floor_state = ?";
+        PreparedStatement statement = this.connection.prepareStatement(sql);
+        statement.setString(1, id);
+        statement.setInt(2, cap);
+        statement.setString(3, machine);
+        statement.setString(4, state);
+        statement.executeUpdate();
+        
+        // ちゃんと閉じる！
+        statement.close();
+        return true;
+        
+    }
+    
+    
+    
+    // フロア削除処理
+    public void delete(String id) throws Exception {
+
+        String sql = "delete from floor where floor_id = ?";
+        PreparedStatement statement = this.connection.prepareStatement(sql);
+        statement.setString(1, id);
+        statement.executeUpdate();
+        
+        // ちゃんと閉じる！
+        statement.close();
+        
+    }
+
 }

@@ -1,15 +1,13 @@
-package action.employee;
-
-import java.util.ArrayList;
+package action.stock;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import tool.Action;
-import dao.ShiftDAO;
-import bean.ShiftBean;
+import dao.ItemDAO;
+import bean.ItemBean;
 
-public class ShiftDeleteAction extends Action {
+public class ItemDetailAction extends Action {
 
     @Override
     public String execute(HttpServletRequest request,
@@ -19,18 +17,16 @@ public class ShiftDeleteAction extends Action {
         String id = request.getParameter("id");
         
         // DAOの生成
-        ShiftDAO shiftDAO = new ShiftDAO();
+        ItemDAO itemDAO = new ItemDAO();
         // DAOメソッドの実行
-        shiftDAO.delete(id);
-        ArrayList<ShiftBean> shiftBeans = shiftDAO.search("103");
+        ItemBean itemBean = itemDAO.detail(id);
         // ちゃんと閉じる！
-        shiftDAO.close();
-
-        // Beanのリスト(検索結果)をセット
-        request.setAttribute("shiftBeans", shiftBeans);
-
-        return "/view/employee/shift_signup.jsp";
+        itemDAO.close();
         
+        // Beanのリスト(検索結果)をセット
+        request.setAttribute("itemBean", itemBean);
+        
+        return "/view/stock/item_detail.jsp";
     }
 
 }

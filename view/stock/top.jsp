@@ -18,32 +18,21 @@
                 </div>
 
                 <div class="offset-1 col-10 p-5 main">
-                    <div class="row">
-                      
-             
-                    </div>
                     <div class="row my-3">
                         <div class="col-2 offset-1">
-                            <a class="btn btn-primary"  href="FrontController?class_name=stock.FormSignupAction" role="button">在庫登録</a>
+                            <a class="btn btn-primary"  href="FrontController?class_name=stock.ItemIndexAction" role="button">品目管理</a>
                         </div>
                         <div class="col-2 offset-1">
                             <a class="btn btn-primary" href="FrontController?class_name=stock.SearchAction" role="button">在庫管理</a>
                         </div>
                         <div class="col-2 offset-1">
-                            <a class="btn btn-primary" href="FrontController?class_name=user.FormSignupAction" role="button">発注登録</a>
-                        </div>
-                        <div class="col-2 offset-1">
-                            <a class="btn btn-primary" href="FrontController?class_name=user.FormSignupAction" role="button">発注管理</a>
+                            <a class="btn btn-primary" href="FrontController?class_name=user.OrderIndexAction" role="button">発注管理</a>
                         </div>
                     </div>
-                    <div class="row mt-5">
-  
-                    </div>
-
                 </div>
 
                 <div class="offset-8 col-3 my-3">
-                    <a class="btn btn-primary m-5" href="/view/analyse/top.jsp" role="button">トップページへ</a>
+                    <a class="btn btn-primary m-5" href="FrontController?class_name=situation.TopAction" role="button">トップページへ</a>
                 </div>
 
             </div>

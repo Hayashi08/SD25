@@ -16,22 +16,24 @@
                 </div>
 
                 <div class="offset-1 col-10 p-5 main">
-                    <div class="row">
-                        <div class="offset-3 sub_title">
-                            フロア検索
+                
+                    <form action="FrontController" method="POST">
+                    <input type="text" name="class_name" value="floor.SearchAction" hidden>
+                
+                       <div class="row">
+                            <div class="offset-3 sub_title">
+                                フロア検索
+                            </div>
                         </div>
-                        <div class="offset-5 mt-3 col-5">
-                            <input type="text" class="form-control">
+                        <div class="row mt-4">
+                            <div class="input-group offset-3 col-6">
+                                <input type="serch" name="keyword" class="form-control" maxlength="16" required>
+                                <div class="input-group-append">
+                                    <input type="submit" class="btn btn-primary" value="検索" role="button">
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row my-3">
-                        <div class="col-2 offset-4">
-                            <a class="btn btn-primary"  href="FrontController?class_name=floor.FormSearchAction" role="button">検索</a>
-                        </div>
-                        <div class="col-2 offset-1">
-                            <a class="btn btn-primary" href="top.html" role="button">クリア</a>
-                        </div>
-                    </div>
+                    </form>
                     <div class="row mt-5">
                         <div class="offset-3 sub_title">
                             フロア登録

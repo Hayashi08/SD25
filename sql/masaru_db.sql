@@ -24,7 +24,7 @@ CREATE TABLE user (
 CREATE TABLE floor (
 	floor_id CHAR(3) NOT NULL,
 	floor_cap TINYINT UNSIGNED NOT NULL,
-	floar_machine CHAR(1) NOT NULL,
+	floor_machine CHAR(1) NOT NULL,
 	floor_state CHAR(1) NOT NULL,
 	floor_device BOOLEAN DEFAULT false,
 	PRIMARY KEY (floor_id)

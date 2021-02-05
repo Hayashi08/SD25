@@ -1,36 +1,34 @@
-package action.employee;
+package action.stock;
 
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bean.ItemBean;
+import dao.ItemDAO;
 import tool.Action;
-import dao.ShiftDAO;
-import bean.ShiftBean;
 
-public class ShiftDeleteAction extends Action {
+public class ItemSearchAction extends Action {
 
     @Override
     public String execute(HttpServletRequest request,
             HttpServletResponse response) throws Exception {
 
         // パラメータの取得
-        String id = request.getParameter("id");
+        String keyword = request.getParameter("keyword");
         
         // DAOの生成
-        ShiftDAO shiftDAO = new ShiftDAO();
+        ItemDAO itemDAO = new ItemDAO();
         // DAOメソッドの実行
-        shiftDAO.delete(id);
-        ArrayList<ShiftBean> shiftBeans = shiftDAO.search("103");
+        ArrayList<ItemBean> itemBeans = itemDAO.search(keyword);
         // ちゃんと閉じる！
-        shiftDAO.close();
-
-        // Beanのリスト(検索結果)をセット
-        request.setAttribute("shiftBeans", shiftBeans);
-
-        return "/view/employee/shift_signup.jsp";
+        itemDAO.close();
         
+        // Beanのリスト(検索結果)をセット
+        request.setAttribute("itemBeans", itemBeans);
+        
+        return "/view/stock/item_search.jsp";
     }
 
 }

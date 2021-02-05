@@ -41,7 +41,7 @@
                         <tr>
                           <td class="field">役職</td>
                           <td class="input-group">
-                              <input type="text" class="form-control" id="position" maxlength="24" value="<%= employeeBean.getPosition() %>" readonly>
+                              <input type="text" class="form-control" id="position" maxlength="24" value="<%= employeeBean.getPosition() %>" required>
                           </td>
                         </tr>
                         <tr>
@@ -77,7 +77,7 @@
                 <table class="offset-1 col-10 table table-striped">
                     <tr>
                       <td class="field">従業員ID</td>
-                      <td class="input-group"><input type="text" class="form-control" id="modal_id" name="id" maxlength="3" required></td>
+                      <td class="input-group"><input type="text" class="form-control" id="modal_id" name="id" maxlength="3" readonly></td>
                     </tr>
                     <tr>
                       <td class="field">パスワード</td>
@@ -85,7 +85,7 @@
                     </tr>
                     <tr>
                       <td class="field">氏名</td>
-                      <td class="input-group"><input type="text" class="form-control" id="modal_name" name="name" maxlength="24" required></td>
+                      <td class="input-group"><input type="text" class="form-control" id="modal_name" name="name" maxlength="24" readonly></td>
                     </tr>
                     <tr>
                       <td class="field">役職</td>
@@ -93,11 +93,11 @@
                     </tr>
                     <tr>
                       <td class="field">メールアドレス</td>
-                      <td class="input-group"><input type="text" class="form-control" id="modal_mail" name="mail" maxlength="32" required></td>
+                      <td class="input-group"><input type="text" class="form-control" id="modal_mail" name="mail" maxlength="32" readonly></td>
                     </tr>
                     <tr>
                       <td class="field">電話番号</td>
-                      <td class="input-group"><input type="text" class="form-control" id="modal_tel" name="tel" maxlength="13" required></td>
+                      <td class="input-group"><input type="text" class="form-control" id="modal_tel" name="tel" maxlength="13" readonly></td>
                     </tr>
                 </table>
                 <div class="row">
