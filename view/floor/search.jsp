@@ -43,6 +43,12 @@
                     
                     </form>
                     
+                  <% if (floorBeans.size() == 0) { %>
+                    <div class="h3 m-5 col text-center">
+                            検索結果はありませんでした
+                    </div>
+                  <% }else{ %>
+                    
                     <table class="offset-3 col-6 table table-striped">
                         <tr>
                           <th class="field">部屋番号</th>
@@ -57,6 +63,7 @@
                             </tr>
                         <% } %>
                     </table>
+                    <% } %>
                 </div>
 
                 <div class="offset-8 col-3 my-3">

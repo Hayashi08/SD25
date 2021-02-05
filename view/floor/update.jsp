@@ -20,6 +20,10 @@
                 <div class="offset-4 my-3 col-4 text-center main_title">
                     フロア更新
                 </div>
+                
+                
+                <form>
+                
 
                 <div class="offset-1 col-10 p-5 main">
                     <div class="offset-3 p-3 sub_title">
@@ -57,6 +61,8 @@
                         </div>
                     </div>
                 </div>
+                
+                </form>
 
                 <div class="offset-8 col-3 my-3">
                     <a class="btn btn-primary m-5" href="javascript:history.back();" role="button">戻る</a>

@@ -133,12 +133,12 @@ public class FloorDAO extends DAO {
     // フロア更新処理
     public boolean update(String id,Integer cap,String machine,String state) throws Exception {
 
-        String sql = "update floor set floor_id = ?, floor_cap = ?, floor_machine = ?, floor_state = ?";
+        String sql = "update floor set floor_cap = ?, floor_machine = ?, floor_state = ? where floor_id = ? ";
         PreparedStatement statement = this.connection.prepareStatement(sql);
-        statement.setString(1, id);
-        statement.setInt(2, cap);
-        statement.setString(3, machine);
-        statement.setString(4, state);
+        statement.setInt(1, cap);
+        statement.setString(2, machine);
+        statement.setString(3, state);
+        statement.setString(4, id);
         statement.executeUpdate();
         
         // ちゃんと閉じる！
