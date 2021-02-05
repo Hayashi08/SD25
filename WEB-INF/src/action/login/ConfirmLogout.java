@@ -5,13 +5,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import tool.Action;
 
-public class LogoutAction extends Action {
+public class ConfirmLogout extends Action {
 
     @Override
     public String execute(HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-        
-        return "view/login/logged_out.jsp";
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
     }
 
 }

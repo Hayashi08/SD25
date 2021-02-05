@@ -1,9 +1,8 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html lang="ja">
     <head>
-        <meta charset="utf-8">
         <title>ログアウト 完了</title>
-        <link rel="stylesheet" href="../css/bootstrap.css">
-        <link rel="stylesheet" href="../css/common.css">
+        <%@ include file="../head.jsp" %>
     </head>
     <body>
         <div class="container-fluid">
