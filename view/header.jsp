@@ -13,5 +13,5 @@
     <a class="col-1 p-1 menu_title" href="FrontController?class_name=analyse.TopAction">売上分析</a>
     <a class="col-1 p-1 menu_title" href="FrontController?class_name=employee.TopAction">従業員管理</a>
     <a class="col-1 p-1 menu_title" href="FrontController?class_name=service.TopAction">会員サービス</a>
-    <a class="col-1 p-1 menu_title" href="FrontController?class_name=login.ConfirmLogout">ログアウト</a>
+    <a class="col-1 p-1 menu_title" href="FrontController?class_name=login.LogoutAction">ログアウト</a>
 </div>
