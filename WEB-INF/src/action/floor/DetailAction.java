@@ -1,11 +1,11 @@
-package action.employee;
+package action.floor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import tool.Action;
-import dao.EmployeeDAO;
-import bean.EmployeeBean;
+import dao.FloorDAO;
+import bean.FloorBean;
 
 public class DetailAction extends Action {
 
@@ -15,19 +15,18 @@ public class DetailAction extends Action {
 
         // パラメータの取得
         String id = request.getParameter("id");
-        System.out.println(id);
         
         // DAOの生成
-        EmployeeDAO employeeDAO = new EmployeeDAO();
+        FloorDAO floorDAO = new FloorDAO();
         // DAOメソッドの実行
-        EmployeeBean employeeBean = employeeDAO.detail(id);
+       FloorBean floorBean = floorDAO.detail(id);
         // ちゃんと閉じる！
-        employeeDAO.close();
+        floorDAO.close();
         
         // Beanのリスト(検索結果)をセット
-        request.setAttribute("employeeBean", employeeBean);
+        request.setAttribute("floorBean", floorBean);
         
-        return "/view/employee/detail.jsp";
+        return "/view/floor/detail.jsp";
     }
 
 }
