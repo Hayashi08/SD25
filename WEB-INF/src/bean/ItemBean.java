@@ -6,8 +6,9 @@ public class ItemBean {
     private String id = "";
     private String name = "";
     private String genre = "";
-    private String max = "";
-    private String min = "";
+    private int max = 0;
+    private int min = 0;
+    private int sumqty = 0;
     
     // ゲッターセッター
 	public String getId() {
@@ -28,17 +29,23 @@ public class ItemBean {
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
-	public String getMax() {
+	public int getMax() {
 		return max;
 	}
-	public void setMax(String max) {
+	public void setMax(int max) {
 		this.max = max;
 	}
-	public String getMin() {
+	public int getMin() {
 		return min;
 	}
-	public void setMin(String min) {
+	public void setMin(int min) {
 		this.min = min;
+	}
+	public int getSumQty() {
+		return sumqty;
+	}
+	public void setSumQty(int sumqty) {
+		this.sumqty = sumqty;
 	}
 
 }

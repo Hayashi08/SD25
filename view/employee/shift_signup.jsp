@@ -49,8 +49,8 @@
                 <tr>
                   <td class="field">開始時刻</td>
                   <td class="input-group row">
-                      <div class="offset-2 col-3">
-                          <select name="start_hh" size="1">
+                      <div class="col-6">
+                          <select class="custom-select" name="start_hh" size="1">
                               <option value="09" selected>9時
                               <option value="10">10時
                               <option value="11">11時
@@ -68,8 +68,8 @@
                               <option value="23">23時
                           </select>
                       </div>
-                      <div class="offset-2 col-3">
-                          <select name="start_mm" size="1">
+                      <div class="col-6">
+                          <select class="custom-select" name="start_mm" size="1">
                               <option value="00" selected>0分
                               <option value="10">10分
                               <option value="20">20分
@@ -83,8 +83,8 @@
                 <tr>
                   <td class="field">終了時刻</td>
                   <td class="input-group row">
-                      <div class="offset-2 col-3">
-                          <select name="end_hh" size="1">
+                      <div class="col-6">
+                          <select class="custom-select" name="end_hh" size="1">
                               <option value="12" selected>12時
                               <option value="13">13時
                               <option value="14">14時
@@ -99,8 +99,8 @@
                               <option value="23">23時
                           </select>
                       </div>
-                      <div class="offset-2 col-3">
-                          <select name="end_mm" size="1">
+                      <div class="col-6">
+                          <select class="custom-select" name="end_mm" size="1">
                               <option value="00" selected>0分
                               <option value="10">10分
                               <option value="20">20分
@@ -168,8 +168,8 @@
                 <tr>
                   <td class="field">開始時刻</td>
                   <td class="input-group row">
-                      <div class="offset-2 col-3">
-                          <select name="start_hh" size="1">
+                      <div class="col-6">
+                          <select class="custom-select" name="start_hh" size="1">
                               <option value="09" selected>9時
                               <option value="10">10時
                               <option value="11">11時
@@ -187,8 +187,8 @@
                               <option value="23">23時
                           </select>
                       </div>
-                      <div class="offset-2 col-3">
-                          <select name="start_mm" size="1">
+                      <div class="col-6">
+                          <select class="custom-select" name="start_mm" size="1">
                               <option value="00" selected>0分
                               <option value="10">10分
                               <option value="20">20分
@@ -202,8 +202,8 @@
                 <tr>
                   <td class="field">終了時刻</td>
                   <td class="input-group row">
-                      <div class="offset-2 col-3">
-                          <select name="end_hh" size="1">
+                      <div class="col-6">
+                          <select class="custom-select" name="end_hh" size="1">
                               <option value="12" selected>12時
                               <option value="13">13時
                               <option value="14">14時
@@ -218,8 +218,8 @@
                               <option value="23">23時
                           </select>
                       </div>
-                      <div class="offset-2 col-3">
-                          <select name="end_mm" size="1">
+                      <div class="col-6">
+                          <select class="custom-select" name="end_mm" size="1">
                               <option value="00" selected>0分
                               <option value="10">10分
                               <option value="20">20分

@@ -26,7 +26,21 @@
                         </tr>
                         <tr>
                           <td class="field">ジャンル</td>
-                          <td class="input-group"><input type="text" class="form-control" id="genre" maxlength="20" required></td>
+                          <td class="input-group">
+                              <select class="custom-select" id="genre" size="1">
+                                  <option value="未入力" selected>未入力
+                                  <option value="米・雑穀・シリアル">米・雑穀・シリアル
+                                  <option value="麺類">麺類
+                                  <option value="野菜">野菜
+                                  <option value="水産物・水産加工品">水産物・水産加工品
+                                  <option value="肉・肉加工品">肉・肉加工品
+                                  <option value="卵・チーズ・乳製品">卵・チーズ・乳製品
+                                  <option value="果物">果物
+                                  <option value="調味料">調味料
+                                  <option value="リキュール">リキュール
+                                  <option value="ソフトドリンク">ソフトドリンク
+                              </select>
+                          </td>
                         </tr>
                         <tr>
                           <td class="field">許容量</td>

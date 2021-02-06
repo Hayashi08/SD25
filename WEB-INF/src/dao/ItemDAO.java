@@ -63,14 +63,16 @@ public class ItemDAO extends DAO {
            itemBean.setId(rs.getString(1));
            itemBean.setName(rs.getString(2));
            itemBean.setGenre(rs.getString(3));
-           itemBean.setMax(rs.getString(4));
-           itemBean.setMin(rs.getString(5));
+           itemBean.setMax(rs.getInt(4));
+           itemBean.setMin(rs.getInt(5));
            
            // Beanをリストに追加
            itemBeans.add(itemBean);
        }
        
-       return itemBeans;
+      // ちゃんと閉じる！
+      statement.close();
+      return itemBeans;
        
    }
     
@@ -95,8 +97,8 @@ public class ItemDAO extends DAO {
             itemBean.setId(rs.getString(1));
             itemBean.setName(rs.getString(2));
             itemBean.setGenre(rs.getString(3));
-            itemBean.setMax(rs.getString(4));
-            itemBean.setMin(rs.getString(5));
+            itemBean.setMax(rs.getInt(4));
+            itemBean.setMin(rs.getInt(5));
             
         }
         
@@ -104,6 +106,49 @@ public class ItemDAO extends DAO {
         statement.close();
         return itemBean;
     }
+
+    // ジャンル検索
+   public ArrayList<ItemBean> searchGenre(String genre) throws Exception {
+
+       // // ビューの作成(初回のみ)
+       // String view = "create view stock_control as select item.item_id,item.item_name,item.item_genre,item.item_max,item.item_min,sum(stock_detail.stock_detail_qty) from item left join stock_detail on stock_detail.item_id = item.item_id group by item.item_id";
+       // PreparedStatement stmt = this.connection.prepareStatement(sql);
+       // stmt.executeUpdate();
+
+       // Beanのリスト
+       ArrayList<ItemBean> itemBeans = new ArrayList<ItemBean>();
+       
+       // SQL文
+       String sql = "select * from stock_control where item_genre like ?";
+       // STATEMENTの生成
+       PreparedStatement statement = this.connection.prepareStatement(sql);
+       // パラメータの挿入(ワイルドカード使用)
+        statement.setString(1, genre);
+       // 検索結果を受け取る
+       ResultSet rs = statement.executeQuery();
+       
+           // 検索結果をBeanのリストに格納
+           while (rs.next()) {
+           // Beanの生成
+           ItemBean itemBean = new ItemBean();
+           
+           // カラムの値をBeanに格納
+           itemBean.setId(rs.getString(1));
+           itemBean.setName(rs.getString(2));
+           itemBean.setGenre(rs.getString(3));
+           itemBean.setMax(rs.getInt(4));
+           itemBean.setMin(rs.getInt(5));
+           itemBean.setSumQty(rs.getInt(6));
+           
+           // Beanをリストに追加
+           itemBeans.add(itemBean);
+           }
+
+      // ちゃんと閉じる！
+      statement.close();
+      return itemBeans;
+       
+   }
 
     // 従業員更新処理
     public boolean update(String id, String name, String genre, int max, int min) throws Exception {

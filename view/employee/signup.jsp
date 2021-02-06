@@ -35,7 +35,7 @@
                         <tr>
                           <td class="field">役職</td><!-- プルダウン -->
                           <td class="input-group">
-                              <select id="position" size="1">
+                              <select class="custom-select" id="position" size="1">
                                   <option value="未入力" selected>未入力
                                   <option value="SV">SV
                                   <option value="店長">店長
