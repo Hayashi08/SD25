@@ -8,7 +8,6 @@
 %>
 <html lang="ja">
     <head>
-       
         <title>在庫登録画面</title>
        <%@ include file="../head.jsp" %>
     </head>
@@ -23,7 +22,7 @@
                     在庫登録
                 </div>
 
-                <div class="offset-1 col-10 p-5 main">
+                <div class="offset-1 col-10 p-4 main">
                     <div class="row">
                         <div class="offset-3 sub_title">
                             登録する品目のジャンルを選択してください
@@ -60,15 +59,17 @@
                             検索結果はありませんでした
                         </div>
                     <% }else{ %>
-                    <table class="offset-1 col-10 table table-striped my-5">
+                    <table class="col-12 table table-striped my-5">
                         <tr>
-                          <th class="field">品目名</th>
-                          <th class="field">合計数量</th>
-                          <th class="field">在庫許容量</th>
-                          <th class="field">最低限度量</th>
-                          <th class="field">在庫登録</th>
-                          <th class="field">発注登録</th>
-                          <th class="field">定量発注</th>
+                          <th style="width:18%" class="field">品目名</th>
+                          <th style="width:8%" class="field">在庫量</th>
+                          <th style="width:8%" class="field">許容量</th>
+                          <th style="width:8%" class="field">最低量</th>
+                          <th style="width:15%" class="field">在庫登録</th>
+                          <th style="width:15%" class="field">発注登録</th>
+                          <th style="width:10%" class="field">定量発注</th>
+                          <th style="width:10%" class="field">発注状況</th>
+                          <th style="width:8%" class="field">発注量</th>
                         </tr>
                         <% for (int i=0; i < itemBeans.size(); i++) { %>
                             <tr>
@@ -105,6 +106,18 @@
                                             <input type="text" name="qty" value="<%= amount %>" hidden>
                                             <input type="submit" class="btn btn-primary" value="定量発注">
                                         </form>
+                                    <% } %>
+                                </td>
+                                <td>
+                                    <% if (itemBeans.get(i).getOrderState()) { %>
+                                    発注中
+                                    <% } else { %>
+                                    未発注
+                                    <% } %>
+                                </td>
+                                <td>
+                                    <% if (itemBeans.get(i).getOrderState()) { %>
+                                    <%= itemBeans.get(i).getOrderSumQty() %>
                                     <% } %>
                                 </td>
                             </tr>

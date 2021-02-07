@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html lang="ja">
     <head>
-        
         <title>トップページ画面</title>
        <%@ include file="../head.jsp" %>
     </head>

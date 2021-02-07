@@ -9,6 +9,8 @@ public class ItemBean {
     private int max = 0;
     private int min = 0;
     private int sumqty = 0;
+    private int ordersumqty = 0;
+    private boolean orderstate = false;
     
     // ゲッターセッター
 	public String getId() {
@@ -46,6 +48,18 @@ public class ItemBean {
 	}
 	public void setSumQty(int sumqty) {
 		this.sumqty = sumqty;
+	}
+	public int getOrderSumQty() {
+		return ordersumqty;
+	}
+	public void setOrderSumQty(int ordersumqty) {
+		this.ordersumqty = ordersumqty;
+	}
+	public boolean getOrderState() {
+		return orderstate;
+	}
+	public void setOrderState(boolean orderstate) {
+		this.orderstate = orderstate;
 	}
 
 }

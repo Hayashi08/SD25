@@ -161,7 +161,6 @@ CREATE TABLE ordering (
 	ordering_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 	employee_id CHAR(3) NOT NULL,
 	ordering_date DATE NOT NULL,
-	ordering_schedule DATE NOT NULL,
 	PRIMARY KEY (ordering_id),
 	FOREIGN KEY (employee_id) REFERENCES employee (employee_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -171,6 +170,7 @@ CREATE TABLE ordering_detail (
 	ordering_id INT UNSIGNED NOT NULL,
 	item_id INT UNSIGNED NOT NULL,
 	ordering_detail_qty SMALLINT UNSIGNED NOT NULL,
+	ordering_detail_state BOOLEAN DEFAULT false,
 	PRIMARY KEY (ordering_detail_id),
 	FOREIGN KEY (ordering_id) REFERENCES ordering (ordering_id),
 	FOREIGN KEY (item_id) REFERENCES item (item_id)
