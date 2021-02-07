@@ -111,12 +111,7 @@ public class ItemDAO extends DAO {
    public ArrayList<ItemBean> searchGenre(String genre) throws Exception {
 
        // // ビューの作成(初回のみ)
-       // String view = "create view stock_control as select item.item_id,item.item_name,item.item_genre,item.item_max,item.item_min,sum(stock_detail.stock_detail_qty) from item left join stock_detail on stock_detail.item_id = item.item_id group by item.item_id";
-       // PreparedStatement stmt = this.connection.prepareStatement(view);
-       // stmt.executeUpdate();
-
-       // // ビューの作成(初回のみ)
-       // String view = "create view stock_control as select i.item_id,i.item_name,i.item_genre,i.item_max,i.item_min,sum(sd.stock_detail_qty) as stock_qty, sum(od.ordering_detail_qty) as ordering_qty,od.ordering_detail_state from item as i left join stock_detail as sd on sd.item_id = i.item_id left join ordering_detail as od on od.item_id = i.item_id group by i.item_id";
+       // String view = "create view stock_control as select i.item_id,i.item_name,i.item_genre,i.item_max,i.item_min,sum(sd.stock_detail_qty) as stock_qty, sum(od.ordering_detail_qty) as ordering_qty,sum(od.ordering_detail_state) as ordering_state, o.ordering_date from item as i left join stock_detail as sd on sd.item_id = i.item_id left join ordering_detail as od on od.item_id = i.item_id and ordering_detail_state = true left join ordering as o on o.ordering_id = od.ordering_id and o.ordering_date = (select min(o.ordering_date) from ordering) group by i.item_id";
        // PreparedStatement stmt = this.connection.prepareStatement(view);
        // stmt.executeUpdate();
 
@@ -146,6 +141,7 @@ public class ItemDAO extends DAO {
            itemBean.setSumQty(rs.getInt(6));
            itemBean.setOrderSumQty(rs.getInt(7));
            itemBean.setOrderState(rs.getBoolean(8));
+           itemBean.setOrderDate(rs.getString(9));
            
            // Beanをリストに追加
            itemBeans.add(itemBean);

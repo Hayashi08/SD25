@@ -61,15 +61,15 @@
                     <% }else{ %>
                     <table class="col-12 table table-striped my-5">
                         <tr>
-                          <th style="width:18%" class="field">品目名</th>
+                          <th style="width:24%" class="field">品目名</th>
                           <th style="width:8%" class="field">在庫量</th>
                           <th style="width:8%" class="field">許容量</th>
                           <th style="width:8%" class="field">最低量</th>
-                          <th style="width:15%" class="field">在庫登録</th>
-                          <th style="width:15%" class="field">発注登録</th>
+                          <th style="width:14%" class="field">発注登録</th>
                           <th style="width:10%" class="field">定量発注</th>
                           <th style="width:10%" class="field">発注状況</th>
                           <th style="width:8%" class="field">発注量</th>
+                          <th style="width:10%" class="field">在庫登録</th>
                         </tr>
                         <% for (int i=0; i < itemBeans.size(); i++) { %>
                             <tr>
@@ -79,31 +79,20 @@
                                 <td><%= itemBeans.get(i).getMin() %></td>
                                 <td>
                                     <form action="FrontController" method="POST">
-                                        <input type="text" name="class_name" value="stock.StockSignupAction" hidden>
-                                        <input type="text" name="item_id" value="<%= itemBeans.get(i).getId() %>" hidden>
-                                        <div class="row">
-                                            <input type="number" name="qty" class="form-control offset-1 col-6" required>
-                                            <input type="submit" class="btn btn-primary col-4" value="登録">
-                                        </div>
-                                    </form>
-                                </td>
-                                <td>
-                                    <form action="FrontController" method="POST">
                                         <input type="text" name="class_name" value="stock.OrderingSignupAction" hidden>
                                         <input type="text" name="item_id" value="<%= itemBeans.get(i).getId() %>" hidden>
                                         <div class="row">
-                                            <input type="number" name="qty" class="form-control offset-1 col-6" required>
-                                            <input type="submit" class="btn btn-primary col-4" value="登録">
+                                            <input type="number" min="1" max="<%= itemBeans.get(i).getMax() - itemBeans.get(i).getSumQty() - itemBeans.get(i).getOrderSumQty() %>" name="qty" class="form-control offset-1 col-6" required>
+                                            <input type="submit" class="btn btn-primary col-5" value="登録">
                                         </div>
                                     </form>
                                 </td>
                                 <td>
-                                    <% if (itemBeans.get(i).getSumQty() < itemBeans.get(i).getMin()) {%>
-                                        <% int amount = itemBeans.get(i).getMax() - itemBeans.get(i).getMin(); %>
+                                    <% if (itemBeans.get(i).getSumQty() < itemBeans.get(i).getMin() & itemBeans.get(i).getOrderSumQty() < itemBeans.get(i).getMin()) {%>
                                         <form action="FrontController" method="POST">
                                             <input type="text" name="class_name" value="stock.OrderingSignupAction" hidden>
                                             <input type="text" name="item_id" value="<%= itemBeans.get(i).getId() %>" hidden>
-                                            <input type="text" name="qty" value="<%= amount %>" hidden>
+                                            <input type="text" name="qty" value="<%= itemBeans.get(i).getMax() - itemBeans.get(i).getMin() %>" hidden>
                                             <input type="submit" class="btn btn-primary" value="定量発注">
                                         </form>
                                     <% } %>
@@ -118,6 +107,15 @@
                                 <td>
                                     <% if (itemBeans.get(i).getOrderState()) { %>
                                     <%= itemBeans.get(i).getOrderSumQty() %>
+                                    <% } %>
+                                </td>
+                                <td>
+                                    <% if (itemBeans.get(i).getOrderState()) { %>
+                                        <form action="FrontController" method="POST">
+                                            <input type="text" name="class_name" value="stock.StockSignupAction" hidden>
+                                            <input type="text" name="item_id" value="<%= itemBeans.get(i).getId() %>" hidden>
+                                            <input type="submit" class="btn btn-primary" value="<%= itemBeans.get(i).getOrderDate().substring(5) %>日分">
+                                        </form>
                                     <% } %>
                                 </td>
                             </tr>

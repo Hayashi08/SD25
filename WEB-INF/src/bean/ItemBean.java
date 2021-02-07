@@ -11,6 +11,7 @@ public class ItemBean {
     private int sumqty = 0;
     private int ordersumqty = 0;
     private boolean orderstate = false;
+    private String orderdate = "";
     
     // ゲッターセッター
 	public String getId() {
@@ -60,6 +61,12 @@ public class ItemBean {
 	}
 	public void setOrderState(boolean orderstate) {
 		this.orderstate = orderstate;
+	}
+	public String getOrderDate() {
+		return orderdate;
+	}
+	public void setOrderDate(String orderdate) {
+		this.orderdate = orderdate;
 	}
 
 }

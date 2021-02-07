@@ -15,10 +15,9 @@ public class StockSignupAction extends Action {
         // パラメータの取得
         String employee_id = "101";
         String item_id = request.getParameter("item_id");
-        int qty = Integer.parseInt(request.getParameter("qty"));
         
         StockDAO stockDAO = new StockDAO();
-        boolean flag = stockDAO.insert(employee_id, item_id, qty);
+        boolean flag = stockDAO.insert(employee_id, item_id);
         // ちゃんと閉じる！
         stockDAO.close();
         
