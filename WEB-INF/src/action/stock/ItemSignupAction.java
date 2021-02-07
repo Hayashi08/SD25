@@ -18,10 +18,10 @@ public class ItemSignupAction extends Action {
         int max = Integer.parseInt(request.getParameter("max"));
         int min = Integer.parseInt(request.getParameter("min"));
         
-        ItemDAO ItemDAO = new ItemDAO();
-        boolean flag = ItemDAO.insert(name, genre, max, min);
+        ItemDAO itemDAO = new ItemDAO();
+        boolean flag = itemDAO.insert(name, genre, max, min);
         // ちゃんと閉じる！
-        ItemDAO.close();
+        itemDAO.close();
         
         if (flag) {
             return "/view/stock/item_signup_complete.jsp";

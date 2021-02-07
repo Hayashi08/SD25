@@ -4,9 +4,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import tool.Action;
-import dao.StockDAO;
+import dao.OrderingDAO;
 
-public class StockSignupAction extends Action {
+public class OrderingSignupAction extends Action {
 
     @Override
     public String execute(HttpServletRequest request,
@@ -17,16 +17,16 @@ public class StockSignupAction extends Action {
         String item_id = request.getParameter("item_id");
         int qty = Integer.parseInt(request.getParameter("qty"));
         
-        StockDAO stockDAO = new StockDAO();
-        boolean flag = stockDAO.insert(employee_id, item_id, qty);
+        OrderingDAO orderingDAO = new OrderingDAO();
+        boolean flag = orderingDAO.insert(employee_id, item_id, qty);
         // ちゃんと閉じる！
-        stockDAO.close();
+        orderingDAO.close();
         
         if (flag) {
-            return "/view/stock/stock_signup_complete.jsp";
+            return "/view/stock/ordering_signup_complete.jsp";
         }
         else {
-            return "/view/stock/stock_signup_error.jsp";
+            return "/view/stock/ordering_signup_error.jsp";
         }
     }
 
