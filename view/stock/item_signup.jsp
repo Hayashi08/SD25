@@ -47,7 +47,7 @@
                           <td class="input-group"><input type="number" class="form-control" id="max" maxlength="5" required></td>
                         </tr>
                         <tr>
-                          <td class="field">最低限度量</td>
+                          <td class="field">最低量</td>
                           <td class="input-group"><input type="number" class="form-control" id="min" maxlength="5" required></td>
                         </tr>
                     </table>
@@ -86,7 +86,7 @@
                           <td class="input-group"><input type="number" class="form-control" id="modal_max" name="max" maxlength="5" required></td>
                         </tr>
                         <tr>
-                          <td class="field">最低限度量</td>
+                          <td class="field">最低量</td>
                           <td class="input-group"><input type="number" class="form-control" id="modal_min" name="min" maxlength="5" required></td>
                         </tr>
                     </table>

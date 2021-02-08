@@ -4,10 +4,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import tool.Action;
-import dao.ItemDAO;
-import bean.ItemBean;
+import dao.OrderingDAO;
+import bean.OrderingBean;
 
-public class ItemDetailAction extends Action {
+public class OrderingDetailAction extends Action {
 
     @Override
     public String execute(HttpServletRequest request,
@@ -15,13 +15,13 @@ public class ItemDetailAction extends Action {
 
         String id = request.getParameter("id");
         
-        ItemDAO itemDAO = new ItemDAO();
-        ItemBean itemBean = itemDAO.detail(id);
-        itemDAO.close();
+        OrderingDAO orderingDAO = new OrderingDAO();
+        OrderingBean orderingBean = orderingDAO.detail(id);
+        orderingDAO.close();
         
-        request.setAttribute("itemBean", itemBean);
+        request.setAttribute("orderingBean", orderingBean);
         
-        return "/view/stock/item_detail.jsp";
+        return "/view/stock/ordering_detail.jsp";
     }
 
 }

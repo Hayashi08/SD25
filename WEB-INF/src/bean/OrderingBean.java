@@ -1,6 +1,6 @@
 package bean;
 
-public class StockBean {
+public class OrderingBean {
     
     // プロパティ
     private String id = "";
@@ -9,10 +9,9 @@ public class StockBean {
     private int max = 0;
     private int min = 0;
     private int qty = 0;
+    private boolean state = false;
     private String employee_id = "";
     private String date = "";
-    private String orderid = "";
-    private int orderqty = 0;
     
     // ゲッター・セッター
 	public String getId() {
@@ -51,6 +50,12 @@ public class StockBean {
 	public void setQty(int qty) {
 		this.qty = qty;
 	}
+	public boolean getState() {
+		return state;
+	}
+	public void setState(boolean state) {
+		this.state = state;
+	}
 	public String getEmployeeId() {
 		return employee_id;
 	}
@@ -62,18 +67,6 @@ public class StockBean {
 	}
 	public void setDate(String date) {
 		this.date = date;
-	}
-	public String getOrderId() {
-		return orderid;
-	}
-	public void setOrderId(String orderid) {
-		this.orderid = orderid;
-	}
-	public int getOrderQty() {
-		return orderqty;
-	}
-	public void setOrderQty(int orderqty) {
-		this.orderqty = orderqty;
 	}
     
 }

@@ -22,10 +22,10 @@
                             <a class="btn btn-primary"  href="FrontController?class_name=stock.ItemIndexAction" role="button">品目管理</a>
                         </div>
                         <div class="col-3 text-center offset-1">
-                            <a class="btn btn-primary" href="FrontController?class_name=stock.FormGenreSearchAction" role="button">在庫詳細検索</a>
+                            <a class="btn btn-primary" href="FrontController?class_name=stock.StockIndexAction" role="button">在庫詳細検索</a>
                         </div>
                         <div class="col-3 text-center offset-1">
-                            <a class="btn btn-primary" href="FrontController?class_name=user.OrderIndexAction" role="button">発注詳細検索</a>
+                            <a class="btn btn-primary" href="FrontController?class_name=stock.OrderingIndexAction" role="button">発注詳細検索</a>
                         </div>
                     </div>
 

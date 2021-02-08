@@ -61,75 +61,61 @@ public class StockDAO extends DAO {
         
     }
 
-   //  // 在庫検索
-   // public ArrayList<StockBean> search(String keyword) throws Exception {
+    // 在庫検索
+   public ArrayList<StockBean> search(String keyword) throws Exception {
        
-   //     // Beanのリスト
-   //     ArrayList<StockBean> stockBeans = new ArrayList<StockBean>();
+       // // ビューの作成(初回のみ)
+       // String view = "create view stock_operation as select s.stock_id,i.item_name,i.item_genre,i.item_max,i.item_min,sd.stock_detail_qty,s.employee_id,s.stock_date from item as i inner join stock_detail as sd on i.item_id = sd.item_id inner join stock as s on s.stock_id = sd.stock_id order by s.stock_id desc";
+       // PreparedStatement psview = this.connection.prepareStatement(view);
+       // psview.executeUpdate();
+
+       ArrayList<StockBean> stockBeans = new ArrayList<StockBean>();
+       String sql = "select stock_id,item_name,stock_detail_qty,stock_date from stock_operation where stock_id like ? or item_name like ? or item_genre like ?";
+       PreparedStatement ps = this.connection.prepareStatement(sql);
+       ps.setString(1, "%" + keyword + "%");
+       ps.setString(2, "%" + keyword + "%");
+       ps.setString(3, "%" + keyword + "%");
+       ResultSet rs = ps.executeQuery();
+       while (rs.next()) {
+
+           StockBean stockBean = new StockBean();
+           stockBean.setId(rs.getString(1));
+           stockBean.setName(rs.getString(2));
+           stockBean.setQty(rs.getInt(3));
+           stockBean.setDate(rs.getString(4));
+           stockBeans.add(stockBean);
+
+       }
        
-   //     // SQL文
-   //     String sql = "select * from stock where stock_id like ? or stock_name like ? or stock_genre like ?";
-   //     // STATEMENTの生成
-   //     PreparedStatement statement = this.connection.prepareStatement(sql);
-   //     // パラメータの挿入(ワイルドカード使用)
-   //     statement.setString(1, "%" + keyword + "%");
-   //     statement.setString(2, "%" + keyword + "%");
-   //     statement.setString(3, "%" + keyword + "%");
-   //     // 検索結果を受け取る
-   //     ResultSet rs = statement.executeQuery();
+      ps.close();
+      return stockBeans;
        
-   //     // 検索結果をBeanのリストに格納
-   //     while (rs.next()) {
-   //         // Beanの生成
-   //         StockBean stockBean = new StockBean();
-           
-   //         // カラムの値をBeanに格納
-   //         stockBean.setId(rs.getString(1));
-   //         stockBean.setName(rs.getString(2));
-   //         stockBean.setGenre(rs.getString(3));
-   //         stockBean.setMax(rs.getInt(4));
-   //         stockBean.setMin(rs.getInt(5));
-           
-   //         // Beanをリストに追加
-   //         stockBeans.add(stockBean);
-   //     }
-       
-   //    // ちゃんと閉じる！
-   //    statement.close();
-   //    return stockBeans;
-       
-   // }
+   }
     
-    // // 在庫詳細
-    // public StockBean detail(String id) throws Exception {
+    // 在庫詳細
+    public StockBean detail(String id) throws Exception {
         
-    //     // Beanの生成
-    //     StockBean stockBean = new StockBean();
-        
-    //     // SQL文
-    //     String sql = "select * from stock where stock_id = ?";
-    //     // STATEMENTの生成
-    //     PreparedStatement statement = this.connection.prepareStatement(sql);
-    //     // パラメータの挿入
-    //     statement.setString(1, id);
-    //     // 詳細情報取得
-    //     ResultSet rs = statement.executeQuery();
-        
-    //     // 詳細情報をBeanに格納
-    //     if (rs.next()) {
+        StockBean stockBean = new StockBean();
+        String sql = "select * from stock_operation where stock_id = ?";
+        PreparedStatement statement = this.connection.prepareStatement(sql);
+        statement.setString(1, id);
+        ResultSet rs = statement.executeQuery();
+        if (rs.next()) {
             
-    //         stockBean.setId(rs.getString(1));
-    //         stockBean.setName(rs.getString(2));
-    //         stockBean.setGenre(rs.getString(3));
-    //         stockBean.setMax(rs.getInt(4));
-    //         stockBean.setMin(rs.getInt(5));
+            stockBean.setId(rs.getString(1));
+            stockBean.setName(rs.getString(2));
+            stockBean.setGenre(rs.getString(3));
+            stockBean.setMax(rs.getInt(4));
+            stockBean.setMin(rs.getInt(5));
+            stockBean.setQty(rs.getInt(6));
+            stockBean.setEmployeeId(rs.getString(7));
+            stockBean.setDate(rs.getString(8));
             
-    //     }
+        }
         
-    //     // ちゃんと閉じる！
-    //     statement.close();
-    //     return stockBean;
-    // }
+        statement.close();
+        return stockBean;
+    }
 
 
 

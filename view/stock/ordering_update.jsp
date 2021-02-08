@@ -1,13 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%@ page import="bean.ItemBean" %>
+<%@ page import="bean.OrderingBean" %>
 <%
 
-    ItemBean itemBean = (ItemBean)request.getAttribute("itemBean");
+    OrderingBean orderingBean = (OrderingBean)request.getAttribute("orderingBean");
 
 %>
 <html lang="ja">
     <head>
-        <title>品目更新</title>
+        <title>在庫更新</title>
         <%@ include file="../head.jsp" %>
     </head>
     <body>
@@ -18,33 +18,33 @@
                 </div>
 
                 <div class="offset-4 my-3 col-4 text-center main_title">
-                    品目更新
+                    在庫更新
                 </div>
 
                 <div class="offset-1 col-10 p-5 main">
                     <div class="offset-3 p-3 sub_title">
-                        各項目を入力してください
+                        発注量を変更してください
                     </div>
                     <table class="offset-3 col-6 table table-striped">
                         <tr>
-                          <td class="field">品目ID</td>
-                          <td class="input-group"><input type="text" class="form-control" id="id" maxlength="10" value="<%= itemBean.getId() %>" readonly></td>
+                          <td class="field">在庫ID</td>
+                          <td class="input-group"><input type="text" class="form-control" id="id" maxlength="10" value="<%= orderingBean.getId() %>" readonly></td>
                         </tr>
                         <tr>
                           <td class="field">品目名</td>
-                          <td class="input-group"><input type="text" class="form-control" id="name" maxlength="30" value="<%= itemBean.getName() %>" required></td>
-                        </tr>
-                        <tr>
-                          <td class="field">ジャンル</td>
-                          <td class="input-group"><input type="text" class="form-control" id="genre" maxlength="2" value="<%= itemBean.getGenre() %>" required></td>
+                          <td class="input-group"><input type="text" class="form-control" id="name" maxlength="30" value="<%= orderingBean.getName() %>" readonly></td>
                         </tr>
                         <tr>
                           <td class="field">許容量</td>
-                          <td class="input-group"><input type="number" class="form-control" id="max" maxlength="5" value="<%= itemBean.getMax() %>" required></td>
+                          <td class="input-group"><input type="number" class="form-control" id="max" maxlength="5" value="<%= orderingBean.getMax() %>" readonly></td>
                         </tr>
                         <tr>
                           <td class="field">最低量</td>
-                          <td class="input-group"><input type="number" class="form-control" id="min" maxlength="5" value="<%= itemBean.getMin() %>" required></td>
+                          <td class="input-group"><input type="number" class="form-control" id="min" maxlength="5" value="<%= orderingBean.getMin() %>" readonly></td>
+                        </tr>
+                        <tr>
+                          <td class="field">発注量</td>
+                          <td class="input-group"><input type="number" class="form-control" id="qty" maxlength="5" value="<%= orderingBean.getQty() %>" required></td>
                         </tr>
                     </table>
 
@@ -67,27 +67,27 @@
         </div>
         <%@ include file="../ModalOpenTab.jsp" %>
               <form action="FrontController" method="POST">
-                <input type="text" name="class_name" value="stock.ItemUpdateAction" hidden>
+                <input type="text" name="class_name" value="stock.OrderingUpdateAction" hidden>
                 <table class="offset-1 col-10 table table-striped">
                         <tr>
-                          <td class="field">品目ID</td>
+                          <td class="field">在庫ID</td>
                           <td class="input-group"><input type="text" class="form-control" id="modal_id" name="id" maxlength="10" readonly></td>
                         </tr>
                         <tr>
                           <td class="field">品目名</td>
-                          <td class="input-group"><input type="text" class="form-control" id="modal_name" name="name" maxlength="30" readonly></td>
-                        </tr>
-                        <tr>
-                          <td class="field">ジャンル</td>
-                          <td class="input-group"><input type="text" class="form-control" id="modal_genre" name="genre" maxlength="2" readonly></td>
+                          <td class="input-group"><input type="text" class="form-control" id="modal_name" maxlength="30" readonly></td>
                         </tr>
                         <tr>
                           <td class="field">許容量</td>
-                          <td class="input-group"><input type="number" class="form-control" id="modal_max" name="max" maxlength="5" readonly></td>
+                          <td class="input-group"><input type="number" class="form-control" id="modal_max" maxlength="5" readonly></td>
                         </tr>
                         <tr>
                           <td class="field">最低量</td>
-                          <td class="input-group"><input type="number" class="form-control" id="modal_min" name="min" maxlength="5" readonly></td>
+                          <td class="input-group"><input type="number" class="form-control" id="modal_min" maxlength="5" readonly></td>
+                        </tr>
+                        <tr>
+                          <td class="field">在庫量</td>
+                          <td class="input-group"><input type="number" class="form-control" id="modal_qty" name="qty" maxlength="5" readonly></td>
                         </tr>
                 </table>
                 <div class="row">
@@ -106,9 +106,9 @@
               $('#btn').click(function() {
                 $('#modal_id').val($('#id').val());
                 $('#modal_name').val($('#name').val());
-                $('#modal_genre').val($('#genre').val());
                 $('#modal_max').val($('#max').val());
                 $('#modal_min').val($('#min').val());
+                $('#modal_qty').val($('#qty').val());
               });
             });
         </script>

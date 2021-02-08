@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import tool.DAO;
-// import bean.OrderingBean;
+import bean.OrderingBean;
 
 public class OrderingDAO extends DAO {
     
@@ -37,107 +37,96 @@ public class OrderingDAO extends DAO {
         
     }
 
-   //  // 発注検索
-   // public ArrayList<OrderingBean> search(String keyword) throws Exception {
+    // 発注検索
+   public ArrayList<OrderingBean> search(String keyword) throws Exception {
        
-   //     // Beanのリスト
-   //     ArrayList<OrderingBean> orderingBeans = new ArrayList<OrderingBean>();
+       // // ビューの作成(初回のみ)
+       // String view = "create view ordering_operation as select o.ordering_id,i.item_name,i.item_genre,i.item_max,i.item_min,od.ordering_detail_qty,od.ordering_detail_state,o.employee_id,o.ordering_date from item as i inner join ordering_detail as od on i.item_id = od.item_id inner join ordering as o on o.ordering_id = od.ordering_id order by o.ordering_id desc";
+       // PreparedStatement psview = this.connection.prepareStatement(view);
+       // psview.executeUpdate();
+
+       ArrayList<OrderingBean> orderingBeans = new ArrayList<OrderingBean>();
+       String sql = "select ordering_id,item_name,ordering_detail_qty,ordering_detail_state,ordering_date from ordering_operation where ordering_id like ? or item_name like ? or item_genre like ?";
+       PreparedStatement ps = this.connection.prepareStatement(sql);
+       ps.setString(1, "%" + keyword + "%");
+       ps.setString(2, "%" + keyword + "%");
+       ps.setString(3, "%" + keyword + "%");
+       ResultSet rs = ps.executeQuery();
+       while (rs.next()) {
+
+           OrderingBean orderingBean = new OrderingBean();
+           orderingBean.setId(rs.getString(1));
+           orderingBean.setName(rs.getString(2));
+           orderingBean.setQty(rs.getInt(3));
+           orderingBean.setState(rs.getBoolean(4));
+           orderingBean.setDate(rs.getString(5));
+           orderingBeans.add(orderingBean);
+
+       }
        
-   //     // SQL文
-   //     String sql = "select * from ordering where ordering_id like ? or ordering_name like ? or ordering_genre like ?";
-   //     // STATEMENTの生成
-   //     PreparedStatement statement = this.connection.prepareStatement(sql);
-   //     // パラメータの挿入(ワイルドカード使用)
-   //     statement.setString(1, "%" + keyword + "%");
-   //     statement.setString(2, "%" + keyword + "%");
-   //     statement.setString(3, "%" + keyword + "%");
-   //     // 検索結果を受け取る
-   //     ResultSet rs = statement.executeQuery();
+      ps.close();
+      return orderingBeans;
        
-   //     // 検索結果をBeanのリストに格納
-   //     while (rs.next()) {
-   //         // Beanの生成
-   //         OrderingBean orderingBean = new OrderingBean();
-           
-   //         // カラムの値をBeanに格納
-   //         orderingBean.setId(rs.getString(1));
-   //         orderingBean.setName(rs.getString(2));
-   //         orderingBean.setGenre(rs.getString(3));
-   //         orderingBean.setMax(rs.getInt(4));
-   //         orderingBean.setMin(rs.getInt(5));
-           
-   //         // Beanをリストに追加
-   //         orderingBeans.add(orderingBean);
-   //     }
-       
-   //    // ちゃんと閉じる！
-   //    statement.close();
-   //    return orderingBeans;
-       
-   // }
+   }
     
-   //  // 発注詳細
-   //  public OrderingBean detail(String id) throws Exception {
+    // 発注詳細
+    public OrderingBean detail(String id) throws Exception {
         
-   //      // Beanの生成
-   //      OrderingBean orderingBean = new OrderingBean();
-        
-   //      // SQL文
-   //      String sql = "select * from ordering where ordering_id = ?";
-   //      // STATEMENTの生成
-   //      PreparedStatement statement = this.connection.prepareStatement(sql);
-   //      // パラメータの挿入
-   //      statement.setString(1, id);
-   //      // 詳細情報取得
-   //      ResultSet rs = statement.executeQuery();
-        
-   //      // 詳細情報をBeanに格納
-   //      if (rs.next()) {
+        OrderingBean orderingBean = new OrderingBean();
+        String sql = "select * from ordering_operation where ordering_id = ?";
+        PreparedStatement statement = this.connection.prepareStatement(sql);
+        statement.setString(1, id);
+        ResultSet rs = statement.executeQuery();
+        if (rs.next()) {
             
-   //          orderingBean.setId(rs.getString(1));
-   //          orderingBean.setName(rs.getString(2));
-   //          orderingBean.setGenre(rs.getString(3));
-   //          orderingBean.setMax(rs.getInt(4));
-   //          orderingBean.setMin(rs.getInt(5));
+            orderingBean.setId(rs.getString(1));
+            orderingBean.setName(rs.getString(2));
+            orderingBean.setGenre(rs.getString(3));
+            orderingBean.setMax(rs.getInt(4));
+            orderingBean.setMin(rs.getInt(5));
+            orderingBean.setQty(rs.getInt(6));
+            orderingBean.setState(rs.getBoolean(7));
+            orderingBean.setEmployeeId(rs.getString(8));
+            orderingBean.setDate(rs.getString(9));
             
-   //      }
+        }
         
-   //      // ちゃんと閉じる！
-   //      statement.close();
-   //      return orderingBean;
-   //  }
+        statement.close();
+        return orderingBean;
+    }
 
 
 
-   //  // 発注更新処理
-   //  public boolean update(String id, String name, String genre, int max, int min) throws Exception {
+    // 発注更新処理
+    public boolean update(String id, int qty) throws Exception {
 
-   //      String sql = "update ordering set ordering_name = ?, ordering_genre = ?, ordering_max = ?, ordering_min = ? where ordering_id = ?";
-   //      PreparedStatement statement = this.connection.prepareStatement(sql);
-   //      statement.setString(1, name);
-   //      statement.setString(2, genre);
-   //      statement.setInt(3, max);
-   //      statement.setInt(4, min);
-   //      statement.setString(5, id);
-   //      statement.executeUpdate();
+        String sql = "update ordering_detail set ordering_detail_qty = ? where ordering_id = ?";
+        PreparedStatement statement = this.connection.prepareStatement(sql);
+        statement.setInt(1, qty);
+        statement.setString(2, id);
+        statement.executeUpdate();
+        statement.close();
+        return true;
         
-   //      // ちゃんと閉じる！
-   //      statement.close();
-   //      return true;
-        
-   //  }
+    }
 
-   //  // 発注削除処理
-   //  public void delete(String id) throws Exception {
+    // 発注削除処理
+    public void delete(String id) throws Exception {
 
-   //      String sql = "delete from ordering where ordering_id = ?";
-   //      PreparedStatement statement = this.connection.prepareStatement(sql);
-   //      statement.setString(1, id);
-   //      statement.executeUpdate();
+        //発注詳細削除
+        String sql_detail = "delete from ordering_detail where ordering_id = ?";
+        PreparedStatement psdetail = this.connection.prepareStatement(sql_detail);
+        psdetail.setString(1, id);
+        psdetail.executeUpdate();
+        psdetail.close();
+
+        //発注削除
+        String sql = "delete from ordering where ordering_id = ?";
+        PreparedStatement ps = this.connection.prepareStatement(sql);
+        ps.setString(1, id);
+        ps.executeUpdate();
+        ps.close();
         
-   //      // ちゃんと閉じる！
-   //      statement.close();
-        
-   //  }
+    }
 
 }

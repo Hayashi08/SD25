@@ -4,24 +4,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import tool.Action;
-import dao.ItemDAO;
-import bean.ItemBean;
+import dao.StockDAO;
+import bean.StockBean;
 
-public class ItemDetailAction extends Action {
+public class StockDetailAction extends Action {
 
     @Override
     public String execute(HttpServletRequest request,
             HttpServletResponse response) throws Exception {
 
         String id = request.getParameter("id");
+
+        StockDAO stockDAO = new StockDAO();
+        StockBean stockBean = stockDAO.detail(id);
+        stockDAO.close();
+
+        request.setAttribute("stockBean", stockBean);
         
-        ItemDAO itemDAO = new ItemDAO();
-        ItemBean itemBean = itemDAO.detail(id);
-        itemDAO.close();
-        
-        request.setAttribute("itemBean", itemBean);
-        
-        return "/view/stock/item_detail.jsp";
+        return "/view/stock/stock_detail.jsp";
     }
 
 }
