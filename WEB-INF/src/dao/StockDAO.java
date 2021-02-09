@@ -35,12 +35,11 @@ public class StockDAO extends DAO {
         psSelect.close();
 
         //発注状況変更
-        String sqlUpdate = "update ordering_detail set ordering_detail_state = false where ordering_id = ?";
+        String sqlUpdate = "update ordering_detail set ordering_detail_state = '0' where ordering_id = ?";
         PreparedStatement psUpdate = this.connection.prepareStatement(sqlUpdate);
         psUpdate.setString(1, stockBean.getOrderId());
         psUpdate.executeUpdate();
         psUpdate.close();
-
 
         //在庫テーブルに登録
         String sql = "insert into stock values (0, ?, curdate())";
@@ -65,7 +64,7 @@ public class StockDAO extends DAO {
    public ArrayList<StockBean> search(String keyword) throws Exception {
        
        // // ビューの作成(初回のみ)
-       // String view = "create view stock_operation as select s.stock_id,i.item_name,i.item_genre,i.item_max,i.item_min,sd.stock_detail_qty,s.employee_id,s.stock_date from item as i inner join stock_detail as sd on i.item_id = sd.item_id inner join stock as s on s.stock_id = sd.stock_id order by s.stock_id desc";
+       // String view = "create view stock_operation as select s.stock_id,i.item_name,i.item_genre,i.item_max,i.item_min,sd.stock_detail_qty,e.employee_name,s.stock_date from item as i inner join stock_detail as sd on i.item_id = sd.item_id inner join stock as s on s.stock_id = sd.stock_id inner join employee as e on e.employee_id = s.employee_id order by s.stock_id desc";
        // PreparedStatement psview = this.connection.prepareStatement(view);
        // psview.executeUpdate();
 
@@ -108,7 +107,7 @@ public class StockDAO extends DAO {
             stockBean.setMax(rs.getInt(4));
             stockBean.setMin(rs.getInt(5));
             stockBean.setQty(rs.getInt(6));
-            stockBean.setEmployeeId(rs.getString(7));
+            stockBean.setEmployeeName(rs.getString(7));
             stockBean.setDate(rs.getString(8));
             
         }

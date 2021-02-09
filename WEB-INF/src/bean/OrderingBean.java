@@ -9,8 +9,9 @@ public class OrderingBean {
     private int max = 0;
     private int min = 0;
     private int qty = 0;
-    private boolean state = false;
+    private String state = "0";
     private String employee_id = "";
+    private String employee_name = "";
     private String date = "";
     
     // ゲッター・セッター
@@ -50,10 +51,10 @@ public class OrderingBean {
 	public void setQty(int qty) {
 		this.qty = qty;
 	}
-	public boolean getState() {
+	public String getState() {
 		return state;
 	}
-	public void setState(boolean state) {
+	public void setState(String state) {
 		this.state = state;
 	}
 	public String getEmployeeId() {
@@ -61,6 +62,12 @@ public class OrderingBean {
 	}
 	public void setEmployeeId(String employee_id) {
 		this.employee_id = employee_id;
+	}
+	public String getEmployeeName() {
+		return employee_name;
+	}
+	public void setEmployeeName(String employee_name) {
+		this.employee_name = employee_name;
 	}
 	public String getDate() {
 		return date;

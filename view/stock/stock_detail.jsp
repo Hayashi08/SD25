@@ -49,7 +49,7 @@
                         </tr>
                         <tr>
                           <td class="field">従業員名</td>
-                          <td class="input-group"><%= stockBean.getEmployeeId() %></td>
+                          <td class="input-group"><%= stockBean.getEmployeeName() %></td>
                         </tr>
                         <tr>
                           <td class="field">登録日</td>

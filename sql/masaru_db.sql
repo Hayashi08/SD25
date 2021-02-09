@@ -197,4 +197,22 @@ CREATE TABLE coupon (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO employee values ('ore', 'sama', '俺様', 'アルバイト', 'oresama@ex.com', '000-0000-0000');
+create view stock_control as select i.item_id,i.item_name,i.item_genre,i.item_max,i.item_min,sum(sd.stock_detail_qty) as stock_qty, sum(od.ordering_detail_qty) as ordering_qty,od.ordering_detail_state, o.ordering_date
+ from item as i
+  left join stock_detail as sd on sd.item_id = i.item_id
+   left join ordering_detail as od on od.item_id = i.item_id and ordering_detail_state = '1'
+    left join ordering as o on o.ordering_id = od.ordering_id and o.ordering_date = (select min(o.ordering_date) from ordering)
+     group by i.item_id;
+create view stock_operation as select s.stock_id,i.item_name,i.item_genre,i.item_max,i.item_min,sd.stock_detail_qty,e.employee_name,s.stock_date
+ from item as i
+  inner join stock_detail as sd on i.item_id = sd.item_id
+   inner join stock as s on s.stock_id = sd.stock_id
+    inner join employee as e on e.employee_id = s.employee_id
+     order by s.stock_id desc;
+create view ordering_operation as select o.ordering_id,i.item_name,i.item_genre,i.item_max,i.item_min,od.ordering_detail_qty,od.ordering_detail_state,e.employee_name,o.ordering_date
+ from item as i
+  inner join ordering_detail as od on i.item_id = od.item_id
+   inner join ordering as o on o.ordering_id = od.ordering_id
+    inner join employee as e on e.employee_id = o.employee_id
+     order by o.ordering_id desc;
 set names cp932;

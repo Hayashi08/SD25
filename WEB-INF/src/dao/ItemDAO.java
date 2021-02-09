@@ -82,14 +82,14 @@ public class ItemDAO extends DAO {
    public ArrayList<ItemBean> searchGenre(String genre) throws Exception {
 
        // // ビューの作成(初回のみ)
-       // String view = "create view stock_control as select i.item_id,i.item_name,i.item_genre,i.item_max,i.item_min,sum(sd.stock_detail_qty) as stock_qty, sum(od.ordering_detail_qty) as ordering_qty,sum(od.ordering_detail_state) as ordering_state, o.ordering_date from item as i left join stock_detail as sd on sd.item_id = i.item_id left join ordering_detail as od on od.item_id = i.item_id and ordering_detail_state = true left join ordering as o on o.ordering_id = od.ordering_id and o.ordering_date = (select min(o.ordering_date) from ordering) group by i.item_id";
+       // String view = "create view stock_control as select i.item_id,i.item_name,i.item_genre,i.item_max,i.item_min,sum(sd.stock_detail_qty) as stock_qty, sum(od.ordering_detail_qty) as ordering_qty,od.ordering_detail_state, o.ordering_date from item as i left join stock_detail as sd on sd.item_id = i.item_id left join ordering_detail as od on od.item_id = i.item_id and ordering_detail_state = '1' left join ordering as o on o.ordering_id = od.ordering_id and o.ordering_date = (select min(o.ordering_date) from ordering) group by i.item_id";
        // PreparedStatement stmt = this.connection.prepareStatement(view);
        // stmt.executeUpdate();
 
        ArrayList<ItemBean> itemBeans = new ArrayList<ItemBean>();
        String sql = "select * from stock_control where item_genre like ?";
        PreparedStatement statement = this.connection.prepareStatement(sql);
-        statement.setString(1, genre);
+        statement.setString(1, "%" + genre + "%");
        ResultSet rs = statement.executeQuery();
            while (rs.next()) {
 
@@ -101,7 +101,7 @@ public class ItemDAO extends DAO {
            itemBean.setMin(rs.getInt(5));
            itemBean.setSumQty(rs.getInt(6));
            itemBean.setOrderSumQty(rs.getInt(7));
-           itemBean.setOrderState(rs.getBoolean(8));
+           itemBean.setOrderState(rs.getString(8));
            itemBean.setOrderDate(rs.getString(9));
            itemBeans.add(itemBean);
            }

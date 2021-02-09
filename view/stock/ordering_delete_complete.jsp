@@ -16,7 +16,7 @@
                 </div>
 
                 <div class="offset-8 col-3 my-3">
-                    <a class="btn btn-primary m-5" href="FrontController?class_name=stock.OrderinIndexAction" role="button">発注管理へ戻る</a>
+                    <a class="btn btn-primary m-5" href="FrontController?class_name=stock.OrderingIndexAction" role="button">発注管理へ戻る</a>
                 </div>
 
             </div>

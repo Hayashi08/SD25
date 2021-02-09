@@ -26,7 +26,7 @@ public class OrderingDAO extends DAO {
         statement.close();
 
         //発注詳細テーブルに登録
-        String sql_detail = "insert into ordering_detail values (0, LAST_INSERT_ID(), ?, ?, true)";
+        String sql_detail = "insert into ordering_detail values (0, LAST_INSERT_ID(), ?, ?, '1')";
         PreparedStatement stmt = this.connection.prepareStatement(sql_detail);
         stmt.setString(1, item_id);
         stmt.setInt(2, qty);
@@ -41,7 +41,7 @@ public class OrderingDAO extends DAO {
    public ArrayList<OrderingBean> search(String keyword) throws Exception {
        
        // // ビューの作成(初回のみ)
-       // String view = "create view ordering_operation as select o.ordering_id,i.item_name,i.item_genre,i.item_max,i.item_min,od.ordering_detail_qty,od.ordering_detail_state,o.employee_id,o.ordering_date from item as i inner join ordering_detail as od on i.item_id = od.item_id inner join ordering as o on o.ordering_id = od.ordering_id order by o.ordering_id desc";
+       // String view = "create view ordering_operation as select o.ordering_id,i.item_name,i.item_genre,i.item_max,i.item_min,od.ordering_detail_qty,od.ordering_detail_state,e.employee_name,o.ordering_date from item as i inner join ordering_detail as od on i.item_id = od.item_id inner join ordering as o on o.ordering_id = od.ordering_id inner join employee as e on e.employee_id = o.employee_id order by o.ordering_id desc";
        // PreparedStatement psview = this.connection.prepareStatement(view);
        // psview.executeUpdate();
 
@@ -58,7 +58,7 @@ public class OrderingDAO extends DAO {
            orderingBean.setId(rs.getString(1));
            orderingBean.setName(rs.getString(2));
            orderingBean.setQty(rs.getInt(3));
-           orderingBean.setState(rs.getBoolean(4));
+           orderingBean.setState(rs.getString(4));
            orderingBean.setDate(rs.getString(5));
            orderingBeans.add(orderingBean);
 
@@ -85,8 +85,8 @@ public class OrderingDAO extends DAO {
             orderingBean.setMax(rs.getInt(4));
             orderingBean.setMin(rs.getInt(5));
             orderingBean.setQty(rs.getInt(6));
-            orderingBean.setState(rs.getBoolean(7));
-            orderingBean.setEmployeeId(rs.getString(8));
+            orderingBean.setState(rs.getString(7));
+            orderingBean.setEmployeeName(rs.getString(8));
             orderingBean.setDate(rs.getString(9));
             
         }
