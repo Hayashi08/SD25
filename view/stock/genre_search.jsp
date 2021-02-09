@@ -98,19 +98,23 @@
                                     <% } %>
                                 </td>
                                 <td>
-                                    <% if (itemBeans.get(i).getOrderState()) { %>
+                                    <% if (itemBeans.get(i).getOrderState() == null) { %>
+                                    未発注
+                                    <% } else if (itemBeans.get(i).getOrderState().equals("1")) { %>
                                     発注中
                                     <% } else { %>
-                                    未発注
+                                    取引済み
                                     <% } %>
                                 </td>
                                 <td>
-                                    <% if (itemBeans.get(i).getOrderState()) { %>
+                                    <% if (itemBeans.get(i).getOrderState() == null) { %>
+                                    <% } else{ %>
                                     <%= itemBeans.get(i).getOrderSumQty() %>
                                     <% } %>
                                 </td>
                                 <td>
-                                    <% if (itemBeans.get(i).getOrderState()) { %>
+                                    <% if (itemBeans.get(i).getOrderState() == null) { %>
+                                    <% } else{ %>
                                         <form action="FrontController" method="POST">
                                             <input type="text" name="class_name" value="stock.StockSignupAction" hidden>
                                             <input type="text" name="item_id" value="<%= itemBeans.get(i).getId() %>" hidden>

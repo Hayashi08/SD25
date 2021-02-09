@@ -63,10 +63,12 @@
                                 <td><%= orderingBeans.get(i).getName() %></td>
                                 <td><%= orderingBeans.get(i).getQty() %></td>
                                 <td>
-                                    <% if (orderingBeans.get(i).getState()) { %>
+                                    <% if (orderingBeans.get(i).getState().equals("1")) { %>
                                     発注中
-                                    <% } else { %>
+                                    <% } else if (orderingBeans.get(i).getState() == null) { %>
                                     未発注
+                                    <% } else { %>
+                                    取引済み
                                     <% } %>
                                 </td>
                                 <td><%= orderingBeans.get(i).getDate() %></td>
