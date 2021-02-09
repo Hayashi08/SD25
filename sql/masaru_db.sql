@@ -80,6 +80,7 @@ CREATE TABLE task (
 	task_qty TINYINT UNSIGNED NOT NULL,
 	task_time TIME NOT NULL,
 	task_comp TIME,
+	task_deploy TIME,
 	PRIMARY KEY (task_id),
 	FOREIGN KEY (menu_id) REFERENCES menu (menu_id),
 	FOREIGN KEY (situation_id) REFERENCES situation (situation_id),
@@ -170,7 +171,7 @@ CREATE TABLE ordering_detail (
 	ordering_id INT UNSIGNED NOT NULL,
 	item_id INT UNSIGNED NOT NULL,
 	ordering_detail_qty SMALLINT UNSIGNED NOT NULL,
-	ordering_detail_state BOOLEAN DEFAULT false,
+	ordering_detail_state CHAR(1) DEFAULT '0',
 	PRIMARY KEY (ordering_detail_id),
 	FOREIGN KEY (ordering_id) REFERENCES ordering (ordering_id),
 	FOREIGN KEY (item_id) REFERENCES item (item_id)
@@ -195,4 +196,5 @@ CREATE TABLE coupon (
 	PRIMARY KEY (coupon_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+INSERT INTO employee values ('ore', 'sama', '俺様', 'アルバイト', 'oresama@ex.com', '000-0000-0000');
 set names cp932;
