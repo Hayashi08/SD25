@@ -1,9 +1,8 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html lang="ja">
     <head>
-        <meta charset="utf-8">
         <title>ログアウト 確認</title>
-        <link rel="stylesheet" href="../css/bootstrap.css">
-        <link rel="stylesheet" href="../css/common.css">
+        <%@ include file="../head.jsp" %>
     </head>
     <body>
         <div class="container-fluid">
@@ -22,8 +21,8 @@
                 
                 <div class="row my-5">
                     <div class="col text-center">
-                      <a class="btn btn-primary mx-5"  href="logged_out.html" role="button">はい</a>
-                      <a class="btn btn-primary mx-5"  href="../top.html" role="button">いいえ</a>
+                      <a class="btn btn-primary mx-5"  href="FrontController?class_name=login.LogoutAction" role="button">はい</a>
+                      <a class="btn btn-primary mx-5"  href="FrontController?class_name=situation.TopAction" role="button">いいえ</a>
                     </div>
                 </div>
             </div>
