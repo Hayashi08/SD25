@@ -14,4 +14,6 @@
     <a class="col-1 p-1 menu_title" href="FrontController?class_name=employee.TopAction">従業員管理</a>
     <a class="col-1 p-1 menu_title" href="FrontController?class_name=service.TopAction">会員サービス</a>
     <a class="col-1 p-1 menu_title" href="FrontController?class_name=login.ConfirmLogoutAction">ログアウト</a>
+    <%= session.getAttribute("id") %>：
+    <%= session.getAttribute("name") %>
 </div>
