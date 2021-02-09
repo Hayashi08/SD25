@@ -2,24 +2,23 @@ package action.stock;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import tool.Action;
 import dao.OrderingDAO;
-
 public class OrderingSignupAction extends Action {
 
     @Override
     public String execute(HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         
-        // パラメータの取得
-        String employee_id = "101";
+        HttpSession session = request.getSession(true);
+        String employee_id = (String) session.getAttribute("id");
         String item_id = request.getParameter("item_id");
         int qty = Integer.parseInt(request.getParameter("qty"));
         
         OrderingDAO orderingDAO = new OrderingDAO();
         boolean flag = orderingDAO.insert(employee_id, item_id, qty);
-        // ちゃんと閉じる！
         orderingDAO.close();
         
         if (flag) {

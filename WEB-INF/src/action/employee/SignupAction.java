@@ -12,7 +12,6 @@ public class SignupAction extends Action {
     public String execute(HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         
-        // パラメータの取得
         String id = request.getParameter("id");
         String pass = request.getParameter("pass");
         String name = request.getParameter("name");
@@ -22,7 +21,6 @@ public class SignupAction extends Action {
         
         EmployeeDAO employeeDAO = new EmployeeDAO();
         boolean flag = employeeDAO.insert(id, pass, name, position, mail, tel);
-        // ちゃんと閉じる！
         employeeDAO.close();
         
         if (flag) {

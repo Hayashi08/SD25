@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import tool.Action;
 import dao.ShiftDAO;
@@ -15,14 +16,13 @@ public class ShiftFormAction extends Action {
     public String execute(HttpServletRequest request,
             HttpServletResponse response) throws Exception {
 
-        // DAOの生成
+        HttpSession session = request.getSession(true);
+        String employee_id = (String) session.getAttribute("id");
+
         ShiftDAO shiftDAO = new ShiftDAO();
-        // DAOメソッドの実行
-        ArrayList<ShiftBean> shiftBeans = shiftDAO.search("103");
-        // ちゃんと閉じる！
+        ArrayList<ShiftBean> shiftBeans = shiftDAO.search(employee_id);
         shiftDAO.close();
         
-        // Beanのリスト(検索結果)をセット
         request.setAttribute("shiftBeans", shiftBeans);
 
         return "/view/employee/shift_signup.jsp";

@@ -1,7 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="bean.ShiftBean" %>
+<%@ page import="javax.servlet.http.HttpSession" %>
 <%
+    String employee_id = (String) session.getAttribute("id");
+    String employee_name = (String) session.getAttribute("name");
 
     ArrayList<ShiftBean> shiftBeans = (ArrayList<ShiftBean>)request.getAttribute("shiftBeans");
 
@@ -40,7 +43,11 @@
             <table class="offset-1 col-10 table table-striped">
                 <tr>
                   <td class="field">従業員ID</td>
-                  <td class="input-group"><input type="text" class="form-control" name="employee_id" maxlength="3" required></td>
+                  <td class="input-group"><input type="text" class="form-control" value="<%= employee_id %>" name="employee_id" maxlength="3" readonly></td>
+                </tr>
+                <tr>
+                  <td class="field">従業員名</td>
+                  <td class="input-group"><input type="text" class="form-control" value="<%= employee_name %>" maxlength="3" readonly></td>
                 </tr>
                 <tr>
                   <td class="field">日付</td>
