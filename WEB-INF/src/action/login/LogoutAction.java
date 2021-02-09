@@ -11,7 +11,7 @@ public class LogoutAction extends Action {
     public String execute(HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         
-        return "view/login/logged_out.jsp";
+        return "/view/login/logged_out.jsp";
     }
 
 }
