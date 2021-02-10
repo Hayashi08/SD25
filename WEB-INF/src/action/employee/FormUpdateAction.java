@@ -15,12 +15,6 @@ public class FormUpdateAction extends Action {
             HttpServletResponse response) throws Exception {
     	
         String id = request.getParameter("id");
-        String name = request.getParameter("name");
-        String genre = request.getParameter("genre");
-        String price = request.getParameter("price");
-        String des = request.getParameter("des");
-        String allergy[]= request.getParameterValues("allergy");
-        String allergy_csv = request.getParameterValues("allergy");
         
         EmployeeDAO employeeDAO = new EmployeeDAO();
         EmployeeBean employeeBean = employeeDAO.detail(id);

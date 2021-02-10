@@ -1,11 +1,15 @@
 package action.stock;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import tool.Action;
 import dao.StockDAO;
+import bean.ItemBean;
+import dao.ItemDAO;
 
 public class StockSignupAction extends Action {
 
@@ -16,17 +20,20 @@ public class StockSignupAction extends Action {
         HttpSession session = request.getSession(true);
         String employee_id = (String) session.getAttribute("id");
         String item_id = request.getParameter("item_id");
+        String genre = request.getParameter("genre");
         
         StockDAO stockDAO = new StockDAO();
-        boolean flag = stockDAO.insert(employee_id, item_id);
+        stockDAO.insert(employee_id, item_id);
         stockDAO.close();
+
+        ItemDAO itemDAO = new ItemDAO();
+        ArrayList<ItemBean> itemBeans = itemDAO.searchGenre(genre);
+        itemDAO.close();
+
+        request.setAttribute("itemBeans", itemBeans);
+        request.setAttribute("genre", genre);
         
-        if (flag) {
-            return "/view/stock/stock_signup_complete.jsp";
-        }
-        else {
-            return "/view/stock/stock_signup_error.jsp";
-        }
+        return "/view/stock/genre_search.jsp";
     }
 
 }

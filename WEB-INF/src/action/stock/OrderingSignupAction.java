@@ -1,10 +1,14 @@
 package action.stock;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import tool.Action;
+import bean.ItemBean;
+import dao.ItemDAO;
 import dao.OrderingDAO;
 public class OrderingSignupAction extends Action {
 
@@ -16,17 +20,20 @@ public class OrderingSignupAction extends Action {
         String employee_id = (String) session.getAttribute("id");
         String item_id = request.getParameter("item_id");
         int qty = Integer.parseInt(request.getParameter("qty"));
+        String genre = request.getParameter("genre");
         
         OrderingDAO orderingDAO = new OrderingDAO();
-        boolean flag = orderingDAO.insert(employee_id, item_id, qty);
+        orderingDAO.insert(employee_id, item_id, qty);
         orderingDAO.close();
+
+        ItemDAO itemDAO = new ItemDAO();
+        ArrayList<ItemBean> itemBeans = itemDAO.searchGenre(genre);
+        itemDAO.close();
+
+        request.setAttribute("itemBeans", itemBeans);
+        request.setAttribute("genre", genre);
         
-        if (flag) {
-            return "/view/stock/ordering_signup_complete.jsp";
-        }
-        else {
-            return "/view/stock/ordering_signup_error.jsp";
-        }
+        return "/view/stock/genre_search.jsp";
     }
 
 }
