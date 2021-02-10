@@ -15,17 +15,12 @@ public class OrderingSearchAction extends Action {
     public String execute(HttpServletRequest request,
             HttpServletResponse response) throws Exception {
 
-        // パラメータの取得
         String keyword = request.getParameter("keyword");
         
-        // DAOの生成
         OrderingDAO orderingDAO = new OrderingDAO();
-        // DAOメソッドの実行
         ArrayList<OrderingBean> orderingBeans = orderingDAO.search(keyword);
-        // ちゃんと閉じる！
         orderingDAO.close();
         
-        // Beanのリスト(検索結果)をセット
         request.setAttribute("orderingBeans", orderingBeans);
         
         return "/view/stock/ordering_search.jsp";

@@ -2,6 +2,7 @@ package action.login;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.LoginDAO;
 
@@ -26,6 +27,18 @@ public class LoginAction extends Action{
             return "/view/login/login_error.jsp";
         }
 		else {
+		    
+		    // セッション開始
+		    HttpSession session = request.getSession(true);
+		    // ID
+		    session.setAttribute("id", employeeBean.getId());
+		    // 名前
+		    session.setAttribute("name", employeeBean.getName());
+		    // 役職
+		    session.setAttribute("position", employeeBean.getPosition());
+		    // タイム
+		    session.setMaxInactiveInterval(1800);
+		    
             return "/view/situation/top.jsp";
         }
 	    

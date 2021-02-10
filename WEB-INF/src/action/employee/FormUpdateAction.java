@@ -14,7 +14,6 @@ public class FormUpdateAction extends Action {
     public String execute(HttpServletRequest request,
             HttpServletResponse response) throws Exception {
     	
-        // パラメータの取得
         String id = request.getParameter("id");
         String name = request.getParameter("name");
         String genre = request.getParameter("genre");
@@ -23,14 +22,10 @@ public class FormUpdateAction extends Action {
         String allergy[]= request.getParameterValues("allergy");
         String allergy_csv = request.getParameterValues("allergy");
         
-        // DAOの生成
         EmployeeDAO employeeDAO = new EmployeeDAO();
-        // DAOメソッドの実行
         EmployeeBean employeeBean = employeeDAO.detail(id);
-        // ちゃんと閉じる！
         employeeDAO.close();
         
-        // Beanのリスト(検索結果)をセット
         request.setAttribute("employeeBean", employeeBean);
         
         return "/view/employee/update.jsp";

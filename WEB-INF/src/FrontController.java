@@ -15,6 +15,11 @@ public class FrontController extends HttpServlet {
 	    response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		
+		// セッションチェック
+		if (request.getSession(true).getAttribute("id") == null) {
+            response.sendRedirect("/SD25/");
+        }
+		
 		try {
 			
 			String class_name = request.getParameter("class_name");

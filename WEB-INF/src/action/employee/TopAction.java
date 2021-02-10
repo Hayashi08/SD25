@@ -15,14 +15,10 @@ public class TopAction extends Action {
     public String execute(HttpServletRequest request,
             HttpServletResponse response) throws Exception {
 
-        // DAOの生成
         ShiftDAO shiftDAO = new ShiftDAO();
-        // DAOメソッドの実行
         ArrayList<ShiftBean> shiftBeans = shiftDAO.search("*");
-        // ちゃんと閉じる！
         shiftDAO.close();
         
-        // Beanのリスト(検索結果)をセット
         request.setAttribute("shiftBeans", shiftBeans);
 
         return "/view/employee/top.jsp";

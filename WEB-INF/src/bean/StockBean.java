@@ -10,6 +10,7 @@ public class StockBean {
     private int min = 0;
     private int qty = 0;
     private String employee_id = "";
+    private String employee_name = "";
     private String date = "";
     private String orderid = "";
     private int orderqty = 0;
@@ -56,6 +57,12 @@ public class StockBean {
 	}
 	public void setEmployeeId(String employee_id) {
 		this.employee_id = employee_id;
+	}
+	public String getEmployeeName() {
+		return employee_name;
+	}
+	public void setEmployeeName(String employee_name) {
+		this.employee_name = employee_name;
 	}
 	public String getDate() {
 		return date;

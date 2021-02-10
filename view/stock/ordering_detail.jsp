@@ -52,16 +52,18 @@
                         <tr>
                           <td class="field">発注状況</td>
                           <td class="input-group">
-                              <% if (orderingBean.getState()) { %>
+                              <% if (orderingBean.getState().equals("1")) { %>
                               発注中
-                              <% } else { %>
+                              <% } else if (orderingBean.getState() == null) { %>
                               未発注
+                              <% } else { %>
+                              取引済み
                               <% } %>
                           </td>
                         </tr>
                         <tr>
                           <td class="field">従業員名</td>
-                          <td class="input-group"><%= orderingBean.getEmployeeId() %></td>
+                          <td class="input-group"><%= orderingBean.getEmployeeName() %></td>
                         </tr>
                         <tr>
                           <td class="field">登録日</td>

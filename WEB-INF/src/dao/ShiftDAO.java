@@ -10,7 +10,6 @@ import bean.ShiftBean;
 public class ShiftDAO extends DAO {
     
     // コンストラクタ
-    // 親コンストラクタを呼び出し
     public ShiftDAO() throws Exception {
         super();
     }
@@ -26,51 +25,43 @@ public class ShiftDAO extends DAO {
         statement.setString(4, end);
         statement.executeUpdate();
         
-        // ちゃんと閉じる！
         statement.close();
         return true;
         
     }
 
     //  シフト検索処理
-    public ArrayList<ShiftBean> search(String id) throws Exception {
+    public ArrayList<ShiftBean> search(String employee_id) throws Exception {
+
         PreparedStatement statement;
-        // Beanのリスト
         ArrayList<ShiftBean> shiftBeans = new ArrayList<ShiftBean>();
         
-        if (id == "*") {
-            // SQL文
+        //シフト管理トップページ(全件検索)
+        if (employee_id == "*") {
+
             String sql = "select shift.shift_id, shift.shift_date,shift_start,shift.shift_end,employee.employee_name from shift inner join employee on shift.employee_id = employee.employee_id";
-            // STATEMENTの生成
             statement = this.connection.prepareStatement(sql);
+
+        //シフト登録画面(1件検索)
         }else{
-            // SQL文
+
             String sql = "select shift.shift_id, shift.shift_date,shift_start,shift.shift_end,employee.employee_name from shift inner join employee on shift.employee_id = employee.employee_id where shift.employee_id = ?";
-            // STATEMENTの生成
             statement = this.connection.prepareStatement(sql);
-            // パラメータの挿入(ワイルドカード使用)
-            statement.setString(1, id);
+            statement.setString(1, employee_id);
+
         }
-        // 検索結果を受け取る
         ResultSet rs = statement.executeQuery();
-        
-        // 検索結果をBeanのリストに格納
         while (rs.next()) {
-            // Beanの生成
+
             ShiftBean shiftBean = new ShiftBean();
-            
-            // カラムの値をBeanに格納
             shiftBean.setId(rs.getString(1));
             shiftBean.setDate(rs.getString(2));
             shiftBean.setStart(rs.getString(3));
             shiftBean.setEnd(rs.getString(4));
             shiftBean.setName(rs.getString(5));
-            
-            // Beanをリストに追加
             shiftBeans.add(shiftBean);
         }
         
-        // ちゃんと閉じる！
         statement.close();
         return shiftBeans;
         
@@ -86,7 +77,6 @@ public class ShiftDAO extends DAO {
         statement.setString(3, id);
         statement.executeUpdate();
         
-        // ちゃんと閉じる！
         statement.close();
         return true;
         
@@ -100,7 +90,6 @@ public class ShiftDAO extends DAO {
         statement.setString(1, id);
         statement.executeUpdate();
         
-        // ちゃんと閉じる！
         statement.close();
         
     }

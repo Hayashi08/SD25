@@ -12,7 +12,6 @@ public class ItemSignupAction extends Action {
     public String execute(HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         
-        // パラメータの取得
         String name = request.getParameter("name");
         String genre = request.getParameter("genre");
         int max = Integer.parseInt(request.getParameter("max"));
@@ -20,7 +19,6 @@ public class ItemSignupAction extends Action {
         
         ItemDAO itemDAO = new ItemDAO();
         boolean flag = itemDAO.insert(name, genre, max, min);
-        // ちゃんと閉じる！
         itemDAO.close();
         
         if (flag) {

@@ -10,7 +10,7 @@ public class ItemBean {
     private int min = 0;
     private int sumqty = 0;
     private int ordersumqty = 0;
-    private boolean orderstate = false;
+    private String orderstate = "0";
     private String orderdate = "";
     
     // ゲッターセッター
@@ -56,10 +56,10 @@ public class ItemBean {
 	public void setOrderSumQty(int ordersumqty) {
 		this.ordersumqty = ordersumqty;
 	}
-	public boolean getOrderState() {
+	public String getOrderState() {
 		return orderstate;
 	}
-	public void setOrderState(boolean orderstate) {
+	public void setOrderState(String orderstate) {
 		this.orderstate = orderstate;
 	}
 	public String getOrderDate() {
