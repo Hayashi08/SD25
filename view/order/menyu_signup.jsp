@@ -176,7 +176,7 @@
         <script type="text/javascript">
             $(function () {
               $('#btn').click(function() {
-                $('#modal_sex').val($('#sex').val());
+                $('#modal_name').val($('#name').val());
                 $('#modal_genre').val($('#genre').val());
                 $('#modal_price').val($('#price').val());
                 $('#modal_des').val($('#des').val());

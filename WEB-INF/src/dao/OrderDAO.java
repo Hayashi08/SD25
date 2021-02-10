@@ -123,14 +123,48 @@ public class OrderDAO extends DAO {
     }
     
 
-    // タスク全件検索
-    public ArrayList<TaskBean> searchall_task() throws Exception {
+    // タスクundeployed検索
+    public ArrayList<TaskBean> search_undeployed() throws Exception {
         
         // Beanのリスト
         ArrayList<TaskBean> taskBeans = new ArrayList<TaskBean>();
         
         // SQL文
-        String sql = "select * from task";
+        String sql = "select * from task where task_deploy is null";
+        // STATEMENTの生成
+        PreparedStatement statement = this.connection.prepareStatement(sql);
+        // 検索結果を受け取る
+        ResultSet rSet = statement.executeQuery();
+        
+        // 検索結果をBeanのリストに格納
+        while (rSet.next()) {
+            // Beanの生成
+            TaskBean taskBean = new TaskBean();
+            
+            // カラムの値をBeanに格納
+            taskBean.setTask_id(rSet.getInt(1));
+            taskBean.setMenu_id(rSet.getInt(2));
+            taskBean.setSituation_id(rSet.getInt(3));
+            taskBean.setFloor_id(rSet.getString(4));
+            taskBean.setTask_qty(rSet.getInt(5));
+            taskBean.setTask_time(rSet.getString(6));
+            taskBean.setTask_comp(rSet.getString(7));
+            taskBean.setTask_deploy(rSet.getString(8));
+            // Beanをリストに追加
+           taskBeans.add(taskBean);
+        }
+        
+        return taskBeans;
+        
+    }
+    // タスクdeployed検索
+    public ArrayList<TaskBean> search_deployed() throws Exception {
+        
+        // Beanのリスト
+        ArrayList<TaskBean> taskBeans = new ArrayList<TaskBean>();
+        
+        // SQL文
+        String sql = "select * from task where task_deploy is not null";
         // STATEMENTの生成
         PreparedStatement statement = this.connection.prepareStatement(sql);
         // 検索結果を受け取る

@@ -3,7 +3,6 @@
 <%@ page import="bean.TaskBean" %>
 <%
 
-		System.out.println("p3");
     ArrayList<TaskBean> taskBeans = (ArrayList<TaskBean>)request.getAttribute("TaskBeans");
     
 %>
@@ -67,7 +66,6 @@
                           <td><%= taskBeans.get(i).getSituation_id() %></td>
                           <td><%= taskBeans.get(i).getMenu_id() %></td>
                           <td><%= taskBeans.get(i).getTask_qty() %></td>
-                          <td><%= taskBeans.get(i).getTask_time() %></td>
                           <td><%= taskBeans.get(i).getTask_time() %></td>
                           <td></td>
                           <td></td>

@@ -21,10 +21,10 @@
                           <a class="btn btn-primary"  href="FrontController?class_name=order.FormMenyu_TopAction" role="button">メニュー管理</a>
                       </div>
                       <div class="col-2 offset-2">
-                          <a class="btn btn-primary"  href="FrontController?class_name=order.FormMiteikyou_TopAction" role="button">未提供一覧</a>
+                          <a class="btn btn-primary"  href="FrontController?class_name=order.Miteikyou_TopAction" role="button">未提供一覧</a>
                       </div>
                       <div class="col-2 offset-2">
-                          <a class="btn btn-primary"  href="FrontController?class_name=order.FormTyuumonzyoukyou_TopAction" role="button">注文状況管理</a>
+                          <a class="btn btn-primary"  href="FrontController?class_name=order.Tyuumonzyoukyou_TopAction" role="button">注文状況管理</a>
                       </div>
                     </div>
                     </div>
