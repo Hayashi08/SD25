@@ -18,7 +18,7 @@ public class Tyuumonzyoukyou_TopAction extends Action {
         // DAOの生成
         OrderDAO orderDAO = new OrderDAO();
         // DAOメソッドの実行
-        ArrayList<TaskBean> taskBeans = orderDAO.search_deployed();
+        ArrayList<TaskBean> taskBeans = orderDAO.search_undeployed();
         // ちゃんと閉じる！
         orderDAO.close();
 

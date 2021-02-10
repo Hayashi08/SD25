@@ -68,7 +68,7 @@
                           <td><%= taskBeans.get(i).getMenu_id() %></td>
                           <td><%= taskBeans.get(i).getTask_qty() %></td>
                           <td><%= taskBeans.get(i).getTask_time() %></td>
-                          <td><%= taskBeans.get(i).getTask_time() %></td>
+                          <td><%= taskBeans.get(i).getTask_deploy() %></td>
                           <td></td>
                           <td></td>
                           <td><a class="btn btn-primary" href="" role="button">提供完了</a></td>

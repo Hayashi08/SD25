@@ -130,7 +130,7 @@ public class OrderDAO extends DAO {
         ArrayList<TaskBean> taskBeans = new ArrayList<TaskBean>();
         
         // SQL文
-        String sql = "select * from task where task_deploy is null";
+        String sql = "select * from task where task_deploy is null and task_comp is null";
         // STATEMENTの生成
         PreparedStatement statement = this.connection.prepareStatement(sql);
         // 検索結果を受け取る
@@ -164,7 +164,7 @@ public class OrderDAO extends DAO {
         ArrayList<TaskBean> taskBeans = new ArrayList<TaskBean>();
         
         // SQL文
-        String sql = "select * from task where task_deploy is not null";
+        String sql = "select * from task where task_deploy is not null and task_comp is null";
         // STATEMENTの生成
         PreparedStatement statement = this.connection.prepareStatement(sql);
         // 検索結果を受け取る
