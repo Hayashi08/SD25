@@ -14,15 +14,14 @@ public class FrontController extends HttpServlet {
 	    request.setCharacterEncoding("UTF-8");
 	    response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
+		String class_name = request.getParameter("class_name");
 		
 		// セッションチェック
-		if (request.getSession(true).getAttribute("id") == null) {
+		if (request.getSession(true).getAttribute("id") == null && !class_name.equals("login.LoginAction")) {
             response.sendRedirect("/SD25/");
         }
 		
 		try {
-			
-			String class_name = request.getParameter("class_name");
 			class_name = "action." + class_name;
 			Action action = (Action)Class.forName(class_name).newInstance();
 			String url = action.execute(request, response);
