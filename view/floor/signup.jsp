@@ -92,23 +92,23 @@
                 <table class="offset-1 col-10 table table-striped">
                     <tr>
                       <td class="field">階</td>
-                      <td class="input-group"><input type="text" class="form-control" id="modal_floor" name="floor" maxlength="1" required></td>
+                      <td class="input-group"><input type="text" class="form-control" id="modal_floor" name="floor" maxlength="1" readonly></td>
                     </tr>
                     <tr>
                       <td class="field">部屋番号</td>
-                      <td class="input-group"><input type="text" class="form-control" id="modal_floor_number" name="floor_number" maxlength="1" required></td>
+                      <td class="input-group"><input type="text" class="form-control" id="modal_floor_number" name="floor_number" maxlength="1" readonly></td>
                     </tr>
                     <tr>
                       <td class="field">収容人数</td>
-                      <td class="input-group"><input type="text" class="form-control" id="modal_cap" name="cap" maxlength="24" required></td>
+                      <td class="input-group"><input type="text" class="form-control" id="modal_cap" name="cap" maxlength="24" readonly></td>
                     </tr>
                     <tr>
                       <td class="field">機材状況</td>
-                      <td class="input-group"><input type="text" class="form-control" id="modal_machine" name="machine" maxlength="24" required></td>
+                      <td class="input-group"><input type="text" class="form-control" id="modal_machine" name="machine" maxlength="24" readonly></td>
                     </tr>
                     <tr>
                       <td class="field">清掃状況</td>
-                      <td class="input-group"><input type="text" class="form-control" id="modal_state" name="state" maxlength="32" required></td>
+                      <td class="input-group"><input type="text" class="form-control" id="modal_state" name="state" maxlength="32" readonly></td>
                     </tr>
                 </table>
                 <div class="row">
