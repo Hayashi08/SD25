@@ -42,19 +42,30 @@
                         </div>
                     
                     </form>
+                    
+                    <% if (userBeans.size() == 0) { %>
+                        <div class="h3 m-5 col text-center">
+							検索結果はありませんでした
+                        </div>
+                    <% }else{ %>
 
                     <table class="offset-3 col-6 table table-striped">
                         <tr>
                           <th class="field">会員ID</th>
+                          <th class="field">氏名</th>
                           <th class="field">DATE</th>
+                          <th class="field">詳細</th>
                         </tr>
                         <% for (int i=0; i < userBeans.size(); i++) { %>
                             <tr>
                                 <td><%= userBeans.get(i).getId() %></td>
+                                <td><%= userBeans.get(i).getName() %></td>
                                 <td><%= userBeans.get(i).getDate() %></td>
+                                <td><a class="btn btn-primary" href="FrontController?class_name=user.DetailAction&id=<%=userBeans.get(i).getId()%>" role="button">詳細</a></td>
                             </tr>
                         <% } %>
                     </table>
+                    <% } %>
                 </div>
 
                 <div class="offset-8 col-3 my-3">

@@ -111,4 +111,81 @@ public class UserDAO extends DAO {
         
     }
     
+    
+    // 会員詳細
+    public UserBean detail(String id) throws Exception {
+        
+        // Beanの生成
+        UserBean userBean = new UserBean();
+        
+        // SQL文
+        String sql = "select * from user where user_id = ?";
+        // STATEMENTの生成
+        PreparedStatement statement = this.connection.prepareStatement(sql);
+        // パラメータの挿入
+        statement.setString(1, id);
+        // 詳細情報取得
+        ResultSet rSet = statement.executeQuery();
+        
+        // 詳細情報をBeanに格納
+        if (rSet.next()) {
+
+            userBean.setId(rSet.getString(1));
+            userBean.setPass(rSet.getString(2));
+            userBean.setName(rSet.getString(3));
+            userBean.setSex(rSet.getString(4));
+            userBean.setBirth(rSet.getString(5));
+            userBean.setMail(rSet.getString(6));
+            userBean.setTel(rSet.getString(7));
+            userBean.setJob(rSet.getString(8));
+            userBean.setCredit(rSet.getString(9));
+            userBean.setRank(rSet.getString(10));
+            userBean.setDate(rSet.getString(11));
+            
+        }
+        
+        // ちゃんと閉じる！
+        statement.close();
+        return userBean;
+    }
+    
+    
+    // 会員更新処理
+    public boolean update(String id, String pass, String name, String sex, String birth, String mail, String tel, String job, String credit, String rank, String date) throws Exception {
+
+        String sql = "update user set user_id = ?, user_pass = ?, user_name = ?, user_sex = ?, user_birth = ?, user_mail = ?, user_tel = ?, user_job = ?, user_credit = ?, user_rank = ?, user_date = ?";
+        PreparedStatement statement = this.connection.prepareStatement(sql);
+        statement.setString(1, id);
+        statement.setString(2, pass);
+        statement.setString(3, name);
+        statement.setString(4, sex);
+        statement.setString(5, birth);
+        statement.setString(6, mail);
+        statement.setString(7, tel);
+        statement.setString(8, job);
+        statement.setString(9, credit);
+        statement.setString(10, rank);
+        statement.setString(11, date);
+        statement.executeUpdate();
+        
+        // ちゃんと閉じる！
+        statement.close();
+        return true;
+        
+    }
+    
+    
+    // 会員削除処理
+    public void delete(String id) throws Exception {
+
+        String sql = "delete from user where user_id = ?";
+        PreparedStatement statement = this.connection.prepareStatement(sql);
+        statement.setString(1, id);
+        statement.executeUpdate();
+        
+        // ちゃんと閉じる！
+        statement.close();
+        
+    }
+    
 }
