@@ -59,7 +59,9 @@
 
                     <div class="row my-3">
                         <div class="col-2 offset-4">
-                            <a class="btn btn-primary"  href="FrontController?class_name=order.MenyuUpdateAction&id=<%=orderBean.getMenu_id()%>" role="button">編集</a>
+                            <a class="btn btn-primary"  href="FrontController?class_name=order.FormMenyuUpdateAction&id=<%=orderBean.getMenu_id()%>" role="button">
+                            	編集
+                            </a>
                         </div>
                         <div class="col-2 offset-1">
                             <div class="btn btn-primary" id="btn" data-toggle="modal" data-target="#modal1">

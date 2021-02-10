@@ -16,6 +16,12 @@ public class FormUpdateAction extends Action {
     	
         // パラメータの取得
         String id = request.getParameter("id");
+        String name = request.getParameter("name");
+        String genre = request.getParameter("genre");
+        String price = request.getParameter("price");
+        String des = request.getParameter("des");
+        String allergy[]= request.getParameterValues("allergy");
+        String allergy_csv = request.getParameterValues("allergy");
         
         // DAOの生成
         EmployeeDAO employeeDAO = new EmployeeDAO();

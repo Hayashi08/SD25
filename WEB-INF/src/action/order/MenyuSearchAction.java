@@ -31,11 +31,6 @@ public class MenyuSearchAction extends Action {
         // Beanのリスト(検索結果)をセット
         
         request.setAttribute("OrderBeans", orderBeans);
-        
-        for (int i=0; i < orderBeans.size(); i++) {
-	        System.out.println(orderBeans.get(i).getMenu_id());
-	        System.out.println("aaa");
-    	}
 
 		return "/view/order/menyu_search.jsp";
 	}

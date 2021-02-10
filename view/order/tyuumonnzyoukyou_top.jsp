@@ -1,4 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="bean.TaskBean" %>
+<%
+
+		System.out.println("p3");
+    ArrayList<TaskBean> taskBeans = (ArrayList<TaskBean>)request.getAttribute("TaskBeans");
+    
+%>
 <html lang="ja">
     <head>
         <title>注文状況管理</title>
@@ -16,33 +24,64 @@
                 </div>
 
                 <div class="offset-1 col-10 p-5 main">
+                
+                    <form action="FrontController" method="POST">
+                        <input type="text" name="class_name" value="order.TyuumonnzyoukyouSearchAction" hidden>
+                    
                     <div class="row">
                         <div class="offset-3 sub_title">
                             注文状況検索
                         </div>
-                        <div class="offset-5 mt-3 col-5">
-                            <input type="text" class="form-control">
+                    </div>
+                    <div class="row mt-4">
+                        <div class="input-group offset-3 col-6">
+                            <input type="search" name="keyword" class="form-control" maxlength="16" placeholder="を入力してください" required>
+                            <div class="input-group-append">
+                                <input type="submit" class="btn btn-primary" value="検索" role="button">
+                            </div>
                         </div>
                     </div>
-                    <div class="row my-3">
-                        <div class="col-2 offset-4">
-                            <a class="btn btn-primary"  href="tyuumonnzyoukyou_search.html" role="button">検索</a>
-                        </div>
-                        <div class="col-2 offset-1">
-                            <a class="btn btn-primary" href="tyuumonnzyoukyou_top.html" role="button">クリア</a>
-                        </div>
+                    
+                    
+                    <div class=" p-3 sub_title">
+                        検索結果
                     </div>
-                    <div class="row mt-5">
-                        <div class="offset-3 sub_title">
-                            注文内容登録
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-2 offset-5" text-center>
-                            <a class="btn btn-primary"  href="FrontController?class_name=order.FormSignupAction2" role="button" text-center>注文登録</a>
-                        </div>
-                    </div>
+                    <table class="col-12 table table-striped">
+                        <tr>
+                          <th class="field">注文番号</th>
+                          <th class="field">部屋ID</th>
+                          <th class="field">利用ID</th>
+                          <th class="field">注文内容</th>
+                          <th class="field">数量</th>
+                          <th class="field">注文時間</th>
+                          <th class="field">性別</th>
+                          <th class="field">年齢層</th>
+                          <th class="field">注文状況変更</th>
+                        </tr>
+                        
+                        <% for (int i=0; i < taskBeans.size(); i++) { %>
+                        
+                        <tr>
+                          <td><%= taskBeans.get(i).getTask_id() %></td>
+                          <td><%= taskBeans.get(i).getFloor_id() %></td>
+                          <td><%= taskBeans.get(i).getSituation_id() %></td>
+                          <td><%= taskBeans.get(i).getMenu_id() %></td>
+                          <td><%= taskBeans.get(i).getTask_qty() %></td>
+                          <td><%= taskBeans.get(i).getTask_time() %></td>
+                          <td><%= taskBeans.get(i).getTask_time() %></td>
+                          <td></td>
+                          <td></td>
+                          <td><a class="btn btn-primary" href="" role="button">提供完了</a></td>
+                        </tr>
+                        
+                        <%}%>
+                    </table>
                 </div>
+                    
+                    
+                </div>
+                
+                
 
                 <div class="offset-8 col-3 my-3">
                     <a class="btn btn-primary m-5" href="FrontController?class_name=order.TopAction" role="button">注文管理トップページへ</a>

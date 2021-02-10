@@ -4,8 +4,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import bean.EmployeeBean;
 import bean.OrderBean;
+import bean.TaskBean;
 
 import tool.DAO;
 
@@ -16,8 +16,8 @@ public class OrderDAO extends DAO {
     public OrderDAO() throws Exception {
         super();
     }
-    
-    // userテーブルへインサート
+
+    // menuテーブルへインサート
     public boolean insert(String name, String genre, String price, String des, String allergy) throws Exception {
 
         String sql = "insert into menu values ( 0, ?, ?, ?, curdate(), curdate(), ?,?)";
@@ -33,9 +33,26 @@ public class OrderDAO extends DAO {
         return true;
         
     }
+    // taskテーブルへインサート
+    public boolean insert_task(String floor_id, String situation_id, String task_time, String menu_id, String task_qty) throws Exception {
+
+        String sql = "insert into task values ( 0, ?, ?, ?, ?, ?, ?)";
+        PreparedStatement statement = this.connection.prepareStatement(sql);
+        statement.setString(1, menu_id);
+        statement.setString(2, situation_id);
+        statement.setString(3, floor_id);
+        statement.setString(4, task_qty);
+        statement.setString(5, task_time);
+        statement.setString(6, null);
+        statement.executeUpdate();
+        // ちゃんと閉じる！
+        statement.close();
+        return true;
+        
+    }
     
 
-    // 会員検索
+    // メニュー検索
     public ArrayList<OrderBean> search(String keyword) throws Exception {
         
         // Beanのリスト
@@ -72,8 +89,76 @@ public class OrderDAO extends DAO {
         return orderBeans;
         
     }
+    // メニュー検索
+    public OrderBean search_byid(String id) throws Exception {
+        
+        // Beanのリスト
+        OrderBean orderBean = new OrderBean();
+        
+        // SQL文
+        String sql = "select * from menu where menu_id = ?";
+        // STATEMENTの生成
+        PreparedStatement statement = this.connection.prepareStatement(sql);
+        // パラメータの挿入
+        statement.setString(1,id);
+        // 検索結果を受け取る
+        ResultSet rSet = statement.executeQuery();
+        
+        if(rSet.next()){
+            orderBean.setMenu_id(Integer.parseInt(rSet.getString(1)));
+            orderBean.setMenu_name(rSet.getString(2));
+            orderBean.setMenu_genre(rSet.getString(3));
+            orderBean.setMenu_price(Integer.parseInt(rSet.getString(4)));
+            orderBean.setMenu_create(rSet.getString(5));
+            orderBean.setMenu_update(rSet.getString(6));
+            orderBean.setMenu_des(rSet.getString(7));
+            orderBean.setMenu_allergy(rSet.getString(8));
+            
+        	return orderBean;
+        }
+        else{
+        	return null;
+        }
+        
+    }
+    
 
-    // 従業員詳細
+    // タスク全件検索
+    public ArrayList<TaskBean> searchall_task() throws Exception {
+        
+        // Beanのリスト
+        ArrayList<TaskBean> taskBeans = new ArrayList<TaskBean>();
+        
+        // SQL文
+        String sql = "select * from task";
+        // STATEMENTの生成
+        PreparedStatement statement = this.connection.prepareStatement(sql);
+        // 検索結果を受け取る
+        ResultSet rSet = statement.executeQuery();
+        
+        // 検索結果をBeanのリストに格納
+        while (rSet.next()) {
+            // Beanの生成
+            TaskBean taskBean = new TaskBean();
+            
+            // カラムの値をBeanに格納
+            taskBean.setTask_id(rSet.getInt(1));
+            taskBean.setMenu_id(rSet.getInt(2));
+            taskBean.setSituation_id(rSet.getInt(3));
+            taskBean.setFloor_id(rSet.getString(4));
+            taskBean.setTask_qty(rSet.getInt(5));
+            taskBean.setTask_time(rSet.getString(6));
+            taskBean.setTask_comp(rSet.getString(7));
+            taskBean.setTask_deploy(rSet.getString(8));
+            // Beanをリストに追加
+           taskBeans.add(taskBean);
+        }
+        
+        return taskBeans;
+        
+    }
+
+    // 詳細
     public OrderBean detail(String id) throws Exception {
         
         // Beanの生成
@@ -115,6 +200,33 @@ public class OrderDAO extends DAO {
         
         // ちゃんと閉じる！
         statement.close();
+        
+    }
+    // 更新処理
+    public boolean update(String id, String name, String genre, String price, String des, String allergy) throws Exception {
+    	if(allergy.equals("")){
+    		allergy = "なし";
+    	}if(des.equals("")){
+    		des = "なし";
+    	}
+        String sql = "update menu set menu_name = ?, menu_genre = ?, " +
+        			 			     "menu_price = ?, menu_update = curdate(), " +
+        			 			     "menu_des = ?, menu_allergy = ? " +
+        			 			     "where menu_id = ?";
+        PreparedStatement statement = this.connection.prepareStatement(sql);
+        statement.setString(1, name);
+        statement.setString(2, genre);
+        statement.setString(3, price);
+        statement.setString(4, des);
+        statement.setString(5, allergy);
+        statement.setString(6, id);
+        //System.out.println(statement.toString());
+        statement.executeUpdate();
+        
+        
+        // ちゃんと閉じる！
+        statement.close();
+        return true;
         
     }
 

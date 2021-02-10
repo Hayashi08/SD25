@@ -52,7 +52,6 @@
                           <th class="field">メニュー名</th>
                           <th class="field">詳細</th>
                         </tr>
-                        <% System.out.println("bbb");%>
                         <% for (int i=0; i < orderBeans.size(); i++) { %>
                             <tr>
                                 <td><%= orderBeans.get(i).getMenu_id() %></td>

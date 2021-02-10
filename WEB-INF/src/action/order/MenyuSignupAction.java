@@ -20,19 +20,11 @@ public class MenyuSignupAction extends Action {
         String genre = request.getParameter("genre");
         String price = request.getParameter("price");
         String des = request.getParameter("des");
-        String allergy[]= request.getParameterValues("allergy");
-        String allergy_csv="なし";
-        if(allergy != null){
-
-    		allergy_csv=allergy[0];
-        	for(int i = 1 ; i < allergy.length;i++){
-        		allergy_csv += "," + allergy[i];
-        	}
-        	
-        }
+        String allergy= request.getParameter("allergy");
+        
 
         OrderDAO orderDAO = new OrderDAO();
-        boolean flag = orderDAO.insert(name,genre,price,des,allergy_csv);
+        boolean flag = orderDAO.insert(name,genre,price,des,allergy);
         // ちゃんと閉じる！
         orderDAO.close();
         
