@@ -76,18 +76,27 @@
                           
                           <td class="input-group">
                             <div class="form-check">
-                                <input type="radio" class="form-check-input" name="sex<%= i %>" value="男">
+                                <input type="radio" class="form-check-input" name="sex<%= i %>" value="男" checked>
                                 <label class="form-check-label" for="male">男</label>
                             </div>
                             <div class="form-check ml-3">
-                                <input type="radio" class="form-check-input" name="sex<%= i %>" value="女" checked>
+                                <input type="radio" class="form-check-input" name="sex<%= i %>" value="女">
                                 <label class="form-check-label" for="female">女</label>
                             </div>
                               <input type="text" name="i" value="<%= i %>" hidden>
                           </td>
                           
-                          <td class="">
-                          	<input type="number" min="0" value="0" name="age" width="" class="form-control">
+                          <td>
+                            <select name="age" size="1">
+                                <option value="未入力" selected>未入力
+                                <option value="子ども">子ども
+                                <option value="10代">10代
+                                <option value="20代">20代
+                                <option value="30代">30代
+                                <option value="40代">40代
+                                <option value="50代">50代
+                                <option value="シニア">シニア
+                            </select>
                           </td>
 							
                           <td>
