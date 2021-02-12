@@ -176,7 +176,7 @@
       
         </form>
                         <tr>
-                          <td class="field">有効期限</td>
+                          <td class="field">登録日</td>
                           <td class="input-group"><input type="date" class="form-control" id="date" maxlength="8" value="<%= userBean.getDate() %>" required></td>
                         </tr>
                     </table>
@@ -243,7 +243,7 @@
                       <td class="input-group"><input type="text" class="form-control" id="modal_rank" name="rank" maxlength="1" readonly></td>
                     </tr>
                     <tr>
-                      <td class="field">有効期限</td>
+                      <td class="field">登録日</td>
                       <td class="input-group"><input type="date" class="form-control" id="modal_date" name="date" maxlength="8" readonly></td>
                     </tr>
                 </table>

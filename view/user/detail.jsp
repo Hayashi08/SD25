@@ -54,21 +54,21 @@
                           <td class="input-group"><%= userBean.getTel() %></td>
                         </tr>
                         <tr>
-                          <td class="field">信用度</td>
+                          <td class="field">職業</td>
                           <td class="input-group"><%= userBean.getJob() %></td>
                         </tr>
                         <tr>
-                          <td class="field">ランク</td>
+                          <td class="field">信頼度</td>
                           <td class="input-group"><%= userBean.getCredit() %></td>
                         </tr>
                         <tr>
                           <!--  -->
-                          <td class="field">職業(任意)</td>
+                          <td class="field">ランク</td>
                           <td class="input-group"><%= userBean.getRank() %></td>
                         </tr>
                         <tr>
                           <!--  -->
-                          <td class="field">有効期限</td>
+                          <td class="field">登録日</td>
                           <td class="input-group"><%= userBean.getDate() %></td>
                         </tr>
                     </table>

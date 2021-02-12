@@ -53,7 +53,7 @@
                         <tr>
                           <th class="field">会員ID</th>
                           <th class="field">氏名</th>
-                          <th class="field">DATE</th>
+                          <th class="field">登録日</th>
                           <th class="field">詳細</th>
                         </tr>
                         <% for (int i=0; i < userBeans.size(); i++) { %>

@@ -196,7 +196,17 @@ CREATE TABLE coupon (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- インサート文
-INSERT INTO employee values ('ore', 'sama', '俺様', 'アルバイト', 'oresama@ex.com', '000-0000-0000');
+
+-- 従業員
+INSERT INTO employee VALUES ('ore', 'sama', '俺様', 'アルバイト', 'oresama@ex.com', '000-0000-0000');
+-- 会員
+INSERT INTO user VALUES ('hirata', 'hirata', '平田 勇希', '男', '1999-12-31', 'hirata@example.com', '000-0000-0000', '学生', '1', '5', '2015-04-01');
+-- フロア
+INSERT INTO floor VALUES ('107', 6, '良', '済', '未');
+INSERT INTO floor VALUES ('201', 6, '可', '未', '未');
+INSERT INTO floor VALUES ('305', 6, '不', '済', '未');
+INSERT INTO floor VALUES ('410', 12, '良', '済', '未');
+INSERT INTO floor VALUES ('506', 6, '可', '済', '未');
 
 -- ビュー
 create view stock_control as select i.item_id,i.item_name,i.item_genre,i.item_max,i.item_min,sum(sd.stock_detail_qty) as stock_qty, sum(od.ordering_detail_qty) as ordering_qty,od.ordering_detail_state, o.ordering_date
