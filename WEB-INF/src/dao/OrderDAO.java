@@ -123,14 +123,87 @@ public class OrderDAO extends DAO {
     }
     
 
-    // タスクundeployed検索
-    public ArrayList<TaskBean> search_undeployed() throws Exception {
+ // タスクundeployed全件検索
+    public ArrayList<TaskBean> searchall_undeployed() throws Exception {
         
         // Beanのリスト
         ArrayList<TaskBean> taskBeans = new ArrayList<TaskBean>();
         
         // SQL文
-        String sql = "select * from task where task_deploy is null and task_comp is null";
+        String sql = "select * from task where task_deploy is null and task_comp is null  order by task_time asc";
+        // STATEMENTの生成
+        PreparedStatement statement = this.connection.prepareStatement(sql);
+        // 検索結果を受け取る
+
+        ResultSet rSet = statement.executeQuery();
+        
+        // 検索結果をBeanのリストに格納
+        while (rSet.next()) {
+            // Beanの生成
+            TaskBean taskBean = new TaskBean();
+            
+            // カラムの値をBeanに格納
+            taskBean.setTask_id(rSet.getInt(1));
+            taskBean.setMenu_id(rSet.getInt(2));
+            taskBean.setSituation_id(rSet.getInt(3));
+            taskBean.setFloor_id(rSet.getString(4));
+            taskBean.setTask_qty(rSet.getInt(5));
+            taskBean.setTask_time(rSet.getString(6));
+            taskBean.setTask_comp(rSet.getString(7));
+            taskBean.setTask_deploy(rSet.getString(8));
+            // Beanをリストに追加
+           taskBeans.add(taskBean);
+        }
+        
+        return taskBeans;
+        
+    }
+    // タスクundeployed　キーワード検索
+    public ArrayList<TaskBean> search_undeployed(String keyword) throws Exception {
+        
+        // Beanのリスト
+        ArrayList<TaskBean> taskBeans = new ArrayList<TaskBean>();
+        
+        // SQL文
+        String sql = "select * from task where task_id like ? and task_deploy is null and task_comp is null  order by task_time asc";
+
+        // STATEMENTの生成
+        PreparedStatement statement = this.connection.prepareStatement(sql);
+        // パラメータの挿入(ワイルドカード使用)
+        statement.setString(1, "%" + keyword + "%");
+        // 検索結果を受け取る
+        ResultSet rSet = statement.executeQuery();
+        
+        // 検索結果をBeanのリストに格納
+        while (rSet.next()) {
+            // Beanの生成
+            TaskBean taskBean = new TaskBean();
+            
+            // カラムの値をBeanに格納
+            taskBean.setTask_id(rSet.getInt(1));
+            taskBean.setMenu_id(rSet.getInt(2));
+            taskBean.setSituation_id(rSet.getInt(3));
+            taskBean.setFloor_id(rSet.getString(4));
+            taskBean.setTask_qty(rSet.getInt(5));
+            taskBean.setTask_time(rSet.getString(6));
+            taskBean.setTask_comp(rSet.getString(7));
+            taskBean.setTask_deploy(rSet.getString(8));
+            // Beanをリストに追加
+           taskBeans.add(taskBean);
+        }
+        
+        return taskBeans;
+        
+    }
+
+    // タスクdeployed全件検索
+    public ArrayList<TaskBean> searchall_deployed() throws Exception {
+        
+        // Beanのリスト
+        ArrayList<TaskBean> taskBeans = new ArrayList<TaskBean>();
+        
+        // SQL文
+        String sql = "select * from task where task_deploy is not null and task_comp is null order by task_time asc";
         // STATEMENTの生成
         PreparedStatement statement = this.connection.prepareStatement(sql);
         // 検索結果を受け取る
@@ -157,17 +230,22 @@ public class OrderDAO extends DAO {
         return taskBeans;
         
     }
-    // タスクdeployed検索
-    public ArrayList<TaskBean> search_deployed() throws Exception {
+
+    // タスクdeployed キーワード検索
+    public ArrayList<TaskBean> search_deployed(String keyword) throws Exception {
         
         // Beanのリスト
         ArrayList<TaskBean> taskBeans = new ArrayList<TaskBean>();
         
         // SQL文
-        String sql = "select * from task where task_deploy is not null and task_comp is null";
+        String sql = "select * from task where task_id like ? and task_deploy is not null and task_comp is null order by task_time asc";
+        
         // STATEMENTの生成
         PreparedStatement statement = this.connection.prepareStatement(sql);
+        // パラメータの挿入(ワイルドカード使用)
+        statement.setString(1, "%" + keyword + "%");
         // 検索結果を受け取る
+        System.out.println(statement.toString());
         ResultSet rSet = statement.executeQuery();
         
         // 検索結果をBeanのリストに格納
@@ -257,6 +335,47 @@ public class OrderDAO extends DAO {
         //System.out.println(statement.toString());
         statement.executeUpdate();
         
+        
+        // ちゃんと閉じる！
+        statement.close();
+        return true;
+        
+    }
+    // task_comp処理
+    public boolean task_comp(String task_stn  , String task_id) throws Exception {
+        String sql = "update task set task_comp = curtime() where task_id = ?";
+        PreparedStatement statement = this.connection.prepareStatement(sql);
+        statement.setString(1, task_id);
+        statement.executeUpdate();
+        
+        // ちゃんと閉じる！
+        statement.close();
+        return true;
+        
+    }
+    // task_deploy処理
+    public boolean task_deploy(String task_stn  , String task_id) throws Exception {
+        String sql = "update task set task_deploy = curtime() where task_id = ?";
+        PreparedStatement statement = this.connection.prepareStatement(sql);
+        statement.setString(1, task_id);
+        statement.executeUpdate();
+        
+        // ちゃんと閉じる！
+        statement.close();
+        return true;
+        
+    }
+    
+    // 売上詳細追加
+    public boolean insert_sale(String task_id ,String situatin_id , String menu_id , String task_qty , String sex , String age) throws Exception {
+        String sql = "insert into sale_detail values(0 , ? , ? , ? , ? , ?)";
+        PreparedStatement statement = this.connection.prepareStatement(sql);
+        statement.setString(1, situatin_id);
+        statement.setString(2, menu_id);
+        statement.setString(3, task_qty);
+        statement.setString(4, sex);
+        statement.setString(5, age);
+        statement.executeUpdate();
         
         // ちゃんと閉じる！
         statement.close();

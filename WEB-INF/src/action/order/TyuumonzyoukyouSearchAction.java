@@ -10,21 +10,27 @@ import dao.OrderDAO;
 
 import tool.Action;
 
-public class Miteikyou_TopAction extends Action {
+public class TyuumonzyoukyouSearchAction extends Action {
 
 	@Override
 	public String execute(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
+		
+
+        // パラメータの取得
+        String keyword = request.getParameter("keyword");
+
         // DAOの生成
         OrderDAO orderDAO = new OrderDAO();
         // DAOメソッドの実行
-        ArrayList<TaskBean> taskBeans = orderDAO.searchall_deployed();
+        ArrayList<TaskBean> taskBeans = orderDAO.search_undeployed(keyword);
         // ちゃんと閉じる！
         orderDAO.close();
 
         request.setAttribute("TaskBeans", taskBeans);
         
-		return "/view/order/miteikyou_top.jsp";
+
+		return "/view/order/tyuumonnzyoukyou_top.jsp";
 	}
 
 }

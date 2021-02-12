@@ -24,22 +24,25 @@
 
                 <div class="offset-1 col-10 p-5 main">
                 
-                    <form action="FrontController" method="POST">
-                        <input type="text" name="class_name" value="order.TyuumonnzyoukyouSearchAction" hidden>
-                    
                     <div class="row">
                         <div class="offset-3 sub_title">
                             注文状況検索
                         </div>
                     </div>
-                    <div class="row mt-4">
-                        <div class="input-group offset-3 col-6">
-                            <input type="search" name="keyword" class="form-control" maxlength="16" placeholder="を入力してください" required>
-                            <div class="input-group-append">
-                                <input type="submit" class="btn btn-primary" value="検索" role="button">
-                            </div>
-                        </div>
-                    </div>
+                    
+                    <form action="FrontController" method="POST">
+                    	
+                        <input type="text" name="class_name" value="order.TyuumonzyoukyouSearchAction" hidden>
+                    
+	                    <div class="row mt-4">
+	                        <div class="input-group offset-3 col-6">
+	                            <input type="search" name="keyword" class="form-control" maxlength="16" placeholder="注文番号を入力してください" required>
+	                            <div class="input-group-append">
+	                                <input type="submit" class="btn btn-primary" value="検索" role="button">
+	                            </div>
+	                        </div>
+	                    </div>
+                    </form>
                     
                     
                     <div class=" p-3 sub_title">
@@ -53,8 +56,6 @@
                           <th class="field">注文内容</th>
                           <th class="field">数量</th>
                           <th class="field">注文時間</th>
-                          <th class="field">性別</th>
-                          <th class="field">年齢層</th>
                           <th class="field">注文状況変更</th>
                         </tr>
                         
@@ -67,9 +68,18 @@
                           <td><%= taskBeans.get(i).getMenu_id() %></td>
                           <td><%= taskBeans.get(i).getTask_qty() %></td>
                           <td><%= taskBeans.get(i).getTask_time() %></td>
-                          <td></td>
-                          <td></td>
-                          <td><a class="btn btn-primary" href="" role="button">提供完了</a></td>
+                          <td>
+                          
+		                    <form action="FrontController" method="POST">
+		                    	
+		                        <input type="text" name="class_name" value="order.TaskCompleteAction" hidden>
+		                    
+		                        <input type="text" name="task_stn" value="deploy" hidden>
+		                        <input type="text" name="task_id" value="<%= taskBeans.get(i).getTask_id() %>" hidden>
+	                                <input type="submit" class="btn btn-primary" value="調理完了" role="button">
+		                    
+		                    </form>
+                          </td>
                         </tr>
                         
                         <%}%>

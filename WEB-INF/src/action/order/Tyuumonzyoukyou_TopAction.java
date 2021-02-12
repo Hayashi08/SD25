@@ -18,15 +18,12 @@ public class Tyuumonzyoukyou_TopAction extends Action {
         // DAOの生成
         OrderDAO orderDAO = new OrderDAO();
         // DAOメソッドの実行
-        ArrayList<TaskBean> taskBeans = orderDAO.search_undeployed();
+        ArrayList<TaskBean> taskBeans = orderDAO.searchall_undeployed();
         // ちゃんと閉じる！
         orderDAO.close();
 
         request.setAttribute("TaskBeans", taskBeans);
         
-        for(int i=0; i < taskBeans.size(); i++){
-        	System.out.println(taskBeans.get(i).getTask_id());
-        }
 
 		return "/view/order/tyuumonnzyoukyou_top.jsp";
 	}

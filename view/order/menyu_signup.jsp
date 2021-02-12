@@ -29,13 +29,20 @@
                         <tr>
                           <td class="field">ジャンル</td>
                           <td class="input-group">
-                          	<input id="genre" type="text" class="form-control" required>
+                            <select id="genre" size="1">
+                                <option value="未入力" selected>未入力
+                                <option value="オススメ">オススメ
+                                <option value="フード">フード
+                                <option value="ドリンク">ドリンク
+                                <option value="サイドメニュー">サイドメニュー
+                                <option value="デザート">デザート
+                            </select>
                           </td>
                         </tr>
                         <tr>
                           <td class="field">値段</td>
                           <td class="input-group">
-                          	<input id="price" type="number" max="65535" min="0" class="form-control" required>
+                          	<input id="price" type="number" max="65535" min="0" value="0" class="form-control">
                           </td>
                         </tr>
                         <tr>
@@ -131,31 +138,31 @@
                         <tr>
                           <td class="field">メニュー名</td>
                           <td class="input-group">
-                          	<input id="modal_name"　type="text" maxlength="30" name="name" class="form-control">
+                          	<input id="modal_name"　type="text" maxlength="30" name="name" class="form-control"　required="required" readonly>
                           </td>
                         </tr>
                         <tr>
                           <td class="field">ジャンル</td>
                           <td class="input-group">
-                          	<input id="modal_genre" type="text" name=genre class="form-control">
+                          	<input id="modal_genre" type="text" name=genre class="form-control" readonly required >
                           </td>
                         </tr>
                         <tr>
                           <td class="field">値段</td>
                           <td class="input-group">
-                          	<input id="modal_price" type="number" name="price" max="65535" min="0" class="form-control">
+                          	<input id="modal_price" type="number" name="price" max="65535" min="0" class="form-control" required readonly>
                           </td>
                         </tr>
                         <tr>
                           <td class="field">説明</td>
                           <td class="input-group">
-                          	<textarea id="modal_des" class="form-control" maxlength="500" name="des"></textarea>
+                          	<textarea id="modal_des" class="form-control" maxlength="500" name="des" readonly></textarea>
                           	</td>
                         </tr>
                         <tr>
                           <td class="field">アレルギー</td>
                           <td class="input-group">
-	                            <input id="modal_customCheck" class="form-control" value="" name="allergy">
+	                            <input id="modal_customCheck" class="form-control" value="" name="allergy" readonly>
                           </td>
                         </tr>
                     </table>
