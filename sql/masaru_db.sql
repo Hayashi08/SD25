@@ -103,7 +103,6 @@ CREATE TABLE sale_detail (
 	situation_id INT UNSIGNED NOT NULL,
 	menu_id INT UNSIGNED NOT NULL,
 	menu_qty TINYINT UNSIGNED NOT NULL,
-	menu_cus VARCHAR(10) NOT NULL,
 	menu_sex CHAR(1),
 	menu_age CHAR(3),
 	PRIMARY KEY (sale_detail_id),
@@ -196,7 +195,10 @@ CREATE TABLE coupon (
 	PRIMARY KEY (coupon_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- インサート文
 INSERT INTO employee values ('ore', 'sama', '俺様', 'アルバイト', 'oresama@ex.com', '000-0000-0000');
+
+-- ビュー
 create view stock_control as select i.item_id,i.item_name,i.item_genre,i.item_max,i.item_min,sum(sd.stock_detail_qty) as stock_qty, sum(od.ordering_detail_qty) as ordering_qty,od.ordering_detail_state, o.ordering_date
  from item as i
   left join stock_detail as sd on sd.item_id = i.item_id
@@ -215,4 +217,5 @@ create view ordering_operation as select o.ordering_id,i.item_name,i.item_genre,
    inner join ordering as o on o.ordering_id = od.ordering_id
     inner join employee as e on e.employee_id = o.employee_id
      order by o.ordering_id desc;
+
 set names cp932;
