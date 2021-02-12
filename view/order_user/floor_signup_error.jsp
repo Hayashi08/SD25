@@ -1,9 +1,8 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html lang="ja">
     <head>
-        <meta charset="utf-8">
         <title>部屋登録 エラー</title>
-        <link rel="stylesheet" href="../css/bootstrap.css">
-        <link rel="stylesheet" href="../css/common.css">
+        <%@ include file="../head.jsp" %>
     </head>
     <body>
         <div class="container-fluid">
@@ -21,7 +20,7 @@
                 </div>
                 <div class="row my-5">
                     <div class="col">
-                      <a class="btn btn-primary"  href="signup.html" role="button">リトライ</a>
+                      <a class="btn btn-primary"  href="javascript:history.back();" role="button">リトライ</a>
                     </div>
                 </div>
             </div>

@@ -1,10 +1,8 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html lang="ja">
     <head>
-        <meta charset="utf-8">
         <title>トップページ画面</title>
-        <link rel="stylesheet" href="../css/bootstrap.css">
-        <link rel="stylesheet" href="../css/common.css">
-        <link rel="stylesheet" href="../css/all.css">
+        <%@ include file="../head.jsp" %>
     </head>
     <body>
         <div class="container-fluid">
@@ -35,9 +33,9 @@
                         </div>
                     </div>
                     <div class="row m-2">
-                        <a class="col-4" href="recommend.html"><img class="col-12" src="../images/TC0I9A3084_TP_V.jpg"></a>
-                        <a class="col-4" href="food.html"><img class="col-12" src="../images/SAWA_hanbagu_TP_V.jpg"></a>
-                        <a class="col-4" href="drink.html"><img class="col-12" src="../images/MIYAKO85_orionbeer20140725_TP_V.jpg"></a>
+                        <a class="col-4" href="FrontController?class_name=order_user.GenreAction&genre=オススメ"><img class="col-12" src="../static/images/recommend_thumbnail.jpg"></a>
+                        <a class="col-4" href="FrontController?class_name=order_user.GenreAction&genre=フード"><img class="col-12" src="../static/images/food_thumbnail.jpg"></a>
+                        <a class="col-4" href="FrontController?class_name=order_user.GenreAction&genre=ドリンク"><img class="col-12" src="../static/images/drink_thumbnail.jpg"></a>
                     </div>
                     <div class="row m-2">
                         <div class="sub_title col-4 text-center">
@@ -49,8 +47,8 @@
                     </div>
                     <div class="row m-2">
                         <div class="col-8 row">
-                            <a class="col-6" href="sidemenu.html"><img class="col-12" src="../images/SAWA_hotsarada_TP_V.jpg"></a>
-                            <a class="col-6" href="desert.html"><img class="col-12" src="../images/ogasuta458A8104_TP_V.jpg"></a>
+                            <a class="col-6" href="FrontController?class_name=order_user.GenreAction&genre=サイドメニュー"><img class="col-12" src="../static/images/side_thumbnail.jpg"></a>
+                            <a class="col-6" href="FrontController?class_name=order_user.GenreAction&genre=デザート"><img class="col-12" src="../static/images/desert_thumbnail.jpg"></a>
                         </div>
                         <div class="col-4">
                             <div class="row">
@@ -97,7 +95,7 @@
                 </div>
             </div>
         </div>
-        //注文処理
+        <!-- 注文処理 -->
         <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="modal1" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -159,7 +157,7 @@
             </div>
           </div>
         </div>
-        //ログアウト処理
+        <!-- ログアウト処理 -->
         <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="modal2" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -221,7 +219,6 @@
             </div>
           </div>
         </div>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <%@ include file="../enhance.jsp" %>
     </body>
 </html>

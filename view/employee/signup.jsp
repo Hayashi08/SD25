@@ -37,9 +37,7 @@
                           <td class="input-group">
                               <select class="custom-select" id="position" size="1">
                                   <option value="未入力" selected>未入力
-                                  <option value="SV">SV
                                   <option value="店長">店長
-                                  <option value="副店長">副店長
                                   <option value="社員">社員
                                   <option value="アルバイト">アルバイト
                               </select>
