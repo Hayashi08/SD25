@@ -14,6 +14,8 @@
                 <div class="offset-4 my-3 col-4 text-center main_title">
                     フロア登録
                 </div>
+                
+                <form>
  
                 <div class="offset-1 col-10 p-5 main">
                     <div class="offset-3 p-3 sub_title">
@@ -24,8 +26,7 @@
                           <td class="field">階</td>
                                  <td class="input-group">
                                     <select id="floor" size="1">
-                                        <option value="未入力" selected>未入力
-                                        <option value="1">1
+                                        <option value="1" selected>1
                                         <option value="2">2
                                         <option value="3">3
                                         <option value="4">4
@@ -37,8 +38,7 @@
                           <td class="field">部屋番号</td>
                                  <td class="input-group">
                                     <select id="floor_number" size="1">
-                                        <option value="未入力" selected>未入力
-                                        <option value="01">1
+                                        <option value="01" selected>1
                                         <option value="02">2
                                         <option value="03">3
                                         <option value="04">4
@@ -53,15 +53,30 @@
                         </tr>
                         <tr>
                           <td class="field">収容人数</td>
-                          <td class="input-group"><input type="number" class="form-control" id="cap" maxlength="3"></td>
+                          <td class="input-group"><input type="number" class="form-control" id="cap" maxlength="12"></td>
                         </tr>
                         <tr>
                           <td class="field">機材状況</td>
-                          <td class="input-group"><input type="text" class="form-control" id="machine" maxlength="1"></td>
+                          <td class="input-group">
+                                 <select id="machine" size="1">
+                                        <option value="良" selected>良
+                                        <option value="可">可
+                                        <option value="不">不
+                                    </select>
+                          </td>
                         </tr>
                         <tr>
                           <td class="field">清掃状況</td>
-                          <td class="input-group"><input type="text" class="form-control" id="state" maxlength="1"></td>
+                          <td class="input-group">           
+                                  <div class="form-check">
+                                      <input type="radio" class="form-check-input" id="state" name="state" value="済" checked>
+                                      <label class="form-check-label">済</label>
+                                  </div>
+                                  <div class="form-check ml-3">
+                                      <input type="radio" class="form-check-input" id="state" name="state" value="未">
+                                      <label class="form-check-label">未</label>
+                                  </div>
+                          </td>
                         </tr>
                     </table>
                     
@@ -79,6 +94,7 @@
                     </div>
                 </div>
                
+               </form>
 
                 <div class="offset-8 col-3 my-3">
                     <a class="btn btn-primary m-5" href="javascript:history.back();" role="button">戻る</a>
@@ -92,23 +108,23 @@
                 <table class="offset-1 col-10 table table-striped">
                     <tr>
                       <td class="field">階</td>
-                      <td class="input-group"><input type="text" class="form-control" id="modal_floor" name="floor" maxlength="1" readonly></td>
+                      <td class="input-group"><input type="text" class="form-control" id="modal_floor" name="floor" maxlength="1" readonly required></td>
                     </tr>
                     <tr>
                       <td class="field">部屋番号</td>
-                      <td class="input-group"><input type="text" class="form-control" id="modal_floor_number" name="floor_number" maxlength="1" readonly></td>
+                      <td class="input-group"><input type="text" class="form-control" id="modal_floor_number" name="floor_number" maxlength="2" readonly required></td>
                     </tr>
                     <tr>
                       <td class="field">収容人数</td>
-                      <td class="input-group"><input type="text" class="form-control" id="modal_cap" name="cap" maxlength="24" readonly></td>
+                      <td class="input-group"><input type="text" class="form-control" id="modal_cap" name="cap" maxlength="12" readonly required></td>
                     </tr>
                     <tr>
                       <td class="field">機材状況</td>
-                      <td class="input-group"><input type="text" class="form-control" id="modal_machine" name="machine" maxlength="24" readonly></td>
+                      <td class="input-group"><input type="text" class="form-control" id="modal_machine" name="machine" maxlength="24" readonly required></td>
                     </tr>
                     <tr>
                       <td class="field">清掃状況</td>
-                      <td class="input-group"><input type="text" class="form-control" id="modal_state" name="state" maxlength="32" readonly></td>
+                      <td class="input-group"><input type="text" class="form-control" id="modal_state" name="state" maxlength="32" readonly required></td>
                     </tr>
                 </table>
                 <div class="row">
@@ -129,7 +145,7 @@
                 $('#modal_floor_number').val($('#floor_number').val());
                 $('#modal_cap').val($('#cap').val());
                 $('#modal_machine').val($('#machine').val());
-                $('#modal_state').val($('#state').val());
+                $('#modal_state').val($('#state:checked').val());
               });
             });
         </script>

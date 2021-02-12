@@ -36,17 +36,69 @@
                         </tr>
                         <tr>
                           <td class="field">収容人数</td>
-                          <td class="input-group"><input type="number" class="form-control" id="cap" maxlength="3" value="<%= floorBean.getCap() %>" required></td>
+                          <td class="input-group"><input type="number" class="form-control" id="cap" maxlength="12" value="<%= floorBean.getCap() %>" required></td>
                         </tr>
                         <tr>
-                          <td class="field">機材状況</td>
-                          <td class="input-group"><input type="text" class="form-control" id="machine" maxlength="1" value="<%= floorBean.getMachine() %>" required></td>
+                          <td class="field">機材状況</td> 
+                                                  
+                         <% String machine = floorBean.getMachine(); %> 
+                         <% if(machine.equals("良")){ %>                             
+                                   <td class="input-group">
+                                    <select id="machine" size="1">
+                                        <option value="良" selected>良
+                                        <option value="可">可
+                                        <option value="不">不
+                                    </select>
+                                 </td>
+                       　　　　　　　　　　　　　　<% }else if(machine.equals("可")){ %>                        
+                                   <td class="input-group">
+                                    <select id="machine" size="1">
+                                        <option value="良">良
+                                        <option value="可" selected>可
+                                        <option value="不">不
+                                    </select>
+                                 </td>
+                        <% }else{ %>                       
+                                   <td class="input-group">
+                                    <select id="machine" size="1">
+                                        <option value="良" >良
+                                        <option value="可">可
+                                        <option value="不" selected>不
+                                    </select>
+                                 </td>
+                        <% } %>
                         </tr>
                         <tr>
+                        
+                          <% String state = floorBean.getState(); %> 
+                          
+                          <% if(state.equals("済")){ %>    
+                        
                           <td class="field">清掃状況</td>
-                          <td class="input-group">
-                              <input type="text" class="form-control" id="state" maxlength="1" value="<%= floorBean.getState() %>" required>
+                          <td class="input-group">                                 
+                                  <div class="form-check">
+                                      <input type="radio" class="form-check-input" id="state" name="state" value="済" checked>
+                                      <label class="form-check-label">済</label>
+                                  </div>
+                                  <div class="form-check ml-3">
+                                      <input type="radio" class="form-check-input" id="state" name="state" value="未">
+                                      <label class="form-check-label">未</label>
+                                  </div>
                           </td>
+                                  	<% }else{ %>     
+                        
+                          <td class="field">清掃状況</td>
+                          <td class="input-group">                                 
+                                  <div class="form-check">
+                                      <input type="radio" class="form-check-input" id="state" name="state" value="済" >
+                                      <label class="form-check-label">済</label>
+                                  </div>
+                                  <div class="form-check ml-3">
+                                      <input type="radio" class="form-check-input" id="state" name="state" value="未"checked>
+                                      <label class="form-check-label">未</label>
+                                  </div>
+                          </td> 
+                                  	<% } %>
                         </tr>
                     </table>
 
@@ -79,7 +131,7 @@
                     </tr>
                     <tr>
                       <td class="field">収容人数</td>
-                      <td class="input-group"><input type="text" class="form-control" id="modal_cap" name="cap" maxlength="3" readonly></td>
+                      <td class="input-group"><input type="text" class="form-control" id="modal_cap" name="cap" maxlength="12" readonly></td>
                     </tr>
                     <tr>
                       <td class="field">機材状況</td>

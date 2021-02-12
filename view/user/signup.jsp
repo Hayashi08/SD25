@@ -22,7 +22,7 @@
                         <table class="offset-3 col-6 table table-striped">
                             <tr>
                               <td class="field">会員ID</td>
-                              <td class="input-group"><input type="text" class="form-control" id="id" maxlength="16" required></td>
+                              <td class="input-group"><input type="text" class="form-control" name="id" id="id" maxlength="16" required></td>
                             </tr>
                             <tr>
                               <td class="field">会員パスワード</td>
@@ -115,7 +115,7 @@
                     <a class="btn btn-primary m-5" href="javascript:history.back();" role="button">戻る</a>
                 </div>
                 
-                
+               
               <%@ include file="../ModalOpenTab.jsp" %>
               <form action="FrontController" method="POST">
                 <input type="text" name="class_name" value="user.SignupAction" hidden>
@@ -191,5 +191,6 @@
 
             </div>
         </div>
+        
     </body>
 </html>
