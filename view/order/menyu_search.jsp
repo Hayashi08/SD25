@@ -1,5 +1,5 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
-<%@ page import="java.util.ArrayList" %>
+<%@ page contentType="text/html;c
+<%@ page import="java.util.ArrayList" %>harset=UTF-8" %>
 <%@ page import="bean.OrderBean" %>
 <%
 
