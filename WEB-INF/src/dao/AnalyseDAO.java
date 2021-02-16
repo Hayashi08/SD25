@@ -49,7 +49,7 @@ public class AnalyseDAO extends DAO {
         	sql +=		"SUM(sale_total)";;
         }
         if(yaxis.equals("visitors")){
-        	sql +=		"COUNT(situation_qty)";
+        	sql +=		"SUM(situation_qty)";
         }
         sql +=			" FROM sale,user,situation " +
         				"where " +
@@ -144,19 +144,20 @@ public class AnalyseDAO extends DAO {
         }
 
         PreparedStatement statement = this.connection.prepareStatement(sql);
-
-        if(xaxis.equals("year")){
-        	cal.add(Calendar.YEAR,-1);
-        }
-        if(xaxis.equals("month")){
-        	cal.add(Calendar.MONTH,-1);
-        }
-        if(xaxis.equals("week")){
-        	cal.add(Calendar.DATE,-1);
-        }
-        if(xaxis.equals("year")){
-        	cal.add(Calendar.DATE,-1);
-        }
+        
+//			未確定分を含まない設定
+//        if(xaxis.equals("year")){
+//        	cal.add(Calendar.YEAR,-1);
+//        }
+//        if(xaxis.equals("month")){
+//        	cal.add(Calendar.MONTH,-1);
+//        }
+//        if(xaxis.equals("week")){
+//        	cal.add(Calendar.DATE,-1);
+//        }
+//        if(xaxis.equals("year")){
+//        	cal.add(Calendar.DATE,-1);
+//        }
         for(int j = 0 ; j < i ; j++){
             System.out.println(""); 
         	System.out.println("-------ここからfor文-" + j + "周目------");
@@ -258,7 +259,7 @@ public class AnalyseDAO extends DAO {
             if(xaxis.equals("week")){
             	cal.add(Calendar.DATE,-7);
             }
-            if(xaxis.equals("year")){
+            if(xaxis.equals("day")){
             	cal.add(Calendar.DATE,-1);
             }
 

@@ -28,6 +28,12 @@
 
         cal.setTime(today);
 
+        if(xaxis.equals("year")){
+            cal.add(Calendar.YEAR,1);
+        }
+        if(xaxis.equals("month")){
+            cal.add(Calendar.MONTH,1);
+        }
         int yy = cal.get(Calendar.YEAR);
         int mm = cal.get(Calendar.MONTH)+1;
         int dd = cal.get(Calendar.DATE);
@@ -78,6 +84,10 @@
             }
         }
         dif = max - min;
+        System.out.println("max : " + max);
+        System.out.println("min : " + min);
+        System.out.println("dif : " + dif);
+
 
         double max_double = max;
         double min_double = min;
@@ -85,6 +95,8 @@
         min_double = Math.floor(min_double/10) *10;
         max_double += 10;
         min_double -= 10;
+        System.out.println("max_double : " + max_double);
+        System.out.println("min_double : " + min_double);
 
         if(max_double <= 0){
             max_double = 1;
@@ -113,6 +125,31 @@
         for(i = 0 ; i < cnt-1 ; i++){
             stepsize = stepsize * 10;
         }
+        System.out.println("stepsize : " + stepsize);
+
+        int unit_int = 1;
+        String unit_str = "";
+        if(max >= 10000){
+            unit_int = 10000;
+            unit_str = "万";
+        }
+        if(max >= 1000000){
+            unit_int = 1000000;
+            unit_str = "百万";
+        }
+        if(max >= 10000000){
+            unit_int = 10000000;
+            unit_str = "千万";
+        }
+        if(max >= 100000000){
+            unit_int = 100000000;
+            unit_str = "億";
+        }
+        /*if(max >= 10000000000){
+            unit_int = 10000000000;
+            unit_str = "百億";
+        }*/
+
 
 %>
 <html lang="ja">
@@ -264,6 +301,7 @@
                                             m2 = 0;
                                             d = 0;
                                             cal2.setTime(today);
+                                            cal2.add(Calendar.DATE,7);
                                             cal2.add(Calendar.DATE,-70-cal2.get(Calendar.DAY_OF_WEEK)+1);
 
                                             for(i = 1; i<= 10; i++){
@@ -292,6 +330,7 @@
                                       <% //日ごとの場合
                                         if(xaxis.equals("day")){
                                             cal2.setTime(today);
+                                            cal2.add(Calendar.DATE,1);
                                             m1 = 0;
                                             m2 = 0;
                                             d = 0;
@@ -427,11 +466,11 @@
                                             suggestedMin: <%= min_double %>,
                                             stepSize: <%= stepsize %>,
                                             callback: function(value, index, values){
-                                              return  value/10000 + 
+                                              return  value / <%= unit_int %> + 
                                               <% if(yaxis.equals("sales")){ %>
-                                                '万円'
+                                                '<%= unit_str %>円'
                                               <% }else{ %>
-                                                '人'
+                                                '<%= unit_str %>人'
                                               <% } %>
                                             }
                                           }
@@ -446,22 +485,22 @@
                                 <div class="offset-11 col-1">
                                     <select name="xaxis">
                                         <option value="year"
-                                        <% if(yaxis.equals("year")){ %>
+                                        <% if(xaxis.equals("year")){ %>
                                         selected
                                         <% } %>
                                         >年
                                         <option value="month"
-                                        <% if(yaxis.equals("month")){ %>
+                                        <% if(xaxis.equals("month")){ %>
                                         selected
                                         <% } %>
                                         >月
                                         <option value="week"
-                                        <% if(yaxis.equals("week")){ %>
+                                        <% if(xaxis.equals("week")){ %>
                                         selected
                                         <% } %>
                                         >週
                                         <option value="day"
-                                        <% if(yaxis.equals("day")){ %>
+                                        <% if(xaxis.equals("day")){ %>
                                         selected
                                         <% } %>
                                         >日
@@ -599,7 +638,7 @@
                             </div>
 
 
-                            <% if(xaxis != "day"){ %>
+                            <% if(!xaxis.equals("day")){ %>
                             <div class="row my-3">
                                 <div class="h5 col-12 ml-4 mt-3 text-center">
                                     曜日
