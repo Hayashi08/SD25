@@ -7,7 +7,7 @@ public class FloorBean {
     private int cap = 0;
     private String machine = "";
     private String state = "";
-    private String device = "";
+    private int device = 0;
     
     // ゲッター・セッター
 	public String getId() {
@@ -34,10 +34,10 @@ public class FloorBean {
 	public void setState(String state) {
 		this.state = state;
 	}
-	public String getDevice() {
+	public int getDevice() {
 		return device;
 	}
-	public void setDevice(String device) {
+	public void setDevice(int device) {
 		this.device = device;
 	}
     

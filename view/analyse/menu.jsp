@@ -29,7 +29,250 @@
                                 <!-- <img src="../images/graph.jpg" width="100%" alt="グラフ"> -->
 
                                 <canvas id="myLineChart"></canvas>
-                 				<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+
+<script>
+                                  var ctx = document.getElementById("myLineChart");
+
+                                    var myLineChart = new Chart(ctx, {
+                                    type: 'line',
+                                    data: {
+                                      labels: [
+
+                                      <% //年ごとの場合
+                                        if(xaxis.equals("year")){
+                                            y1 = yy-10;
+                                            for(i = 1 ; i <= 10 ; i++){
+                                      %>
+                                      '<%= y1 %>年'
+                                      <% 
+                                          if(i!=10){
+                                      %>
+                                      ,
+                                      <%
+                                          }//if閉じ
+                                          y1++;
+                                        }//for閉じ
+                                      }//if閉じ 
+                                      %>
+
+
+                                      <% //月ごとの場合
+                                        if(xaxis.equals("month")){
+                                            i = 1;
+                                            m1 = mm;
+                                            while(i <= 12){
+                                      %>
+                                      '<%= m1 %>月'
+                                      <% 
+                                          if(i!=12){
+                                      %>
+                                      ,
+                                      <%
+                                          }//if閉じ
+                                          i++;
+                                          if(m1>=12){
+                                            m1 = 1;
+                                          }else{
+                                            m1++;
+                                          }//else閉じ
+                                        }//while閉じ
+                                      }//if閉じ 
+                                      %>
+
+
+                                      <% //週ごとの場合
+                                        if(xaxis.equals("week")){
+                                            str = "";
+                                            m1 = 0;
+                                            m2 = 0;
+                                            d = 0;
+                                            cal2.setTime(today);
+
+                                            for(i = 1; i<= 10; i++){
+                                                str="";
+                                                m1 = cal2.get(Calendar.MONTH)+1;
+                                                d = cal2.get(Calendar.DATE);
+                                                if(m1 != m2){
+                                                    str = str + m1 + "月 ";
+                                                }
+                                                str = str + d + "日~";
+
+                                                m2 = m1;
+                                      %>
+                                      '<%= str %>'
+                                      <% 
+                                          if(i!=10){
+                                      %>
+                                      ,
+                                      <%
+                                          }//if閉じ
+                                          cal2.add(Calendar.DATE,7);
+                                        }//while閉じ
+                                      }//if閉じ 
+                                      %>
+
+
+                                      <% //日ごとの場合
+                                        if(xaxis.equals("day")){
+                                            cal2.setTime(today);
+                                            m1 = 0;
+                                            m2 = 0;
+                                            d = 0;
+                                            w = 0;
+                                            w_str = "";
+                                            cal2.add(Calendar.DATE,-7);
+
+                                            for(i = 1 ; i <= 7 ; i++){
+                                                str="";
+                                                m1 = cal2.get(Calendar.MONTH)+1;
+                                                d = cal2.get(Calendar.DATE);
+                                                w = cal2.get(Calendar.DAY_OF_WEEK);
+                                                switch(w){
+                                                    case 1:
+                                                    w_str = "日";
+                                                    break;
+                                                    case 2:
+                                                    w_str = "月";
+                                                    break;
+                                                    case 3:
+                                                    w_str = "火";
+                                                    break;
+                                                    case 4:
+                                                    w_str = "水";
+                                                    break;
+                                                    case 5:
+                                                    w_str = "木";
+                                                    break;
+                                                    case 6:
+                                                    w_str = "金";
+                                                    break;
+                                                    case 7:
+                                                    w_str = "土";
+                                                    break;
+                                                }
+                                                if(m1 != m2){
+                                                    str = str + m1 + "月 ";
+                                                }
+                                                str = str + d + "(" + w_str + ")";
+                                      %>
+                                      '<%= str %>'
+                                      <% 
+                                          if(i!=7){
+                                      %>
+                                      ,
+                                      <%
+                                          }//if閉じ
+                                          m2 = m1;
+                                          cal2.add(Calendar.DATE,1);
+                                        }//for閉じ
+                                      }//if閉じ 
+                                      %>
+
+                                      ],
+
+
+                                      datasets: [
+                                        {
+                                          label: 
+                                          <% 
+                                          str = "";
+                                            if(xaxis.equals("year")){ //年ごとの場合
+                                                str = "年";
+                                            }
+                                            if(xaxis.equals("month")){ //月ごとの場合
+                                                str = "月";
+                                            }
+                                            if(xaxis.equals("week")){ //週ごとの場合
+                                                str = "週";
+                                            }
+                                            if(xaxis.equals("day")){ //日ごとの場合
+                                                str = "日";
+                                            }
+                                           %>
+                                          '<%= str %>別売上',
+
+                                          data:[
+                                          <%// データをセット
+                                            int start_point = 0;
+                                            int x_size = 0;
+                                            int list_cnt = 0;
+                                            if(xaxis.equals("year")){
+                                                start_point = 10 - datas.size();
+                                                x_size = 10;
+                                            }//if
+                                            if(xaxis.equals("week")){
+                                                start_point = 10 - datas.size();
+                                                x_size = 10;
+                                            }//if
+                                            if(xaxis.equals("month")){
+                                                start_point = 12 - datas.size();
+                                                x_size = 12;
+                                            }//if
+                                            if(xaxis.equals("day")){
+                                                start_point = 7 - datas.size();
+                                                x_size = 7;
+                                            }//if
+                                            for(i = start_point ; i > 0 ; i--){
+                                            %>
+                                            ,
+                                            <%
+                                            }//for
+                                            for(i = start_point ; i < x_size ; i++){
+                                                System.out.println(datas.get(list_cnt));
+                                            %>
+                                            <%= datas.get(list_cnt) %>
+                                            <% 
+                                                list_cnt++;
+                                                if(list_cnt != datas.size()){
+                                            %>
+                                            ,
+                                            <%
+                                                }//if
+                                                }//for
+                                            %>
+                                          ],//data
+                                          borderColor: "rgba(0, 16, 138,1)",
+                                          backgroundColor: "rgba(143, 156, 255,0.2)"
+                                        },
+                                      ],
+                                    },
+                                    options: {
+                                      title: {
+                                        display: true,
+                                        text: ''
+                                      },
+                                      scales: {
+                                        yAxes: [{
+                                          ticks: {
+                                            suggestedMax: <%= max_double %>,
+                                            suggestedMin: <%= min_double %>,
+                                            stepSize: 10,
+                                            callback: function(value, index, values){
+                                              return  value +
+                                                <%// y軸が売り上げの場合
+                                                    if(yaxis.equals("sales")){
+                                                %>
+                                               '万円'
+                                               <% } %>
+                                                <%// y軸が来客数の場合
+                                                    if(yaxis.equals("visitors")){
+                                                %>
+                                               '百人'
+                                               <% } %>
+                                            }
+                                          }
+                                        }]
+                                      },
+                                    }
+                                  });
+
+
+                                </script>
+
+
+
+                        
                                 <script>
                                   var ctx = document.getElementById("myLineChart");
                                   var myLineChart = new Chart(ctx, {

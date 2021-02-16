@@ -83,7 +83,7 @@ public class FloorDAO extends DAO {
 	        floorBean.setCap(rs.getInt(2));
 	        floorBean.setMachine(rs.getString(3));
 	        floorBean.setState(rs.getString(4));
-	        floorBean.setDevice(rs.getString(5));
+	        floorBean.setDevice(rs.getInt(5));
 	        
 	        // Beanをリストに追加
 	        floorBeans.add(floorBean);
@@ -119,7 +119,7 @@ public class FloorDAO extends DAO {
 	        floorBean.setCap(rs.getInt(2));
 	        floorBean.setMachine(rs.getString(3));
 	        floorBean.setState(rs.getString(4));
-	        floorBean.setDevice(rs.getString(5));
+	        floorBean.setDevice(rs.getInt(5));
             
 
         }
@@ -159,6 +159,43 @@ public class FloorDAO extends DAO {
         
         // ちゃんと閉じる！
         statement.close();
+        
+    }
+
+    // フロアデバイス更新処理
+    public boolean updateOrderUser(String floor_id) throws Exception {
+
+        //フロアIDが存在しない場合
+        if (!(checkFloorId(floor_id))) {
+            return false;
+        }
+
+        FloorBean floorBean = new FloorBean();
+        String select_sql = "select floor_device from floor where floor_id = ?";
+        PreparedStatement select_sm = this.connection.prepareStatement(select_sql);
+        select_sm.setString(1, floor_id);
+        ResultSet rs = select_sm.executeQuery();
+        
+        if (rs.next()) {
+            
+            floorBean.setDevice(rs.getInt(1));
+            
+        }
+        
+        select_sm.close();
+
+        //フロアのデバイス登録状態
+        if (floorBean.getDevice() == 1) {
+            return false;
+        }
+
+        String update_sql = "update floor set floor_device = 1 where floor_id = ? ";
+        PreparedStatement update_sm = this.connection.prepareStatement(update_sql);
+        update_sm.setString(1, floor_id);
+        update_sm.executeUpdate();
+        
+        update_sm.close();
+        return true;
         
     }
 
