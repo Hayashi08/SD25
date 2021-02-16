@@ -71,7 +71,7 @@ public class SituationDAO extends DAO {
             floorBean.setCap(rSet.getInt(2));
             floorBean.setMachine(rSet.getString(3));
             floorBean.setState(rSet.getString(4));
-            floorBean.setDevice(rSet.getString(5));
+            floorBean.setDevice(rSet.getInt(5));
             
             floorBeans.add(floorBean);
         }
@@ -190,7 +190,7 @@ public class SituationDAO extends DAO {
         // 注文計算
         price += calcMenuPrice(id);
         
-//        System.out.println(price);
+        System.out.println(price);
         
         return price;
     }
