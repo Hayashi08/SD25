@@ -509,7 +509,7 @@
                             </div>
 
                             <div class="row">
-                                <a class="btn btn-primary"  href="FrontController?class_name=analyse.TopAction" role="button">メニュー別売上(初期読み込み)</a>
+                                <a class="btn btn-primary"  href="FrontController?class_name=analyse.MenuAction" role="button">メニュー別売上</a>
                             </div>
                         </div>
 
