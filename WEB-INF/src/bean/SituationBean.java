@@ -10,7 +10,7 @@ public class SituationBean {
     private String start = "";
     private String endSchedule = "";
     private String end = "";
-    private String freeString = "";
+    private String free = "";
     
     public String getId() {
         return id;
@@ -60,11 +60,11 @@ public class SituationBean {
     public void setEnd(String end) {
         this.end = end;
     }
-    public String getFreeString() {
-        return freeString;
+    public String getFree() {
+        return free;
     }
-    public void setFreeString(String freeString) {
-        this.freeString = freeString;
+    public void setFree(String free) {
+        this.free = free;
     }
 
 }

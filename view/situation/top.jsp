@@ -38,7 +38,7 @@
                         <a class=" col p-3 mx-3 btn btn-danger" href="FrontController?class_name=situation.FormAuthUserAction" role="button">
                             <h1 class="text-white">利用受付</h1>
                         </a>
-                        <a class=" col p-3 mx-3 btn btn-success" href="situation/liquidation.html" role="button">
+                        <a class=" col p-3 mx-3 btn btn-success" href="FrontController?class_name=situation.FormLiquidationAction" role="button">
                             <h1 class="text-white">清算</h1>
                         </a>
                     </div>
