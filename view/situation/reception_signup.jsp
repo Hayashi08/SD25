@@ -3,6 +3,7 @@
 
     String user_id = (String)request.getAttribute("user_id");
     String floor_id = (String)request.getAttribute("floor_id");
+    String floor_cap = (String)request.getAttribute("floor_cap");
 %>
 <html lang="ja">
     <head>
@@ -35,7 +36,7 @@
                                 </tr>
                                 <tr>
                                     <td class="field text-center h5 font-weight-bold">利用人数</td>
-                                    <td><input type="number" name="qty" class="form-control" required></td>
+                                    <td><input type="number" name="qty" class="form-control" max="<%= floor_cap %>" required></td>
                                 </tr>
                                 <tr>
                                     <td class="field text-center h5 font-weight-bold">開始時間</td>
@@ -50,11 +51,11 @@
                                     <td class="input-group">
                                             <div class="form-check">
                                                 <input type="radio" class="form-check-input" name="free" value="有">
-                                                <label class="form-check-label" for="yes">あり</label>
+                                                <label class="form-check-label" for="yes">有</label>
                                             </div>
                                             <div class="form-check ml-3">
                                                 <input type="radio" class="form-check-input" name="free" value="無" checked>
-                                                <label class="form-check-label" for="no">なし</label>
+                                                <label class="form-check-label" for="no">無</label>
                                             </div>
                                     </td>
                                 </tr>

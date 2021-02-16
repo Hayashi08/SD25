@@ -39,7 +39,7 @@
                             <td class="text-center h5 bg-white"><%= floorBeans.get(i).getCap() %></td>
                             <td class="text-center h5 bg-white"><%= floorBeans.get(i).getMachine() %></td>
                             <td class="text-center h5 bg-white">
-                                <a href="FrontController?class_name=situation.FormSignupAction&user_id=<%= user_id %>&floor_id=<%= floorBeans.get(i).getId() %>" class="btn btn-primary" role="button">利用</a>
+                                <a href="FrontController?class_name=situation.FormSignupAction&user_id=<%= user_id %>&floor_id=<%= floorBeans.get(i).getId() %>&floor_cap=<%= floorBeans.get(i).getCap() %>" class="btn btn-primary" role="button">利用</a>
                             </td>
                             </tr>
                         <% } %>
