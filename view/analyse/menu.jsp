@@ -6,6 +6,7 @@
 <%@ page import="java.util.Calendar" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="bean.OrderBean" %>
 
 <% //x軸を取得
     String xaxis = (String)request.getAttribute("xaxis");
@@ -71,6 +72,12 @@
         // datas.add("20");
 
         ArrayList<String> datas = (ArrayList<String>)request.getAttribute("datas");
+        ArrayList<String> menulist_reco = (ArrayList<String>)request.getAttribute("menulist_reco");
+        ArrayList<String> menulist_food = (ArrayList<String>)request.getAttribute("menulist_food");
+        ArrayList<String> menulist_drink = (ArrayList<String>)request.getAttribute("menulist_drink");
+        ArrayList<String> menulist_side = (ArrayList<String>)request.getAttribute("menulist_side");
+        ArrayList<String> menulist_dessert = (ArrayList<String>)request.getAttribute("menulist_dessert");
+        String[] checked_menu = (String[])request.getAttribute("checked_menu");
 
         //最大値、最小値を取得
         int min = Integer.parseInt(datas.get(0));
@@ -159,7 +166,7 @@
     </head>
     <body>
         <form action="FrontController" method="POST">
-        <input type="text" name="class_name" value="analyse.TopAction" hidden>
+        <input type="text" name="class_name" value="analyse.MenuAction" hidden>
 
         <div class="container-fluid">
             <div class="p-3">
@@ -736,125 +743,118 @@
                                     <nav id="navbar-example2" class="navbar navbar-light bg-light">
                                       <h3 class="navbar-brand">メニュー</h3>
                                       <ul class="nav nav-pills">
-                                        <li class="nav-item"><a class="nav-link" href="#verse1">おつまみ</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="#verse2">お料理</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="#verse3">お食事</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="#verse4">パーティー</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="#verse5">デザート</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="#verse6">スナック</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#reco">オススメ</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#food">フード</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#drink">ドリンク</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#side">サイドメニュー</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#dessert">デザート</a></li>
                                       </ul>
                                     </nav>
+                                    <% boolean flg = false; %>
                                     <div data-spy="scroll" data-target="#navbar-example2" data-offset="0" class="scrollspy-example">
-                                      <h4 id="verse1">おつまみ</h4>
-                                      <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" id="menu1">
-                                          <label class="form-check-label" for="menu1">ポテト＆チキンナゲット</label>
-                                      </div>
-                                      <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" id="menu2">
-                                          <label class="form-check-label" for="menu2">スナックバスケット</label>
-                                      </div>
-                                      <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" id="menu3">
-                                          <label class="form-check-label" for="menu3">おにぽて</label>
-                                      </div>
-                                      <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" id="menu4">
-                                          <label class="form-check-label" for="menu4">おつまみガーリックトースト</label>
-                                      </div>
+                                      <h4 id="reco">オススメ</h4>
+                                      <% for(i=0 ; i < menulist_reco.size() ; i++){ %>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name = "menu_check" id="menu_reco<%= i %>" value = "<%= menulist_reco.get(i) %>"
+                                            <% 
+                                            if(checked_menu != null){
+                                            flg=false;
+                                              for(int j = 0 ; j < checked_menu.length ; j++){
+                                                if(checked_menu[j].equals(menulist_reco.get(i))){
+                                                  flg = true;
+                                                }
+                                              }
+                                            }
+                                            if(flg){ %>
+                                            checked
+                                            <% } %>
+                                            >
+                                            <label class="form-check-label" for="menu_reco<%= i %>"><%= menulist_reco.get(i) %></label>
+                                        </div>
+                                      <% } %>
+                                      <h4 id="food">フード</h4>
+                                      <% for(i=0 ; i < menulist_food.size() ; i++){ %>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name = "menu_check" id="menu_food<%= i %>" value = "<%= menulist_food.get(i) %>"
+                                            <% 
+                                            if(checked_menu != null){
+                                            flg=false;
+                                              for(int j = 0 ; j < checked_menu.length ; j++){
+                                                if(checked_menu[j].equals(menulist_food.get(i))){
+                                                  flg = true;
+                                                }
+                                              }
+                                            }
+                                            if(flg){ %>
+                                            checked
+                                            <% } %>
+                                            >
+                                            <label class="form-check-label" for="menu_food<%= i %>"><%= menulist_food.get(i) %></label>
+                                        </div>
+                                      <% } %>
 
-                                      <h4 id="verse2">お料理</h4>
-                                      <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" id="menu1">
-                                          <label class="form-check-label" for="menu1">鶏の唐揚げ</label>
-                                      </div>
-                                      <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" id="menu2">
-                                          <label class="form-check-label" for="menu2">旨辛チキンスティック</label>
-                                      </div>
-                                      <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" id="menu3">
-                                          <label class="form-check-label" for="menu3">エビと彩野菜のチリソース</label>
-                                      </div>
-                                      <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" id="menu4">
-                                          <label class="form-check-label" for="menu4">お好み焼き串</label>
-                                      </div>
+                                      <h4 id="drink">ドリンク</h4>
+                                      <% for(i=0 ; i < menulist_drink.size() ; i++){ %>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name = "menu_check" id="menu_drink<%= i %>" value = "<%= menulist_drink.get(i) %>"
+                                            <% 
+                                            if(checked_menu != null){
+                                            flg=false;
+                                              for(int j = 0 ; j < checked_menu.length ; j++){
+                                                if(checked_menu[j].equals(menulist_drink.get(i))){
+                                                  flg = true;
+                                                }
+                                              }
+                                            }
+                                            if(flg){ %>
+                                            checked
+                                            <% } %>
+                                            >
+                                            <label class="form-check-label" for="menu_drink<%= i %>"><%= menulist_drink.get(i) %></label>
+                                        </div>
+                                      <% } %>
 
-                                      <h4 id="verse3">お食事</h4>
-                                      <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" id="menu1">
-                                          <label class="form-check-label" for="menu1">ジャンボ焼きそば</label>
-                                      </div>
-                                      <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" id="menu2">
-                                          <label class="form-check-label" for="menu2">マルゲリータピザ</label>
-                                      </div>
-                                      <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" id="menu3">
-                                          <label class="form-check-label" for="menu3">チャーハン</label>
-                                      </div>
-                                      <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" id="menu4">
-                                          <label class="form-check-label" for="menu4">温玉カルボナーラ</label>
-                                      </div>
+                                      <h4 id="side">サイドメニュー</h4>
+                                      <% for(i=0 ; i < menulist_side.size() ; i++){ %>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name = "menu_check" id="menu_side<%= i %>" value = "<%= menulist_side.get(i) %>"
+                                            <% 
+                                            if(checked_menu != null){
+                                            flg=false;
+                                              for(int j = 0 ; j < checked_menu.length ; j++){
+                                                if(checked_menu[j].equals(menulist_side.get(i))){
+                                                  flg = true;
+                                                }
+                                              }
+                                            }
+                                            if(flg){ %>
+                                            checked
+                                            <% } %>
+                                            >
+                                            <label class="form-check-label" for="menu_side<%= i %>"><%= menulist_side.get(i) %></label>
+                                        </div>
+                                      <% } %>
 
-                                      <h4 id="verse4">パーティ</h4>
-                                      <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" id="menu1">
-                                          <label class="form-check-label" for="menu1">オニオンリングタワー</label>
-                                      </div>
-                                      <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" id="menu2">
-                                          <label class="form-check-label" for="menu2">おつまみプレート(リッチ)</label>
-                                      </div>
-                                      <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" id="menu3">
-                                          <label class="form-check-label" for="menu3">おつまみプレート(スタンダード)</label>
-                                      </div>
-                                      <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" id="menu4">
-                                          <label class="form-check-label" for="menu4">かわきものパーティー</label>
-                                      </div>
-
-
-                                      <h4 id="verse5">デザート</h4>
-                                      <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" id="menu1">
-                                          <label class="form-check-label" for="menu1">チョコレートパフェ</label>
-                                      </div>
-                                      <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" id="menu2">
-                                          <label class="form-check-label" for="menu2">ポッキー</label>
-                                      </div>
-                                      <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" id="menu3">
-                                          <label class="form-check-label" for="menu3">コーヒーゼリーとソフトアイス</label>
-                                      </div>
-                                      <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" id="menu4">
-                                          <label class="form-check-label" for="menu4">アイスカタラーナ</label>
-                                      </div>
-
-
-                                      <h4 id="verse6">スナック</h4>
-                                      <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" id="menu1">
-                                          <label class="form-check-label" for="menu1">メキシカンナチョス</label>
-                                      </div>
-                                      <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" id="menu2">
-                                          <label class="form-check-label" for="menu2">ミックスナッツ</label>
-                                      </div>
-                                      <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" id="menu3">
-                                          <label class="form-check-label" for="menu3">ポテトチップス</label>
-                                      </div>
-                                      <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" id="menu4">
-                                          <label class="form-check-label" for="menu4">えびせん</label>
-                                      </div>
-
+                                      <h4 id="dessert">デザート</h4>
+                                      <% for(i=0 ; i < menulist_reco.size() ; i++){ %>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name = "menu_check" id="menu_dessert<%= i %>" value = "<%= menulist_dessert.get(i) %>"
+                                            <% 
+                                            if(checked_menu != null){
+                                            flg=false;
+                                              for(int j = 0 ; j < checked_menu.length ; j++){
+                                                if(checked_menu[j].equals(menulist_dessert.get(i))){
+                                                  flg = true;
+                                                }
+                                              }
+                                            }
+                                            if(flg){ %>
+                                            checked
+                                            <% } %>
+                                            >
+                                            <label class="form-check-label" for="menu_dessert<%= i %>"><%= menulist_dessert.get(i) %></label>
+                                        </div>
+                                      <% } %>
                                     </div>
                                 </div>
 
@@ -880,5 +880,6 @@
 
             </div>
         </div>
+    </form>
     </body>
 </html>

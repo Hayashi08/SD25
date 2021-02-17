@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bean.SaleBean;
+import bean.OrderBean;
 import dao.AnalyseDAO;
 
 import tool.Action;
@@ -146,6 +146,9 @@ public class MenuAction extends Action {
         if(dotw == null){
         	dotw = "";
         }
+        String[] checked_menu = request.getParameterValues("menu_check");
+        
+        
         System.out.println("");
         System.out.println("------ここからservelet------"); 
         System.out.println(""); 
@@ -162,6 +165,14 @@ public class MenuAction extends Action {
         System.out.println("timezone_check : " + timezone_check);
         System.out.println("dotw : " + dotw);
         System.out.println("dotw_check : " + dotw_check);
+        if(checked_menu != null){
+		    for(int i = 0 ; i < checked_menu.length ; i++){
+		        System.out.println("checked_menu : " + checked_menu[i]);
+		    }
+        }
+        else{
+            System.out.println("checked_menu : null");
+        }
 
         request.setAttribute("xaxis", xaxis);
         request.setAttribute("yaxis", yaxis);
@@ -179,23 +190,35 @@ public class MenuAction extends Action {
         // DAOの生成
         AnalyseDAO analyseDAO = new AnalyseDAO();
         // DAOメソッドの実行
-        ArrayList<String> datas = 
-        				analyseDAO.analyse(xaxis , yaxis , 
-        						   date , age_lead ,
-        						   age_last , age_check ,
-        						   sex , time_lead ,
-        						   time_last , timezone_check ,
-        						   dotw , dotw_check
-        						   );
-        // ちゃんと閉じる！
-        analyseDAO.close();
-        
+	    ArrayList<String> datas = 
+	    				analyseDAO.analyse_menu(xaxis , yaxis , 
+	    						   date , age_lead ,
+	    						   age_last , age_check ,
+	    						   sex , time_lead ,
+	    						   time_last , timezone_check ,
+	    						   dotw , dotw_check , checked_menu
+	    						   );
         for(int i = 0 ; i < datas.size() ; i++){
         	System.out.print(i + " : ");
         	System.out.println(datas.get(i));
         }
-
         request.setAttribute("datas", datas);
+        request.setAttribute("checked_menu", checked_menu);
+
+        // DAOメソッドの実行
+        ArrayList<String> menulist_reco = analyseDAO.menu_searchall("オススメ");
+        ArrayList<String> menulist_food = analyseDAO.menu_searchall("フード");
+        ArrayList<String> menulist_drink = analyseDAO.menu_searchall("ドリンク");
+        ArrayList<String> menulist_side = analyseDAO.menu_searchall("サイドメニュー");
+        ArrayList<String> menulist_dessert = analyseDAO.menu_searchall("デザート");
+        
+        // ちゃんと閉じる！
+        analyseDAO.close();
+        request.setAttribute("menulist_reco", menulist_reco);
+        request.setAttribute("menulist_food", menulist_food);
+        request.setAttribute("menulist_drink", menulist_drink);
+        request.setAttribute("menulist_side", menulist_side);
+        request.setAttribute("menulist_dessert", menulist_dessert);
 
         System.out.println("");
         System.out.println("------ここまでservelet------"); 
