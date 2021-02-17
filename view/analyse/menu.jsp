@@ -192,8 +192,8 @@
                                     <% } %>
                                     >売上
 
-                                    <option value="visitors"
-                                    <% if(yaxis.equals("visitors")){ %>
+                                    <option value="noo"
+                                    <% if(yaxis.equals("noo")){ %>
                                     selected
                                     <% } %>
                                     >注文数
