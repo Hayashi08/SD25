@@ -63,7 +63,7 @@ INSERT INTO user VALUES
 ('oota', 'riku', '太田陸', '男', '1990-03-22', 'oota@example.com', '080-2222-0120', '会社員', '1', '5', '2020-04-01');
 
 
---利用
+-- 利用
 INSERT INTO situation values 
 (1, 'yamaguti', '101', '1', '2020-01-14' ,  '20:22:00' , '23:22:00' , '23:22:00' , '無');
 
@@ -191,7 +191,7 @@ INSERT INTO situation values
 (42, 'oota', '508', '2', '2020-12-18' ,  '17:42:00' , '20:42:00' , '20:42:00' , '無');
 
 
---売上
+-- 売上
 INSERT INTO sale values
 (0 , 'yamaguti' , 1 , '3000' , '2020-01-14');
 
@@ -317,5 +317,93 @@ INSERT INTO sale values
 
 INSERT INTO sale values
 (0 , 'oota' , 42 , '9000' , '2020-12-18');
+
+
+-- 売上詳細
+INSERT INTO sale_detail values (0,1,9,2,'女','20代');
+INSERT INTO sale_detail values (0,1,8,2,'女','20代');
+INSERT INTO sale_detail values (0,2,27,1,'男','20代');
+INSERT INTO sale_detail values (0,3,9,2,'女','20代');
+INSERT INTO sale_detail values (0,3,19,1,'男','20代');
+INSERT INTO sale_detail values (0,4,1,1,'男','20代');
+INSERT INTO sale_detail values (0,4,10,3,'男','20代');
+INSERT INTO sale_detail values (0,4,13,1,'女','40代');
+INSERT INTO sale_detail values (0,4,20,1,'女','30代');
+INSERT INTO sale_detail values (0,5,10,1,'女','シニア');
+INSERT INTO sale_detail values (0,5,22,2,'男','子ども');
+INSERT INTO sale_detail values (0,5,12,1,'女','30代');
+INSERT INTO sale_detail values (0,5,17,1,'男','30代');
+INSERT INTO sale_detail values (0,5,9,2,'男','子ども');
+INSERT INTO sale_detail values (0,6,2,1,'男','20代');
+INSERT INTO sale_detail values (0,6,14,1,'男','30代');
+INSERT INTO sale_detail values (0,6,3,1,'女','20代');
+INSERT INTO sale_detail values (0,7,10,1,'女','シニア');
+INSERT INTO sale_detail values (0,7,24,2,'女','子ども');
+INSERT INTO sale_detail values (0,7,23,2,'男','子ども');
+INSERT INTO sale_detail values (0,7,29,2,'女','30代');
+INSERT INTO sale_detail values (0,7,26,1,'男','30代');
+INSERT INTO sale_detail values (0,7,28,1,'男','10代');
+INSERT INTO sale_detail values (0,8,15,2,'女','20代');
+INSERT INTO sale_detail values (0,9,10,1,'男','シニア');
+INSERT INTO sale_detail values (0,9,5,1,'男','シニア');
+INSERT INTO sale_detail values (0,9,11,2,'女','シニア');
+INSERT INTO sale_detail values (0,10,8,2,'女','10代');
+INSERT INTO sale_detail values (0,11,25,1,'男','10代');
+INSERT INTO sale_detail values (0,11,6,1,'男','10代');
+INSERT INTO sale_detail values (0,11,17,2,'男','10代');
+INSERT INTO sale_detail values (0,11,27,2,'男','10代');
+INSERT INTO sale_detail values (0,12,7,1,'女','30代');
+INSERT INTO sale_detail values (0,12,8,1,'女','30代');
+INSERT INTO sale_detail values (0,12,9,1,'女','30代');
+INSERT INTO sale_detail values (0,12,21,2,'女','30代');
+INSERT INTO sale_detail values (0,13,27,2,'男','20代');
+INSERT INTO sale_detail values (0,13,7,2,'男','20代');
+INSERT INTO sale_detail values (0,13,8,2,'女','20代');
+INSERT INTO sale_detail values (0,13,28,2,'女','20代');
+INSERT INTO sale_detail values (0,13,18,2,'男','20代');
+INSERT INTO sale_detail values (0,14,21,1,'女','20代');
+INSERT INTO sale_detail values (0,14,1,2,'男','30代');
+INSERT INTO sale_detail values (0,14,18,1,'男','40代');
+INSERT INTO sale_detail values (0,14,18,2,'男','シニア');
+INSERT INTO sale_detail values (0,14,12,1,'女','30代');
+INSERT INTO sale_detail values (0,14,11,1,'女','40代');
+INSERT INTO sale_detail values (0,15,26,2,'男','30代');
+INSERT INTO sale_detail values (0,15,27,1,'男','20代');
+INSERT INTO sale_detail values (0,15,4,2,'女','30代');
+INSERT INTO sale_detail values (0,16,10,1,'女','40代');
+INSERT INTO sale_detail values (0,16,13,1,'男','40代');
+INSERT INTO sale_detail values (0,17,12,1,'男','40代');
+INSERT INTO sale_detail values (0,18,23,2,'女','20代');
+INSERT INTO sale_detail values (0,18,24,2,'女','20代');
+INSERT INTO sale_detail values (0,18,8,2,'女','20代');
+INSERT INTO sale_detail values (0,18,19,2,'女','20代');
+INSERT INTO sale_detail values (0,28,27,1,'女','20代');
+INSERT INTO sale_detail values (0,18,20,1,'女','20代');
+
+INSERT INTO sale_detail values (0,19,27,2,'男','40代');
+
+INSERT INTO sale_detail values (0,20,27,2,'女','20代');
+INSERT INTO sale_detail values (0,21,27,2,'女','20代');
+INSERT INTO sale_detail values (0,22,27,2,'女','20代');
+INSERT INTO sale_detail values (0,23,27,2,'女','20代');
+INSERT INTO sale_detail values (0,24,27,2,'女','20代');
+INSERT INTO sale_detail values (0,25,27,2,'女','20代');
+INSERT INTO sale_detail values (0,26,27,2,'女','20代');
+INSERT INTO sale_detail values (0,27,27,2,'女','20代');
+INSERT INTO sale_detail values (0,28,27,2,'女','20代');
+INSERT INTO sale_detail values (0,29,27,2,'女','20代');
+INSERT INTO sale_detail values (0,30,27,2,'女','20代');
+INSERT INTO sale_detail values (0,31,27,2,'女','20代');
+INSERT INTO sale_detail values (0,32,27,2,'女','20代');
+INSERT INTO sale_detail values (0,33,27,2,'女','20代');
+INSERT INTO sale_detail values (0,34,27,2,'女','20代');
+INSERT INTO sale_detail values (0,35,27,2,'女','20代');
+INSERT INTO sale_detail values (0,36,27,2,'女','20代');
+INSERT INTO sale_detail values (0,37,27,2,'女','20代');
+INSERT INTO sale_detail values (0,38,27,2,'女','20代');
+INSERT INTO sale_detail values (0,39,27,2,'女','20代');
+INSERT INTO sale_detail values (0,40,27,2,'女','20代');
+INSERT INTO sale_detail values (0,41,27,2,'女','20代');
+INSERT INTO sale_detail values (0,42,27,2,'女','20代');
 
 set names cp932;

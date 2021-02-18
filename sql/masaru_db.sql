@@ -204,7 +204,7 @@ INSERT INTO employee VALUES ('E02', 'renn', '田中蓮', '副店長', 'tanakaren
 INSERT INTO employee VALUES ('E03', 'kaede', '山口楓', '社員', 'yamagutikaede@ex.com', '080-1111-0004');
 INSERT INTO employee VALUES ('E04', 'ritu', '佐藤律', '社員', 'satouritu@ex.com', '080-1111-0005');
 INSERT INTO employee VALUES ('E05', 'tumugi', '鈴木紬', '社員', 'suzukitumugi@ex.com', '080-1111-0006');
-INSERT INTO employee VALUES ('E06', 'sou', '高橋湊', 'SV', 'takahasisou@ex.com', '080-1111-0007');
+INSERT INTO employee VALUES ('E06', 'sou', '高橋湊', '社員', 'takahasisou@ex.com', '080-1111-0007');
 INSERT INTO employee VALUES ('A01', 'riko', '伊藤莉子', 'アルバイト', 'itouriko@ex.com', '080-1111-0008');
 INSERT INTO employee VALUES ('A02', 'haruto', '渡辺陽翔', 'アルバイト', 'watanabeharuto@ex.com', '080-1111-0009');
 INSERT INTO employee VALUES ('A03', 'yuduki', '後藤結月', 'アルバイト', 'gotouyuduki@ex.com', '080-1111-0010');
@@ -323,7 +323,7 @@ INSERT INTO menu VALUES (17, 'チキンナゲット', 'サイドメニュー', 3
 INSERT INTO menu VALUES (18, 'イカリング', 'サイドメニュー', 400, curdate(), curdate(), 'イカが新鮮', '卵,小麦');
 INSERT INTO menu VALUES (19, 'チョコレートパフェ', 'デザート', 600, curdate(), curdate(), 'ホイップたっぷり', '卵,乳,小麦');
 INSERT INTO menu VALUES (20, 'コーヒーゼリー', 'デザート', 450, curdate(), curdate(), 'クリームは甘く、ゼリーはほろ苦くておいしい', '乳');
-INSERT INTO menu VALUES (21, 'チョコレートパフェ', 'デザート', 600, curdate(), curdate(), 'ホイップたっぷり', '卵,乳,小麦');
+INSERT INTO menu VALUES (21, 'スイートポテト', 'デザート', 350, curdate(), curdate(), '芋の甘さ引き立つ', '卵,乳');
 INSERT INTO menu VALUES (22, 'プリン', 'デザート', 400, curdate(), curdate(), 'ホイップたっぷりでサクランボが乗っている', '卵,乳');
 INSERT INTO menu VALUES (23, 'ポテトチップス', 'デザート', 200, curdate(), curdate(), 'サクサクで大人気', '卵,小麦');
 INSERT INTO menu VALUES (24, 'ホットケーキ', 'デザート', 600, curdate(), curdate(), 'ホイップたっぷりでフワフワ', '卵,乳,小麦');
