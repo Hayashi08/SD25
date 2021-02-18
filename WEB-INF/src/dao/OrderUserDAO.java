@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import tool.DAO;
 import bean.OrderUserBean;
+import bean.SituationBean;
 
 public class OrderUserDAO extends DAO {
     
@@ -14,23 +15,37 @@ public class OrderUserDAO extends DAO {
         super();
     }
     
-    // // 注文管理(ユーザー)登録処理
-    // public boolean insert(String employee_id, String date, String start, String end) throws Exception {
-        
-    //     String sql = "insert into shift values ( 0, ?, ?, ?, ?)";
-    //     PreparedStatement statement = this.connection.prepareStatement(sql);
-    //     statement.setString(1, employee_id);
-    //     statement.setString(2, date);
-    //     statement.setString(3, start);
-    //     statement.setString(4, end);
-    //     statement.executeUpdate();
-        
-    //     statement.close();
-    //     return true;
-        
-    // }
+    // // 注文登録処理
+    public boolean insert(String id, String floor_id, int qty) throws Exception {
 
-    //  注文管理(ユーザー)検索処理
+        SituationBean situationBean = new SituationBean();
+        String select_sql = "select situation_id from situation where floor_id = ?";
+        PreparedStatement select_ps = this.connection.prepareStatement(select_sql);
+        select_ps.setString(1, floor_id);
+        ResultSet rs = select_ps.executeQuery();
+        
+        if (rs.next()) {
+            
+            situationBean.setId(rs.getString(1));
+        }
+        
+        select_ps.close();
+
+        
+        String insert_sql = "insert into task values ( 0, ?, ?, ?, ?, curtime(), null, null)";
+        PreparedStatement insert_ps = this.connection.prepareStatement(insert_sql);
+        insert_ps.setString(1, id);
+        insert_ps.setString(2, situationBean.getId());
+        insert_ps.setString(3, floor_id);
+        insert_ps.setInt(4, qty);
+        insert_ps.executeUpdate();
+        
+        insert_ps.close();
+        return true;
+        
+    }
+
+    //  メニュー検索処理
     public ArrayList<OrderUserBean> search(String genre) throws Exception {
 
         PreparedStatement statement;
@@ -54,7 +69,7 @@ public class OrderUserDAO extends DAO {
         
     }
 
-    // 注文管理(ユーザー)詳細
+    // メニュー詳細
     public OrderUserBean detail(String id) throws Exception {
         
         OrderUserBean order_userBean = new OrderUserBean();
@@ -79,32 +94,28 @@ public class OrderUserDAO extends DAO {
         return order_userBean;
     }
 
+    //  履歴検索処理
+    public ArrayList<OrderUserBean> archive(String floor_id) throws Exception {
 
-    // // 注文管理(ユーザー)更新処理
-    // public boolean update(String id, String start, String end) throws Exception {
+        ArrayList<OrderUserBean> order_userBeans = new ArrayList<OrderUserBean>();
+        String sql = " select m.menu_name,m.menu_price,t.task_qty,t.task_deploy from menu as m natural join task as t where t.floor_id = ?";
+        PreparedStatement ps = this.connection.prepareStatement(sql);
+        ps.setString(1, floor_id);
 
-    //     String sql = "update shift set shift_start = ?, shift_end = ? where shift_id = ?";
-    //     PreparedStatement statement = this.connection.prepareStatement(sql);
-    //     statement.setString(1, start);
-    //     statement.setString(2, end);
-    //     statement.setString(3, id);
-    //     statement.executeUpdate();
-        
-    //     statement.close();
-    //     return true;
-        
-    // }
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
 
-    // // 注文管理(ユーザー)削除処理
-    // public void delete(String id) throws Exception {
-
-    //     String sql = "delete from shift where shift_id = ?";
-    //     PreparedStatement statement = this.connection.prepareStatement(sql);
-    //     statement.setString(1, id);
-    //     statement.executeUpdate();
+            OrderUserBean order_userBean = new OrderUserBean();
+            order_userBean.setName(rs.getString(1));
+            order_userBean.setPrice(rs.getInt(2));
+            order_userBean.setQty(rs.getInt(3));
+            order_userBean.setDeploy(rs.getString(4));
+            order_userBeans.add(order_userBean);
+        }
         
-    //     statement.close();
+        ps.close();
+        return order_userBeans;
         
-    // }
+    }
 
 }

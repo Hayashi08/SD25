@@ -22,7 +22,6 @@ public class GenreAction extends Action {
         order_userDAO.close();
         
         request.setAttribute("order_userBeans", order_userBeans);
-        request.setAttribute("genre", genre);
         
         return "/view/order_user/genre.jsp";
     }

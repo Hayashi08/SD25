@@ -11,6 +11,8 @@ public class OrderUserBean {
     private String update = "";
     private String des = "";
     private String allergy = "";
+    private int qty = -1;
+    private String deploy = "";
 
     // ゲッター・セッター
 	public String getId() {
@@ -60,6 +62,18 @@ public class OrderUserBean {
 	}
 	public void setAllergy(String allergy) {
 		this.allergy = allergy;
+	}
+	public int getQty() {
+		return qty;
+	}
+	public void setQty(int qty) {
+		this.qty = qty;
+	}
+	public String getDeploy() {
+		return deploy;
+	}
+	public void setDeploy(String deploy) {
+		this.deploy = deploy;
 	}
    
 
