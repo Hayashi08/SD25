@@ -178,7 +178,7 @@
                         <% if (flag == 1) { %>
 
                                 <div class="col-4 text-center">
-                                    <a class="btn-lg btn-info" href="">注文履歴</a>
+                                    <a class="bg-info rounded p-4 text-white h1" href="FrontController?class_name=order_user.ArchiveAction">注文履歴</a>
                                 </div>
 
                         <% } else if (order_userBeans.size()-(current_page*5) <= 5) { %>
@@ -191,7 +191,7 @@
                                 </a>
                             <% } %>
                                 <div class="col-4 mt-4 py-5 text-center">
-                                    <a class="bg-info rounded p-4 text-white h1" href="">注文履歴</a>
+                                    <a class="bg-info rounded p-4 text-white h1" href="FrontController?class_name=order_user.ArchiveAction">注文履歴</a>
                                 </div>
                             </div>
 
@@ -204,7 +204,7 @@
                                 </a>
                             <% } %>
                                 <div class="col-4 mt-4 py-5 text-center">
-                                    <a class="bg-info rounded p-4 text-white h1" href="">注文履歴</a>
+                                    <a class="bg-info rounded p-4 text-white h1" href="FrontController?class_name=order_user.ArchiveAction">注文履歴</a>
                                 </div>
                             </div>
 
