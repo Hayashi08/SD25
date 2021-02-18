@@ -177,12 +177,22 @@ public class SituationDAO extends DAO {
         String free = situationBean.getFree();
         int qty = situationBean.getQty();
         
+        int start_int = Integer.parseInt(start.substring(0, 2)) * 100 + Integer.parseInt(start.substring(3, 5));
+        int end_sche_int = Integer.parseInt(end_sche.substring(0, 2)) * 100 + Integer.parseInt(end_sche.substring(3, 5));
+        int end_int = Integer.parseInt(end.substring(0, 2)) * 100 + Integer.parseInt(end.substring(3, 5));
+
+        
         // 時間計算
         if (free.equals("無")) {
-            price = calcHourPrice(date, start, end);
+            if (end_sche_int >= end_int) {
+                price = calcHourPrice(date, start_int, end_sche_int);
+            }
+            else {
+                price = calcHourPrice(date, start_int, end_int);
+            }
         }
         else {
-            price = calcHourPriceFree(date, start, end_sche, end);
+            price = calcHourPriceFree(date, start_int, end_sche_int, end_int);
         }
         
         price = price * qty;
@@ -195,7 +205,7 @@ public class SituationDAO extends DAO {
         return price;
     }
     
-    private int calcHourPrice(String date, String start, String end) {
+    private int calcHourPrice(String date, int start_int, int end_int) {
         int price = 0;
         
         int noon_weekday = 1000;
@@ -205,11 +215,13 @@ public class SituationDAO extends DAO {
         
         String yobi_str = yobi(date);
         
-        int start_int = Integer.parseInt(start.substring(0, 2)) * 100 + Integer.parseInt(start.substring(3, 5));
-        int end_int = Integer.parseInt(end.substring(0, 2)) * 100 + Integer.parseInt(end.substring(3, 5));
+        System.out.println("開始" + start_int);
+        System.out.println("終了" + end_int);
         
         // holiday
         if (yobi_str.equals("金") || yobi_str.equals("土") || yobi_str.equals("日")) {
+            
+            System.out.println("祝日");
             
             // 昼スタート
             if (start_int < 1500) {
@@ -251,11 +263,18 @@ public class SituationDAO extends DAO {
         // weekday
         else {
             
+            System.out.println("平日");
+            
             // 昼スタート
             if (start_int < 1700) {
                 
+                System.out.println("昼スタート");
+                
                 // 昼エンド
                 if (end_int <= 1700) {
+                    
+                    System.out.println("昼エンド");
+                    
                     price += ((end_int - start_int)/100) * noon_weekday;
                     if ((end_int - start_int)%100 != 0) {
                         price += noon_weekday;
@@ -292,14 +311,10 @@ public class SituationDAO extends DAO {
         return price;
     }
     
-    private int calcHourPriceFree(String date, String start, String end_sche, String end) {
+    private int calcHourPriceFree(String date, int start_int, int end_sche_int, int end_int) {
         int price = 0;
         
         String yobi_str = yobi(date);
-        
-        int start_int = Integer.parseInt(start.substring(0, 2)) * 100 + Integer.parseInt(start.substring(3, 5));
-        int end_sche_int = Integer.parseInt(end_sche.substring(0, 2)) * 100 + Integer.parseInt(end_sche.substring(3, 5));
-        int end_int = Integer.parseInt(end.substring(0, 2)) * 100 + Integer.parseInt(end.substring(3, 5));
         
         if (start_int >= 1000 && end_sche_int <= 1700) {
             
@@ -333,7 +348,7 @@ public class SituationDAO extends DAO {
         // 延長
         if (end_int > end_sche_int) {
             
-            price += calcHourPrice(date, end_sche, end);
+            price += calcHourPrice(date, end_sche_int, end_int);
             
         }
         

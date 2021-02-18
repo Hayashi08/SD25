@@ -52,7 +52,7 @@
                                 </tr>
                                 <tr>
                                     <td class="field text-center h5 font-weight-bold">終了時間</td>
-                                    <td><input type="time" class="form-control" value="<%= situationBean.getEnd() %>" readonly></td>
+                                    <td><input type="time" class="form-control" value="<%= situationBean.getEndSchedule() %>" readonly></td>
                                 </tr>
                                 <tr>
                                     <td class="field text-center h5 font-weight-bold">フリータイム</td>
