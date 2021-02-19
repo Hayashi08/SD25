@@ -308,7 +308,7 @@ INSERT INTO menu VALUES (1, 'オムライス', 'フード', 700, curdate(), curd
 INSERT INTO menu VALUES (2, 'ハンバーグ', 'フード', 900, curdate(), curdate(), '外はカリカリ中はジューシー', '卵');
 INSERT INTO menu VALUES (3, 'カレーライス', 'フード', 500, curdate(), curdate(), '子供も食べやすい辛さ', '');
 INSERT INTO menu VALUES (4, 'カルボナーラ', 'フード', 600, curdate(), curdate(), 'ソースがとても美味しい', '乳,小麦');
-INSERT INTO menu VALUES (5, '焼きそば', 'フード', 500, curdate(), curdate(), '外はカリカリ中はジューシー', '小麦');
+INSERT INTO menu VALUES (5, '焼きそば', 'フード', 500, curdate(), curdate(), 'ソースが甘くておいしい', '小麦');
 INSERT INTO menu VALUES (6, 'ざるそば', 'フード', 450, curdate(), curdate(), '麵が特注', 'そば');
 INSERT INTO menu VALUES (7, 'ラーメン', 'フード', 550, curdate(), curdate(), '醬油ベース', '卵,小麦');
 INSERT INTO menu VALUES (8, 'マルゲリータピザ', 'フード', 900, curdate(), curdate(), 'たっぷりチーズでとても美味しい', '乳,小麦');
@@ -319,6 +319,7 @@ INSERT INTO menu VALUES (12, 'リンゴジュース', 'ドリンク', 150, curda
 INSERT INTO menu VALUES (13, 'カルピス', 'ドリンク', 170, curdate(), curdate(), '大人気', '');
 INSERT INTO menu VALUES (14, '唐揚げ', 'サイドメニュー', 400, curdate(), curdate(), 'とてもジューシー', '卵,小麦');
 INSERT INTO menu VALUES (15, 'フライドポテト', 'サイドメニュー', 300, curdate(), curdate(), '揚げたてでサクサク', '小麦');
+INSERT INTO menu VALUES (16, 'エビフライ', 'サイドメニュー', 300, curdate(), curdate(), '揚げたてでサクサクプリプリ', 'えび');
 INSERT INTO menu VALUES (17, 'チキンナゲット', 'サイドメニュー', 300, curdate(), curdate(), 'サクサクで食べやすい', '卵,小麦');
 INSERT INTO menu VALUES (18, 'イカリング', 'サイドメニュー', 400, curdate(), curdate(), 'イカが新鮮', '卵,小麦');
 INSERT INTO menu VALUES (19, 'チョコレートパフェ', 'デザート', 600, curdate(), curdate(), 'ホイップたっぷり', '卵,乳,小麦');
