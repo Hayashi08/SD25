@@ -1,4 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="bean.TopBean" %>
+<%
+    ArrayList<TopBean> topBeans = (ArrayList<TopBean>)request.getAttribute("topBeans");
+%>
 <html lang="ja">
     <head>
         <title>トップページ</title>
@@ -15,24 +20,31 @@
                     トップページ
                 </div>
 
-                <div class="main col-10 mx-auto">
+                <div class="main col-12 mx-auto">
 
-                    <div class="row mt-3 mx-5">
-                        <div class="col border p-3 text-center bg-light"><h1>101</h1></div>
-                        <div class="col border p-3 text-center bg-primary"><h1>102</h1></div>
-                        <div class="col border p-3 text-center bg-primary"><h1>103</h1></div>
-                        <div class="col border p-3 text-center bg-light"><h1>104</h1></div>
-                        <div class="col border p-3 text-center bg-primary"><h1>105</h1></div>
-                    </div>
+                    <form action="FrontController" method="POST">
 
-                    <div class="row mb-5 mx-5">
-                        <div class="col border p-3 text-center bg-light"><h1>106</h1></div>
-                        <div class="col border p-3 text-center bg-primary"><h1>107</h1></div>
-                        <div class="col border p-3 text-center bg-primary"><h1>108</h1></div>
-                        <div class="col border p-3 text-center bg-primary"><h1>109</h1></div>
-                        <div class="col border p-3 text-center bg-light"><h1>110</h1></div>
-                    </div>
+                    <input type="text" name="class_name" value="situation.DetailAction" hidden>
 
+                    <% for (int i = 1; i <= 5; i++) { %>
+
+                        <div class="row px-5">
+
+                        <% for (int j = 1; j <= 10; j++) { %>
+
+                            <% if (j == 10) { %>
+                                <button type="submit" name="id" value="<%= i %><%= j %>" class="col border p-3 text-center"><%= i %><%= j %></button>
+                            <% } else { %>
+                                <button type="submit" name="id" value="<%= i %>0<%= j %>" class="col border p-3 text-center"><%= i %>0<%= j %></button>
+                            <% } %>
+
+                        <% } %>
+
+                        </div>
+
+                    <% } %>
+
+                    </form>
 
                     <div class="row mx-5 my-3">
                         <a class=" col p-3 mx-3 btn btn-danger" href="FrontController?class_name=situation.FormAuthUserAction" role="button">

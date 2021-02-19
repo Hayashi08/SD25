@@ -54,6 +54,7 @@ public class SituationDAO extends DAO {
         
     }
     
+    // 部屋選択
     public ArrayList<FloorBean> serchAvailableFloor() throws Exception {
         ArrayList<FloorBean> floorBeans = new ArrayList<FloorBean>();
         
@@ -81,6 +82,7 @@ public class SituationDAO extends DAO {
         return floorBeans;
     }
     
+    // インサート
     public boolean insert(String user_id, String floor_id, int qty, String start, String end, String free) throws Exception {
         // SQL文
         String sql = "insert into situation values ( 0, ?, ?, ?, curdate(), ?, ?, NULL, ?)";
@@ -101,6 +103,7 @@ public class SituationDAO extends DAO {
         return true;
     }
     
+    // Set situaton_end 
     public void setEnd(int id) throws Exception {
         
         // SQL文
@@ -116,6 +119,7 @@ public class SituationDAO extends DAO {
         
     }
     
+    // 利用詳細GET
     public SituationBean getDetail(int id) throws Exception {
         SituationBean situationBean = new SituationBean();
         
