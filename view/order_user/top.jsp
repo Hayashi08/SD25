@@ -18,12 +18,9 @@
                         <div class="offset-1 title col-2">
                             まさる堂
                         </div>
-                        <div class="offset-1 sub_title pt-4">
+                        <div class="offset-1 sub_title pt-4 animated bounce infinite">
                             メニューボタンをタッチして注文してください
                         </div>
-                        <a href="#modal2" class="offset-3" data-toggle="modal" data-target="#modal2">
-                            <i class="fas fa-user fa-3x"></i>
-                        </a>
                     </div>
                 </div>
             <div class="p-3 row">
@@ -62,30 +59,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-2 p-1">
-                    <div class="text-center mx-3">
-                        <div class="field sub_title py-3">
-                            注文リスト
-                        </div>
-                        <div class="sub py-3">
-                            <div class="row py-2">
-                                <div id="menu_name">
-                                </div>
-                                <div id="menu_qty">
-                                </div>
-                            </div>
-                            <div class="row py-5">
-                            </div>
-                            <div class="row py-5">
-                            </div>
-                            <div class="row py-5">
-                            </div>
-                            <div class="btn-lg btn-success" id="signup" data-toggle="modal" data-target="#modal1">
-                                注文する
-                            </div>
-                        </div>
+
+                <!-- 注文リスト -->
+                <div class="col-2 px-3 text-center container">
+                    <div class="field sub_title py-3 col">
+                        注文リスト
+                    </div>
+                    <div class="py-3" id="menu"></div>
+                    <div class="py-3" id="empty"></div>
+                    <div class="btn-lg py-3 col mx-1" id="signup" data-toggle="modal">
+                        注文する
                     </div>
                 </div>
+
             </div>
         </div>
 
@@ -109,7 +95,7 @@
         <%@ include file="../ModalCloseTab.jsp" %>
 
         <!-- 注文完了モーダル -->
-        <%@ include file="../ModalDisplayOpenTab.jsp" %>
+        <%@ include file="../ModalDisplay1OpenTab.jsp" %>
             <div class="row h3 text-center my-4">
                 注文しました。
             </div>
@@ -118,68 +104,6 @@
             </div>
         <%@ include file="../ModalCloseTab.jsp" %>
 
-        <!-- ログアウト処理 -->
-        <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="modal2" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="modal2">ログイン</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <div class="row my-5">
-                    <div class="offset-2 col-3">
-                        従業員ID
-                    </div>
-                    <div class="col-4">
-                        <input type="text" placeholder="従業員ID">
-                    </div>
-                </div>
-                <div class="row my-5">
-                    <div class="offset-2 col-3">
-                        パスワード
-                    </div>
-                    <div class="col-4">
-                        <input type="password" placeholder="パスワード">
-                    </div>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#modal_ans2">ログイン</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal fade" id="modal_ans2" tabindex="-1"
-      role="dialog" aria-labelledby="level2" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="level2">部屋番号入力</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <div class="row my-5">
-                    <div class="offset-2 col-3">
-                        部屋番号
-                    </div>
-                    <div class="col-4">
-                        <input type="text" placeholder="101">
-                    </div>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">確定</button>
-              </div>
-            </div>
-          </div>
-        </div>
         <%@ include file="../enhance.jsp" %>
     </body>
     <script>
@@ -191,12 +115,15 @@
         // 数量を入れる配列
         var qty = [];
 
-        // メニューIDを入れる文字列
+        // メニューIDを入れる変数
         var idCsv = "";
-        // メニュー名を入れる文字列
+        // メニュー名を入れる変数
         var nameCsv = "";
-        // 数量を入れる文字列
+        // 数量を入れる変数
         var qtyCsv = "";
+
+        // 注文リストカウント
+        var count = 0;
 
         //注文リスト
         if ("<%= menu_id %>" != "null") {
@@ -204,13 +131,39 @@
             id = "<%= menu_id %>".split(',');
             name1 = "<%= menu_name %>".split(',');
             qty = "<%= menu_qty %>".split(',');
-
+            
             for (var i = 0; i < id.length; i++) {
 
-                document.getElementById("menu_name").innerHTML += '<div class="mr-3 ml-4">' + name1[i] + '</div>';
-                document.getElementById("menu_qty").innerHTML += '<div>' + qty[i] + '</div>';
+                document.getElementById("menu").innerHTML += '<div class="row my-2"><div class="col-8 text-center">' + name1[i] + '</div><div class="col-4 text-center">' + qty[i] + '</div></div>';
+                count = i;
 
             }
+
+            //レイアウト修正
+            for (var i = 12; count < i; i--) {
+
+                document.getElementById("menu").innerHTML += '<div class="py-3"></div>';
+
+            }
+
+            //注文ボタンの操作
+            $("#signup").prop("disabled", true);
+            $("#signup").addClass('btn-success animated pulse infinite');
+            $("#signup").removeClass('btn-secondary');
+
+        } else {
+
+            //レイアウト修正
+            for (var i = 13; count < i; i--) {
+
+                document.getElementById("menu").innerHTML += '<div class="py-3"></div>';
+
+            }
+
+            //注文ボタンの操作
+            $("#signup").prop("disabled", false);
+            $("#signup").addClass('btn-secondary');
+            $("#signup").removeClass('btn-success');
 
         }
 
@@ -323,35 +276,48 @@
       //　注文登録モーダル
       $('#signup').click(function() {
 
-            //配列をCSV形式に変換
-            if (id.length == 0) {
-                
-            }else if (id.length == 1) {
-                for (var i = 0; i < id.length; i++) {
-                    idCsv = id[i];
-                    qtyCsv = qty[i];
-                }
-            }else{
+            if ("<%= menu_id %>" != "null" || id.length != 0) {
 
-                for (var i = 0; i < id.length-1; i++) {
-                    idCsv += id[i] + ",";
-                    qtyCsv += qty[i] + ",";
+                $("#modal1").modal('show');
+
+                //配列をCSV形式に変換
+                if (id.length == 0) {
+                    
+                }else if (id.length == 1) {
+
+                    for (var i = 0; i < id.length; i++) {
+
+                        idCsv = id[i];
+                        qtyCsv = qty[i];
+
+                    }
+
+                }else{
+
+                    for (var i = 0; i < id.length-1; i++) {
+
+                        idCsv += id[i] + ',';
+                        qtyCsv += qty[i] + ',';
+
+                    }
+
+                    idCsv += id[id.length-1];
+                    qtyCsv += qty[id.length-1];
+
                 }
-                idCsv += id[id.length-1];
-                qtyCsv += qty[id.length-1];
+
+                $('#modal_id').val(idCsv);
+                $('#modal_qty').val(qtyCsv);
+
+                document.getElementById("modal_signup").innerHTML = '<tr><th class="field">メニュー名</th><th class="field">数量</th></tr>';
+
+                for (var i = 0; i < name1.length; i++) {
+
+                    document.getElementById("modal_signup").innerHTML += '<tr><td><input type="text" class="form-control" value="' + name1[i] + '" readonly></td><td><input type="text" class="form-control" name="qty" value="' + qty[i] + '" readonly></td></tr>';
+
+                }
 
             }
-
-        $('#modal_id').val(idCsv);
-        $('#modal_qty').val(qtyCsv);
-
-        document.getElementById("modal_signup").innerHTML = '<tr><th class="field">メニュー名</th><th class="field">数量</th></tr>';
-
-        for (var i = 0; i < name1.length; i++) {
-
-            document.getElementById("modal_signup").innerHTML += '<tr><td><input type="text" class="form-control" value="' + name1[i] + '" readonly></td><td><input type="text" class="form-control" name="qty" value="' + qty[i] + '" readonly></td></tr>';
-
-        }
 
       });
 
