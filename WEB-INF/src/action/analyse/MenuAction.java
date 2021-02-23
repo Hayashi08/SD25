@@ -196,7 +196,8 @@ public class MenuAction extends Action {
 	    						   age_last , age_check ,
 	    						   sex , time_lead ,
 	    						   time_last , timezone_check ,
-	    						   dotw , dotw_check , checked_menu
+	    						   dotw , dotw_check , checked_menu,
+	    						   date
 	    						   );
         for(int i = 0 ; i < datas.size() ; i++){
         	System.out.print(i + " : ");

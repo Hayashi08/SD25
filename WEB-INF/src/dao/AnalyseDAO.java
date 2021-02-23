@@ -53,7 +53,7 @@ public class AnalyseDAO extends DAO {
     		String age_lead , 	String age_last , 	Boolean age_check ,
     		String sex , 		String time_lead , 	String time_last , 
     		Boolean timezone_check ,String dotw , 	Boolean dotw_check ,
-    		String[] checked_menu
+    		String[] checked_menu , String datestr
 			)throws Exception {
     	
 
@@ -143,10 +143,18 @@ public class AnalyseDAO extends DAO {
         	sql +=		"situation_date between ? and ?";
         }
         
-        //現在の年月日を取得
+        //年月日を取得
         Date today = new Date();
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(today);
+        Calendar cal = Calendar.getInstance();if(datestr.equals("")){
+        	cal.setTime(today);
+        }
+        else{
+	        String[] date_ar = datestr.split("-" , 0);
+	        cal.set(Calendar.YEAR,Integer.parseInt(date_ar[0]));
+	        cal.set(Calendar.MONTH,Integer.parseInt(date_ar[1]));
+	        cal.set(Calendar.DATE,Integer.parseInt(date_ar[2]));
+        	cal.add(Calendar.MONTH, -1);
+        }
         int yy = cal.get(Calendar.YEAR);
         int mm = cal.get(Calendar.MONTH)+1;
         int dd = cal.get(Calendar.DATE);
@@ -346,7 +354,7 @@ public class AnalyseDAO extends DAO {
     		String age_lead , 	String age_last , 	Boolean age_check ,
     		String sex , 		String time_lead , 	String time_last , 
     		Boolean timezone_check ,String dotw , 	Boolean dotw_check ,
-    		String[] checked_menu
+    		String datestr
 			)throws Exception {
 
         System.out.println(""); 
@@ -424,10 +432,22 @@ public class AnalyseDAO extends DAO {
         	sql +=		"situation_date between ? and ?";
         }
         
-        //現在の年月日を取得
+        //年月日を取得
         Date today = new Date();
         Calendar cal = Calendar.getInstance();
-        cal.setTime(today);
+        if(datestr.equals("")){
+        	cal.setTime(today);
+        }
+        else{
+	        String[] date_ar = datestr.split("-" , 0);
+	        cal.set(Calendar.YEAR,Integer.parseInt(date_ar[0]));
+	        cal.set(Calendar.MONTH,Integer.parseInt(date_ar[1]));
+	        cal.set(Calendar.DATE,Integer.parseInt(date_ar[2]));
+        	cal.add(Calendar.MONTH, -1);
+        }
+    	System.out.print("date : " + cal.get(Calendar.YEAR) + "-");
+    	System.out.print((cal.get(Calendar.MONTH)+1) + "-");
+    	System.out.println(cal.get(Calendar.DATE));
         int yy = cal.get(Calendar.YEAR);
         int mm = cal.get(Calendar.MONTH)+1;
         int dd = cal.get(Calendar.DATE);

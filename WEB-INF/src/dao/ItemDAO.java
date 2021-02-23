@@ -34,7 +34,7 @@ public class ItemDAO extends DAO {
    public ArrayList<ItemBean> search(String keyword) throws Exception {
        
        ArrayList<ItemBean> itemBeans = new ArrayList<ItemBean>();
-       String sql = "select * from item where item_id like ? or item_name like ? or item_genre like ?";
+       String sql = "select * from item where item_id like ? or item_name like ? or item_genre like ? order by item_name asc";
        PreparedStatement statement = this.connection.prepareStatement(sql);
        statement.setString(1, "%" + keyword + "%");
        statement.setString(2, "%" + keyword + "%");
