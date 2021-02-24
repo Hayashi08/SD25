@@ -28,11 +28,21 @@ public class ConfirmLiquidationAction extends Action {
         
         situationDAO.setEnd(id);
         situationBean = situationDAO.getDetail(id);
-        int price = situationDAO.getPrice(id);
+        
+        int time_price = situationDAO.getPrice(id);
+        System.out.println("時間料金：" + time_price);
+        
+        int order_price = situationDAO.calcMenuPrice(id);
+        System.out.println("注文料金:" + order_price);
+        
+        int price = time_price + order_price;
+        System.out.println("合計料金:" + price);
         
         situationDAO.close();
         
         request.setAttribute("situationBean", situationBean);
+        request.setAttribute("time_price", time_price);
+        request.setAttribute("order_price", order_price);
         request.setAttribute("price", price);
         
         return "/view/situation/liquidation_confirm.jsp";

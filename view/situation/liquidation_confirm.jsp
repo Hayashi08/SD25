@@ -3,6 +3,8 @@
 <%
 
     SituationBean situationBean = (SituationBean)request.getAttribute("situationBean");
+    int time_price = (Integer)request.getAttribute("time_price");
+    int order_price = (Integer)request.getAttribute("order_price");
     int price = (Integer)request.getAttribute("price");
 
 %>
@@ -59,7 +61,13 @@
                                     <td><input type="text" class="form-control" value="<%= situationBean.getFree() %>" readonly></td>
                                 </tr>
                                 <tr>
-                                    <td class="bg-info text-center h5 font-weight-bold">料金</td>
+                                    <td class="field text-center h5 font-weight-bold">時間料金</td>
+                                    <td><input type="text" class="form-control" value="<%= time_price %>" readonly></td>
+                                </tr>                                <tr>
+                                    <td class="field text-center h5 font-weight-bold">注文料金</td>
+                                    <td><input type="text" class="form-control" value="<%= order_price %>" readonly></td>
+                                </tr>                                <tr>
+                                    <td class="bg-info text-center h5 font-weight-bold">合計料金</td>
                                     <td><input type="text" name="sale_total" class="form-control" value="<%= price %>" readonly></td>
                                 </tr>
                             </table>

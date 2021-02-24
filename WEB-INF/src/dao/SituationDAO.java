@@ -231,17 +231,6 @@ public class SituationDAO extends DAO {
         
         price = price * qty;
         
-        System.out.println("時間料金：" + price);
-        
-        // 注文計算
-        int menu_price = calcMenuPrice(id);
-        
-        System.out.println("注文料金:" + menu_price);
-        
-        price += menu_price;
-        
-        System.out.println("合計:" + price);
-        
         return price;
     }
     
@@ -411,7 +400,7 @@ public class SituationDAO extends DAO {
         return yobi_str[cal.get(Calendar.DAY_OF_WEEK)-1];
     }
     
-    private int calcMenuPrice(int id) throws Exception {
+    public int calcMenuPrice(int id) throws Exception {
         int price = 0;
         
         // SQL文
