@@ -1,0 +1,190 @@
+set names utf8;
+use masaru_db;
+
+-- 22日
+INSERT INTO shift VALUES 
+('0', 'E01', '2021-02-22', '09:00:00', '21:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'E03', '2021-02-22', '14:00:00', '23:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A01', '2021-02-22', '10:00:00', '22:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A02', '2021-02-22', '10:00:00', '22:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A03', '2021-02-22', '10:00:00', '22:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A04', '2021-02-22', '10:00:00', '22:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A05', '2021-02-22', '10:00:00', '22:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A06', '2021-02-22', '13:00:00', '23:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A07', '2021-02-22', '13:00:00', '23:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A08', '2021-02-22', '13:00:00', '23:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A09', '2021-02-22', '13:00:00', '23:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A10', '2021-02-22', '13:00:00', '23:00:00');
+
+-- 23日
+INSERT INTO shift VALUES 
+('0', 'E02', '2021-02-23', '09:00:00', '21:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'E04', '2021-02-23', '14:00:00', '23:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A11', '2021-02-23', '10:00:00', '22:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A12', '2021-02-23', '10:00:00', '22:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A13', '2021-02-23', '10:00:00', '22:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A14', '2021-02-23', '10:00:00', '22:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A15', '2021-02-23', '10:00:00', '22:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A16', '2021-02-23', '13:00:00', '23:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A17', '2021-02-23', '13:00:00', '23:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A18', '2021-02-23', '13:00:00', '23:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A19', '2021-02-23', '13:00:00', '23:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A20', '2021-02-23', '13:00:00', '23:00:00');
+
+-- 24日
+INSERT INTO shift VALUES 
+('0', 'E01', '2021-02-24', '09:00:00', '21:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'E05', '2021-02-24', '14:00:00', '23:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A01', '2021-02-24', '10:00:00', '22:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A03', '2021-02-24', '10:00:00', '22:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A05', '2021-02-24', '10:00:00', '22:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A07', '2021-02-24', '10:00:00', '22:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A09', '2021-02-24', '10:00:00', '22:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A11', '2021-02-24', '13:00:00', '23:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A13', '2021-02-24', '13:00:00', '23:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A15', '2021-02-24', '13:00:00', '23:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A17', '2021-02-24', '13:00:00', '23:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A19', '2021-02-24', '13:00:00', '23:00:00');
+
+-- 25日
+INSERT INTO shift VALUES 
+('0', 'E02', '2021-02-25', '09:00:00', '21:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'E06', '2021-02-25', '14:00:00', '23:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A02', '2021-02-25', '10:00:00', '22:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A04', '2021-02-25', '10:00:00', '22:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A06', '2021-02-25', '10:00:00', '22:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A08', '2021-02-25', '10:00:00', '22:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A10', '2021-02-25', '10:00:00', '22:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A12', '2021-02-25', '13:00:00', '23:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A14', '2021-02-25', '13:00:00', '23:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A16', '2021-02-25', '13:00:00', '23:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A18', '2021-02-25', '13:00:00', '23:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A20', '2021-02-25', '13:00:00', '23:00:00');
+
+-- 26日
+INSERT INTO shift VALUES 
+('0', 'E01', '2021-02-26', '09:00:00', '21:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'E02', '2021-02-26', '14:00:00', '23:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A01', '2021-02-26', '10:00:00', '22:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A04', '2021-02-26', '10:00:00', '22:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A06', '2021-02-26', '10:00:00', '22:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A09', '2021-02-26', '10:00:00', '22:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A10', '2021-02-26', '10:00:00', '22:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A11', '2021-02-26', '13:00:00', '23:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A15', '2021-02-26', '13:00:00', '23:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A17', '2021-02-26', '13:00:00', '23:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A19', '2021-02-26', '13:00:00', '23:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A20', '2021-02-26', '13:00:00', '23:00:00');
+
+
+set names cp932;
