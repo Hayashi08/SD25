@@ -231,10 +231,16 @@ public class SituationDAO extends DAO {
         
         price = price * qty;
         
-        // 注文計算
-        price += calcMenuPrice(id);
+        System.out.println("時間料金：" + price);
         
-        System.out.println(price);
+        // 注文計算
+        int menu_price = calcMenuPrice(id);
+        
+        System.out.println("注文料金:" + menu_price);
+        
+        price += menu_price;
+        
+        System.out.println("合計:" + price);
         
         return price;
     }
