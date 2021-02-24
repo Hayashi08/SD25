@@ -153,19 +153,18 @@ public class UserDAO extends DAO {
     // 会員更新処理
     public boolean update(String id, String pass, String name, String sex, String birth, String mail, String tel, String job, String credit, String rank, String date) throws Exception {
 
-        String sql = "update user set user_id = ?, user_pass = ?, user_name = ?, user_sex = ?, user_birth = ?, user_mail = ?, user_tel = ?, user_job = ?, user_credit = ?, user_rank = ?, user_date = ?";
+        String sql = "update user set user_pass = ?, user_name = ?, user_sex = ?, user_birth = ?, user_mail = ?, user_tel = ?, user_job = ?, user_credit = ?, user_rank = ?, user_date = ?";
         PreparedStatement statement = this.connection.prepareStatement(sql);
-        statement.setString(1, id);
-        statement.setString(2, pass);
-        statement.setString(3, name);
-        statement.setString(4, sex);
-        statement.setString(5, birth);
-        statement.setString(6, mail);
-        statement.setString(7, tel);
-        statement.setString(8, job);
-        statement.setString(9, credit);
-        statement.setString(10, rank);
-        statement.setString(11, date);
+        statement.setString(1, pass);
+        statement.setString(2, name);
+        statement.setString(3, sex);
+        statement.setString(4, birth);
+        statement.setString(5, mail);
+        statement.setString(6, tel);
+        statement.setString(7, job);
+        statement.setString(8, credit);
+        statement.setString(9, rank);
+        statement.setString(10, date);
         statement.executeUpdate();
         
         // ちゃんと閉じる！

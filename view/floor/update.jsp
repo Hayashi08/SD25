@@ -159,7 +159,7 @@
                 $('#modal_floor').val($('#floor').val());
                 $('#modal_cap').val($('#cap').val());
                 $('#modal_machine').val($('#machine').val());
-                $('#modal_state').val($('#state').val());
+                $('#modal_state').val($('#state:checked').val());
               });
             });
         </script>
