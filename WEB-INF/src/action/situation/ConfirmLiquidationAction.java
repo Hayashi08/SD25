@@ -27,6 +27,7 @@ public class ConfirmLiquidationAction extends Action {
         }
         
         situationDAO.setEnd(id);
+        situationBean = situationDAO.getDetail(id);
         int price = situationDAO.getPrice(id);
         
         situationDAO.close();
