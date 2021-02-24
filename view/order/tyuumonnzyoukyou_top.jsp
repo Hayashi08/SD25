@@ -46,7 +46,7 @@
                     
                     
                     <% if (taskBeans.size() == 0) { %>
-                        <div class="h3 m-5 col text-center">
+                        <div class="h3 mt-5 col text-center">
                             注文はありません
                         </div>
                     <% }else{ %>

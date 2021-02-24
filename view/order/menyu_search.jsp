@@ -45,7 +45,7 @@
                     </form>	
 
                     <% if (orderBeans.size() == 0) { %>
-                        <div class="h3 m-5 col text-center">
+                        <div class="h3 mt-5 col text-center">
                             検索結果はありませんでした
                         </div>
                     <% }else{ %>
