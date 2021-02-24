@@ -5,6 +5,7 @@
         <%@ include file="../head.jsp" %>
     </head>
     <body>
+<link rel="stylesheet" href="../static/css/haikei.css">
         <div class="container-fluid">
             <div class="row">
                 <div class="col title text-center my-5">
