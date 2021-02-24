@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html lang="ja">
+<link rel="stylesheet" href="../static/css/haikei.css">
     <head>
         <title>ログイン エラー</title>
         <%@ include file="../head.jsp" %>
