@@ -45,6 +45,11 @@
                     </form>
                     
                     
+                    <% if (taskBeans.size() == 0) { %>
+                        <div class="h3 m-5 col text-center">
+                            注文はありません
+                        </div>
+                    <% }else{ %>
                     <div class=" p-3 sub_title">
                         検索結果
                     </div>
@@ -84,6 +89,7 @@
                         
                         <%}%>
                     </table>
+                    <% } %>
                 </div>
                     
                     
