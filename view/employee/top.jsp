@@ -29,7 +29,7 @@
                             <a class="btn btn-primary"  href="FrontController?class_name=employee.EmployeeIndexAction" role="button">従業員管理</a>
                         </div>
                         <div class="offset-1 col-3 text-center">
-                            <a class="btn btn-primary"  href="shift_matome.html" role="button">シフト作成</a>
+                            <a class="btn btn-primary"  href="FrontController?class_name=employee.ShiftCreateFormAction" role="button">シフト作成</a>
                         </div>
                         <div class="offset-1 col-3 text-center">
                             <a class="btn btn-primary"  href="FrontController?class_name=employee.ShiftFormAction" role="button">シフト予定登録</a>
@@ -85,14 +85,10 @@
             headerToolbar: {
               left: 'prev,next today',
               center: 'title',
-              right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+              right: 'dayGridMonth,timeGridDay,listWeek'
             },
             views: {
               timeGridDay: {
-                slotMinTime: '08:00:00',
-                slotMaxTime: '26:00:00'
-              },
-              timeGridWeek: {
                 slotMinTime: '08:00:00',
                 slotMaxTime: '26:00:00'
               }

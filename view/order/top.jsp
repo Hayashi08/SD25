@@ -31,6 +31,9 @@
                 <div class="offset-8 col-3 my-3">
                     <a class="btn btn-primary m-5" href="FrontController?class_name=situation.TopAction" role="button">トップページへ</a>
                 </div>
+                <div class="offset-8 col-3 my-3">
+                    <a class="btn btn-primary m-5" href="FrontController?class_name=order.FormFileAction" role="button">デモ</a>
+                </div>
 
             </div>
         </div>
