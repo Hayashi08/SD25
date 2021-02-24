@@ -57,14 +57,6 @@
                         </tr>
                     </table>
 
-                    <div class="row my-3">
-                        <div class="col-2 offset-4">
-                            <a class="btn btn-primary"  href="FrontController?class_name=stock.StockFormUpdateAction&id=<%=stockBean.getId()%>" role="button">編集</a>
-                        </div>
-                        <div class="btn btn-primary" id="btn" data-toggle="modal" data-target="#modal1">
-                            削除
-                        </div>
-                    </div>
                 </div>
 
                 <div class="offset-8 col-3 my-3">
