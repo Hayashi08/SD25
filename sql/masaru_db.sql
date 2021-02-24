@@ -130,6 +130,16 @@ CREATE TABLE shift (
 	FOREIGN KEY (employee_id) REFERENCES employee (employee_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE shift_confirm (
+	shift_confirm_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+	employee_id CHAR(3) NOT NULL,
+	shift_confirm_date DATE NOT NULL,
+	shift_confirm_start TIME NOT NULL,
+	shift_confirm_end TIME NOT NULL,
+	PRIMARY KEY (shift_confirm_id),
+	FOREIGN KEY (employee_id) REFERENCES employee (employee_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 CREATE TABLE item (
 	item_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 	item_name VARCHAR(30) NOT NULL,
