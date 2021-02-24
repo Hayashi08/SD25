@@ -115,7 +115,7 @@
                             </div>
 						            </div>
                         <div class="col-2 offset-1">
-                            <input type="reset" class="btn btn-primary">
+                            <input type="reset" value="クリア" class="btn btn-primary">
                         </div>
                     </div>
 
