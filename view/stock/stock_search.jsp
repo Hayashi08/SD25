@@ -67,8 +67,6 @@
                         <% 
                         int j = 0;
                         for (int i=0; i < itemBeans.size(); i++) { 
-                        System.out.println(i);
-                        System.out.println(j);
                         %>
                             <tr>
                                 <td><%= itemBeans.get(i).getName() %></td>
