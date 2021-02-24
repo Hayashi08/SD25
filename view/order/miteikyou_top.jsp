@@ -4,7 +4,7 @@
 <%
 
     ArrayList<TaskBean> taskBeans = (ArrayList<TaskBean>)request.getAttribute("TaskBeans");
-    
+
 %>
 <html lang="ja">
     <head>
