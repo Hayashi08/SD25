@@ -17,6 +17,7 @@
     <head>
         <title>トップページ画面</title>
         <%@ include file="../head.jsp" %>
+        <link rel="stylesheet" href="../static/css/haikei.css">
     </head>
     <body>
         <div class="container-fluid">

@@ -10,6 +10,7 @@
     <head>
         <title>トップページ画面</title>
         <%@ include file="../head.jsp" %>
+        <link rel="stylesheet" href="../static/css/haikei.css">
     </head>
     <body>
         <div class="container-fluid">
@@ -61,8 +62,8 @@
                 </div>
 
                 <!-- 注文リスト -->
-                <div class="col-2 px-3 text-center container">
-                    <div class="field sub_title py-3 col">
+                <div class="col-2 px-3 text-center mt-4 p-2">
+                    <div class="bg-warning font-weight-bold sub_title py-3 col">
                         注文リスト
                     </div>
                     <div class="py-3" id="menu"></div>
@@ -134,13 +135,13 @@
             
             for (var i = 0; i < id.length; i++) {
 
-                document.getElementById("menu").innerHTML += '<div class="row my-2"><div class="col-8 text-center">' + name1[i] + '</div><div class="col-4 text-center">' + qty[i] + '</div></div>';
+                document.getElementById("menu").innerHTML += '<div class="row my-2"><div class="col-8 text-center font-weight-bold">' + name1[i] + '</div><div class="col-4 text-center font-weight-bold">' + qty[i] + '</div></div>';
                 count = i;
 
             }
 
             //レイアウト修正
-            for (var i = 12; count < i; i--) {
+            for (var i = 9; count < i; i--) {
 
                 document.getElementById("menu").innerHTML += '<div class="py-3"></div>';
 
@@ -154,7 +155,7 @@
         } else {
 
             //レイアウト修正
-            for (var i = 13; count < i; i--) {
+            for (var i = 10; count < i; i--) {
 
                 document.getElementById("menu").innerHTML += '<div class="py-3"></div>';
 

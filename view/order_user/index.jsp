@@ -3,6 +3,7 @@
     <head>
         <title>ログイン画面</title>
         <%@ include file="../head.jsp" %>
+        <link rel="stylesheet" href="../static/css/haikei.css">
     </head>
     <body>
 <link rel="stylesheet" href="../static/css/haikei.css">

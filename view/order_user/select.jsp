@@ -15,6 +15,7 @@
     <head>
         <title><%= order_userBean.getName() %></title>
         <%@ include file="../head.jsp" %>
+        <link rel="stylesheet" href="../static/css/haikei.css">
     </head>
     <body>
         <div class="container-fluid">
@@ -177,8 +178,8 @@
                 </div>
 
                 <!-- 注文リスト -->
-                <div class="col-2 px-3 text-center container">
-                    <div class="field sub_title py-3 col">
+                <div class="col-2 px-3 text-center mt-4 pt-2">
+                    <div class="bg-warning sub_title py-3 col">
                         注文リスト
                     </div>
                     <div class="py-3" id="menu"></div>
@@ -247,7 +248,7 @@
         // 注文リストカウント
         var count = 0;
 
-        //注文リスト
+        //注文リスト---------------------------------------------------------------
         if ("<%= menu_id %>" != "null") {
 
             id = "<%= menu_id %>".split(',');
@@ -256,7 +257,7 @@
             
             for (var i = 0; i < id.length; i++) {
 
-                document.getElementById("menu").innerHTML += '<div class="row my-2"><div class="col-8 text-center">' + name1[i] + '</div><div class="col-4 text-center">' + qty[i] + '</div></div>';
+                document.getElementById("menu").innerHTML += '<div class="row my-2"><div class="col-8 text-center font-weight-bold">' + name1[i] + '</div><div class="col-4 text-center font-weight-bold">' + qty[i] + '</div></div>';
                 count = i;
 
             }
@@ -425,7 +426,7 @@
 
         });
 
-        //数量+ボタン
+        //数量+ボタン---------------------------------------------------------------
       $('#plus').click(function() {
 
         // 配列idに、対象のメニューidが存在しない場合
@@ -456,7 +457,7 @@
         // 注文リスト書き換え
         for (var i = 0; i < id.length; i++) {
 
-            document.getElementById("menu").innerHTML += '<div class="row my-2"><div class="col-8 text-center">' + name1[i] + '</div><div class="col-4 text-center">' + qty[i] + '</div></div>';
+            document.getElementById("menu").innerHTML += '<div class="row my-2"><div class="col-8 text-center font-weight-bold">' + name1[i] + '</div><div class="col-4 text-center font-weight-bold">' + qty[i] + '</div></div>';
             count = i;
 
         }
@@ -475,7 +476,7 @@
 
       });
 
-        //数量-ボタン
+        //数量-ボタン---------------------------------------------------------------
       $('#minus').click(function() {
 
         // 配列idに、対象のメニューidが存在しない場合
@@ -489,12 +490,12 @@
             document.getElementById("qty").innerHTML = qty[$.inArray('<%= order_userBean.getId() %>', id)];
 
         //　数量が0件になった場合
-        } else if (qty[$.inArray('<%= order_userBean.getId() %>', id)] == 1){
+        } else if (qty[$.inArray('<%= order_userBean.getId() %>', id)] <= 1){
 
             // 各配列の対象のメニューを削除
-            id.splice($.inArray('<%= order_userBean.getId() %>', id), 1);
             name1.splice($.inArray('<%= order_userBean.getId() %>', id), 1);
             qty.splice($.inArray('<%= order_userBean.getId() %>', id), 1);
+            id.splice($.inArray('<%= order_userBean.getId() %>', id), 1);
             document.getElementById("qty").innerHTML = 0;
 
         }
@@ -506,7 +507,7 @@
             //注文リスト書き換え
             for (var i = 0; i < id.length; i++) {
 
-                document.getElementById("menu").innerHTML += '<div class="row my-2"><div class="col-8 text-center">' + name1[i] + '</div><div class="col-4 text-center">' + qty[i] + '</div></div>';
+                document.getElementById("menu").innerHTML += '<div class="row my-2"><div class="col-8 text-center font-weight-bold">' + name1[i] + '</div><div class="col-4 text-center font-weight-bold">' + qty[i] + '</div></div>';
                 count = i;
 
             }
@@ -536,7 +537,7 @@
 
       });
 
-      //　注文登録モーダル
+      //　注文登録モーダル---------------------------------------------------------------
       $('#signup').click(function() {
 
             if ("<%= menu_id %>" != "null" || id.length != 0) {

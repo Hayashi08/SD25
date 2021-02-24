@@ -3,6 +3,7 @@
     <head>
         <title>部屋登録 エラー</title>
         <%@ include file="../head.jsp" %>
+        <link rel="stylesheet" href="../static/css/haikei.css">
     </head>
     <body>
         <div class="container-fluid">
