@@ -10,9 +10,11 @@
     for(int i  = 0 ; i < itemBeans.size() ; i++){
         System.out.println(itemBeans.get(i).getName());
     }
+        System.out.println("");
     for(int i  = 0 ; i < stockBeans.size() ; i++){
         System.out.println(stockBeans.get(i).getName());
     }
+        System.out.println("");
 
 %>
 <html lang="ja">
@@ -77,6 +79,9 @@
                                 if(stockBeans.size() != 0){
                                     item_name_stock = stockBeans.get(j).getName();
                                 }
+                                System.out.println(i);
+                                System.out.println("item_name_item : " + item_name_item);
+                                System.out.println("item_name_stock : " + item_name_stock);
 
                                 %>
                                 <% if(item_name_item.equals(item_name_stock)){ %>
@@ -86,10 +91,13 @@
                                 <% } %>
                                 <td>
                                     <% if(item_name_item.equals(item_name_stock)){ %>
+                                    <% if(stockBeans.get(j).getQty() != 0){ %>
                                     <a class="btn btn-primary" href="FrontController?class_name=stock.StockDetailAction&id=<%=stockBeans.get(j).getId()%>" role="button">詳細</a></td>
+                                    <% } %>
                                     <% } %>
                                 <td>
                                 <% if(item_name_item.equals(item_name_stock)){ %>
+                                <% if(stockBeans.get(j).getQty() != 0){ %>
                                     <div class="row">
                                         <input type="number" id="qty<%= j %>" min="0" max="<%= stockBeans.get(j).getQty() %>" class="form-control col-3" >
                                         <input type="hidden" id="name<%= j %>" value="<%= stockBeans.get(j).getName() %>">
@@ -102,6 +110,12 @@
                                     if(stockBeans.size() > j+1){
                                     j++;
                                     }
+                                } 
+                                %>
+                                <% 
+                                if(stockBeans.size() > j+1){
+                                    j++;
+                                }
                                 } 
                                 %>
                                 </td>
