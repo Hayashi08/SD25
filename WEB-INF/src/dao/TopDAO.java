@@ -25,6 +25,7 @@ public class TopDAO extends DAO {
             topBean.setFloor_id(rSet.getString(1));
             topBean.setSituation_id(rSet.getString(2));
             topBean.setState(rSet.getString(3));
+            topBeans.add(topBean);
         }
         
         statement.close();

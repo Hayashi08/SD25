@@ -133,7 +133,37 @@ public class SituationDAO extends DAO {
         ResultSet rSet = statement.executeQuery();
         
         if (rSet.next()) {
-            situationBean.setId(rSet.getString(1));
+            situationBean.setId(rSet.getInt(1));
+            situationBean.setUserId(rSet.getString(2));
+            situationBean.setFloorId(rSet.getString(3));
+            situationBean.setQty(rSet.getInt(4));
+            situationBean.setDate(rSet.getString(5));
+            situationBean.setStart(rSet.getString(6));
+            situationBean.setEndSchedule(rSet.getString(7));
+            situationBean.setEnd(rSet.getString(8));
+            situationBean.setFree(rSet.getString(9));
+        }
+        
+        statement.close();
+        
+        return situationBean;
+    }
+    
+    // 現在の利用詳細GET
+    public SituationBean getCurrentDetail(String id) throws Exception {
+        SituationBean situationBean = new SituationBean();
+        
+        // SQL文
+        String sql = "select * from situation where situation_end is null and floor_id = ?";
+        // STATEMENTの生成
+        PreparedStatement statement = this.connection.prepareStatement(sql);
+        // パラメータ
+        statement.setString(1, id);
+        // 検索結果を受け取る
+        ResultSet rSet = statement.executeQuery();
+        
+        if (rSet.next()) {
+            situationBean.setId(rSet.getInt(1));
             situationBean.setUserId(rSet.getString(2));
             situationBean.setFloorId(rSet.getString(3));
             situationBean.setQty(rSet.getInt(4));
@@ -393,6 +423,22 @@ public class SituationDAO extends DAO {
         }
         
         return price;
+    }
+    
+    public void setStateClean(String floor_id) throws Exception {
+        
+        // SQL文
+        String sql = "update floor set floor_state = '済' where floor_id = ?";
+        // STATEMENTの作成
+        PreparedStatement statement = this.connection.prepareStatement(sql);
+        // パラメータの挿入
+        statement.setString(1, floor_id);
+
+        // SQL文を実行
+        statement.executeUpdate();
+        
+        statement.close();
+        
     }
     
 }

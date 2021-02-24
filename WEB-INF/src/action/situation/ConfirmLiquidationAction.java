@@ -21,7 +21,7 @@ public class ConfirmLiquidationAction extends Action {
         SituationBean situationBean = situationDAO.getDetail(id);
         
         
-        if (situationBean.getId().equals("")) {
+        if (situationBean.getId() == 0) {
             situationDAO.close();
             return "/view/situation/liquidation.jsp";
         }

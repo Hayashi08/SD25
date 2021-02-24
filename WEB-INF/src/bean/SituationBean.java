@@ -2,7 +2,7 @@ package bean;
 
 public class SituationBean {
     
-    private String id = "";
+    private int id = 0;
     private String userId = "";
     private String floorId = "";
     private int qty = 0;
@@ -12,10 +12,10 @@ public class SituationBean {
     private String end = "";
     private String free = "";
     
-    public String getId() {
+    public int getId() {
         return id;
     }
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
     public String getUserId() {

@@ -26,7 +26,7 @@ public class OrderUserDAO extends DAO {
         
         if (rs.next()) {
             
-            situationBean.setId(rs.getString(1));
+            situationBean.setId(rs.getInt(1));
         }
         
         select_ps.close();
@@ -35,7 +35,7 @@ public class OrderUserDAO extends DAO {
         String insert_sql = "insert into task values ( 0, ?, ?, ?, ?, curtime(), null, null)";
         PreparedStatement insert_ps = this.connection.prepareStatement(insert_sql);
         insert_ps.setString(1, id);
-        insert_ps.setString(2, situationBean.getId());
+        insert_ps.setInt(2, situationBean.getId());
         insert_ps.setString(3, floor_id);
         insert_ps.setInt(4, qty);
         insert_ps.executeUpdate();

@@ -1,4 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%
+  String floor_id = (String)request.getAttribute("floor_id");
+  String start = (String)request.getAttribute("start");
+%>
 <html lang="ja">
     <head>
         <title>予約登録</title>
@@ -25,27 +29,27 @@
                         <table class="col-5 table mx-auto">
                             <tr>
                               <td class="field text-center h5 font-weight-bold">部屋番号</td>
-                              <td><input type="text" name="floor_id" maxlength="3"></td>
+                              <td><input type="text" class="form-control" value="<%= floor_id %>" name="floor_id" maxlength="3" readonly></td>
                             </tr>
                             <tr>
                               <td class="field text-center h5 font-weight-bold">ユーザーID</td>
-                              <td><input type="text" name="user_id" maxlength="16"></td>
+                              <td><input type="text" class="form-control" name="user_id" maxlength="16" required></td>
                             </tr>
                             <tr>
                               <td class="field text-center h5 font-weight-bold">利用人数</td>
-                              <td><input type="number" name="qty" class="form-control"></td>
+                              <td><input type="number" class="form-control" name="qty" class="form-control" required></td>
                             </tr>
-                            <tr>
+                            <%-- <tr>
                               <td class="field text-center h5 font-weight-bold">日付</td>
                               <td><input type="date" name="date" class="form-control"></td>
-                            </tr>
+                            </tr> --%>
                             <tr>
                               <td class="field text-center h5 font-weight-bold">開始時間</td>
-                              <td><input type="time" name="start" class="form-control"></td>
+                              <td><input type="time" class="form-control" value="<%= start %>" min="<%= start %>" name="start" required></td>
                             </tr>
                             <tr>
                               <td class="field text-center h5 font-weight-bold">終了時間</td>
-                              <td><input type="time" name="end" class="form-control"></td>
+                              <td><input type="time" class="form-control" name="end" required></td>
                             </tr>
                             <tr>
                               <td class="field text-center h5 font-weight-bold">フリータイム</td>
@@ -65,7 +69,7 @@
 
                     <div class="row my-3">
                         <div class="col text-center">
-                          <input type="submit" class="btn btn-primary mx-5" value="予約" role="button">
+                          <input type="submit" class="btn btn-success mx-5" value="予約" role="button">
                           <a class="btn btn-primary mx-5"  href="javascript:history.back();" role="button">戻る</a>
                         </div>
                     </div>

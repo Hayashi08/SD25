@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.LoginDAO;
 
+import action.situation.TopAction;
 import bean.EmployeeBean;
 
 import tool.Action;
@@ -39,7 +40,10 @@ public class LoginAction extends Action{
 		    // タイム
 		    session.setMaxInactiveInterval(1800);
 		    
-            return "/view/situation/top.jsp";
+		    TopAction topAction = new TopAction();
+		    String url = topAction.execute(request, response);
+		    
+            return url;
         }
 	    
 		

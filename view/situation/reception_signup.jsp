@@ -64,7 +64,7 @@
 
                         <div class="row my-3">
                             <div class="col text-center">
-                                <input type="submit" class="btn btn-primary mx-5" value="登録" role="button">
+                                <input type="submit" class="btn btn-success mx-5" value="登録" role="button">
                                 <a class="btn btn-primary mx-5"  href="javascript:history.back();" role="button">戻る</a>
                             </div>
                         </div>
