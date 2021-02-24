@@ -17,6 +17,12 @@ public class DetailAction extends Action {
     public String execute(HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         
+        if (request.getParameter("floor") != null) {
+            TopAction topAction = new TopAction();
+            String url = topAction.execute(request, response);
+            return url;
+        }
+        
         String floor_id = request.getParameter("id"); 
         
         FloorDAO floorDAO = new FloorDAO();

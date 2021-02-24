@@ -18,11 +18,19 @@ public class TopAction extends Action{
             HttpServletRequest request, HttpServletResponse response
     ) throws Exception{
         
+        String floor = "1";
+        
+        if (request.getParameter("floor") != null) {
+            floor = request.getParameter("floor");
+        }
+        
         TopDAO topDAO = new TopDAO();
-        ArrayList<TopBean> topBeans = topDAO.getCurrent();
+        ArrayList<TopBean> topBeans = topDAO.getCurrent(floor);
         topDAO.close();
         
         request.setAttribute("topBeans", topBeans);
+        
+        request.setAttribute("floor", Integer.parseInt(floor));
         
         return "/view/situation/top.jsp";
         

@@ -13,11 +13,12 @@ public class TopDAO extends DAO {
         super();
     }
     
-    public ArrayList<TopBean> getCurrent() throws Exception {
+    public ArrayList<TopBean> getCurrent(String floor) throws Exception {
         ArrayList<TopBean> topBeans = new ArrayList<TopBean>();
         
-        String sql = "select a.floor_id, b.situation_id, a.floor_state from floor a left join (select * from  situation where situation_end is NULL) b on a.floor_id = b.floor_id;";
+        String sql = "select a.floor_id, b.situation_id, a.floor_state from floor a left join (select * from  situation where situation_end is NULL) b on a.floor_id = b.floor_id where a.floor_id like ?";
         PreparedStatement statement = this.connection.prepareStatement(sql);
+        statement.setString(1, floor + "%");
         ResultSet rSet = statement.executeQuery();
         
         while (rSet.next()) {

@@ -3,6 +3,7 @@
 <%@ page import="bean.TopBean" %>
 <%
     ArrayList<TopBean> topBeans = (ArrayList<TopBean>)request.getAttribute("topBeans");
+    int floor = (Integer)request.getAttribute("floor");
 %>
 <html lang="ja">
     <head>
@@ -20,54 +21,79 @@
                     トップページ
                 </div>
 
-                <div class="main col-12 mx-auto">
+                <div class="main col-10 mx-auto p-5">
 
                     <form action="FrontController" method="POST">
 
-                    <input type="text" name="class_name" value="situation.DetailAction" hidden>
+                        <input type="text" name="class_name" value="situation.DetailAction" hidden>
 
-                    <% 
-                        int index = 0;
-                        String floor_id;
-                        String situation_id;
-                        String state;
-                        String buttonClass;
-                    %>
+                        <% 
+                            int index = 0;
+                            String floor_id = "";
+                            String situation_id = "";
+                            String state = "";
+                            String buttonClass = "";
+                            String floorButton = "";
+                            int floor_value = 1;
+                        %>
 
-                    <% for (int i = 1; i <= 5; i++) { %>
+                        <% for (int i = 1; i <= 2; i++) { %>
 
-                        <div class="row px-5">
+                            <div class="row mx-5">
 
-                        <% for (int j = 1; j <= 10; j++) { %>
+                            <% for (int j = 1; j <= 5; j++) { %>
+
+                                <% 
+                                    floor_id = topBeans.get(index).getFloor_id();
+                                    situation_id = topBeans.get(index).getSituation_id();
+                                    state = topBeans.get(index).getState();
+
+                                    buttonClass = "col h1 border mb-0 p-4 text-center";
+                                    if (situation_id != null)  {
+                                        buttonClass += " bg-primary";
+                                    }
+                                    else if (state.equals("未")) {
+                                        buttonClass += " bg-warning";
+                                    }
+
+                                    index++;
+                                %>
+
+                                <button type="submit" name="id" value="<%= floor_id %>" class="<%= buttonClass %>"><%= floor_id %></button>
+
+                            <% } %>
 
                             <% 
-                                floor_id = topBeans.get(index).getFloor_id();
-                                situation_id = topBeans.get(index).getSituation_id();
-                                state = topBeans.get(index).getState();
-
-                                buttonClass = "col border p-3 text-center";
-                                if (situation_id != null)  {
-                                    buttonClass += " bg-primary";
+                                if (i == 1) {
+                                    floorButton = "▲";
+                                    if (floor < 5) {
+                                        floor_value = floor + 1;
+                                    }
+                                    else {
+                                        floor_value = floor;
+                                    }
                                 }
-                                else if (state.equals("未")) {
-                                    buttonClass += " bg-warning";
+                                else {
+                                    floorButton = "▼";
+                                    if (floor > 1) {
+                                        floor_value = floor - 1;
+                                    }
+                                    else {
+                                        floor_value = floor;
+                                    }
                                 }
-
-                                index++;
                             %>
 
-                            <button type="submit" name="id" value="<%= floor_id %>" class="<%= buttonClass %>"><%= floor_id %></button>
+                            <button type="submit" name="floor" value="<%= floor_value %>" class="col bg-transparent border-0 text-warning text-center" style="font-size: 60px;"><%= floorButton %></button>
+
+                            </div>
 
                         <% } %>
 
-                        </div>
-
-                    <% } %>
-
                     </form>
 
-                    <div class="row mx-5 mt-4">
-                        <a class=" col p-3 mx-3 btn btn-danger" href="FrontController?class_name=situation.FormAuthUserAction" role="button">
+                    <div class="row mx-5 mt-5">
+                        <a class="col-10 p-3 mx-auto btn btn-danger" href="FrontController?class_name=situation.FormAuthUserAction" role="button">
                             <h1 class="text-white">利用受付</h1>
                         </a>
                         <%-- <a class=" col p-3 mx-3 btn btn-success" href="FrontController?class_name=situation.FormLiquidationAction" role="button">
