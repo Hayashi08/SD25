@@ -19,7 +19,7 @@ public class OrderUserDAO extends DAO {
     public boolean insert(String id, String floor_id, int qty) throws Exception {
 
         SituationBean situationBean = new SituationBean();
-        String select_sql = "select situation_id from situation where floor_id = ?";
+        String select_sql = "select situation_id from situation where floor_id = ? and situation_end is null";
         PreparedStatement select_ps = this.connection.prepareStatement(select_sql);
         select_ps.setString(1, floor_id);
         ResultSet rs = select_ps.executeQuery();
