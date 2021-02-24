@@ -69,7 +69,11 @@ public class StockDAO extends DAO {
        // psview.executeUpdate();
 
        ArrayList<StockBean> stockBeans = new ArrayList<StockBean>();
-       String sql = "select stock_id,item_name,stock_detail_qty,stock_date from stock_operation where stock_id like ? or item_name like ? or item_genre like ?";
+       String sql = "select stock_id,item_name,SUM(stock_detail_qty),item_genre " +
+       				" from stock_operation " +
+       				" where stock_id like ? or item_name like ? or item_genre like ?" +
+       				" group by item_name " +
+       				" order by item_name asc";	
        PreparedStatement ps = this.connection.prepareStatement(sql);
        ps.setString(1, "%" + keyword + "%");
        ps.setString(2, "%" + keyword + "%");
@@ -81,7 +85,7 @@ public class StockDAO extends DAO {
            stockBean.setId(rs.getString(1));
            stockBean.setName(rs.getString(2));
            stockBean.setQty(rs.getInt(3));
-           stockBean.setDate(rs.getString(4));
+           stockBean.setGenre(rs.getString(4));
            stockBeans.add(stockBean);
 
        }
@@ -114,6 +118,39 @@ public class StockDAO extends DAO {
         
         statement.close();
         return stockBean;
+    }
+    
+    public boolean insert_cons(String employee_id, String item_name, int qty) throws Exception {
+
+        //在庫テーブルに登録
+        String sql = "insert into stock values (0, ?, curdate())";
+        PreparedStatement ps = this.connection.prepareStatement(sql);
+        ps.setString(1, employee_id);
+        ps.executeUpdate();
+        ps.close();
+        
+        //item_name から item_id を取得
+        sql = "select item_id from item where item_name = ?";
+        PreparedStatement psItem = this.connection.prepareStatement(sql);
+        psItem.setString(1, item_name);
+        ResultSet rs = psItem.executeQuery();
+        String item_id = "";
+        if (rs.next()) {
+            item_id = rs.getString(1);
+        }
+        psItem.close();
+        
+
+        //在庫詳細テーブルに登録
+        String sqlDetail = "insert into stock_detail values (0, LAST_INSERT_ID(), ?, ?)";
+        PreparedStatement psDetail = this.connection.prepareStatement(sqlDetail);
+        psDetail.setString(1, item_id);
+        psDetail.setInt(2, qty);
+        psDetail.executeUpdate();
+        psDetail.close();
+        
+        return true;
+        
     }
 
 

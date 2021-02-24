@@ -151,7 +151,7 @@ CREATE TABLE stock_detail (
 	stock_detail_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 	stock_id INT UNSIGNED NOT NULL,
 	item_id INT UNSIGNED NOT NULL,
-	stock_detail_qty SMALLINT UNSIGNED NOT NULL,
+	stock_detail_qty SMALLINT NOT NULL,
 	PRIMARY KEY (stock_detail_id),
 	FOREIGN KEY (stock_id) REFERENCES stock (stock_id),
 	FOREIGN KEY (item_id) REFERENCES item (item_id)

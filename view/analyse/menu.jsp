@@ -28,12 +28,31 @@
         Calendar cal = Calendar.getInstance();
 
         cal.setTime(today);
-
-        if(xaxis.equals("year")){
-            cal.add(Calendar.YEAR,1);
+        String date = (String)request.getAttribute("date");
+        if(!date.equals("")){
+            String[] date_ar = date.split("-" , 0);
+            cal.set(Calendar.YEAR,Integer.parseInt(date_ar[0]));
+            cal.set(Calendar.MONTH,Integer.parseInt(date_ar[1]));
+            cal.set(Calendar.DATE,Integer.parseInt(date_ar[2]));
         }
-        if(xaxis.equals("month")){
-            cal.add(Calendar.MONTH,1);
+        else{
+            date = "" + cal.get(Calendar.YEAR) + "-";
+            if(cal.get(Calendar.MONTH)+1 < 10){
+                date += "0";
+            }
+            date += "" + (cal.get(Calendar.MONTH)+1) + "-";
+            if(cal.get(Calendar.DATE) < 10){
+                date += "0";
+            }
+            date += "" + cal.get(Calendar.DATE);
+        }
+        if(date.equals("")){
+          if(xaxis.equals("year")){
+              cal.add(Calendar.YEAR,1);
+          }
+          if(xaxis.equals("month")){
+              cal.add(Calendar.MONTH,1);
+          }
         }
         int yy = cal.get(Calendar.YEAR);
         int mm = cal.get(Calendar.MONTH)+1;
@@ -182,7 +201,7 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="row my-3">
-                                <input type="date" class="form-control" name="date">
+                                <input type="date" class="form-control" name="date" value="<%= date %>">
                             </div>
                             <div class="row my-3">
                                 <select name="yaxis">

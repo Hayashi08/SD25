@@ -185,7 +185,7 @@ public class TopAction extends Action {
         						   age_last , age_check ,
         						   sex , time_lead ,
         						   time_last , timezone_check ,
-        						   dotw , dotw_check , null
+        						   dotw , dotw_check , date
         						   );
         // ちゃんと閉じる！
         analyseDAO.close();
