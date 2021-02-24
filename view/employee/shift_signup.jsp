@@ -28,7 +28,23 @@
                 </div>
 
                 <div class="offset-1 col-10 p-5 main">
-                  <div id='calendar'></div>
+                    <div class="row m-3">
+                        <div class="col-3 text-center">
+                            <a class="btn btn-primary"  href="FrontController?class_name=employee.EmployeeIndexAction" role="button">従業員管理</a>
+                        </div>
+                        <div class="offset-1 col-3 text-center">
+                            <a class="btn btn-primary"  href="FrontController?class_name=employee.TopAction" role="button">トップ</a>
+                        </div>
+                        <% if (employee_id.equals("E01") || employee_id.equals("E02")) { %>
+                            <div class="offset-1 col-3 text-center">
+                                <a class="btn btn-primary"  href="FrontController?class_name=employee.ShiftCreateFormAction" role="button">シフト作成</a>
+                            </div>
+                        <% } %>
+                    </div>
+
+                    <div id="title"></div>
+                    <div id='calendar'></div>
+
                 </div>
 
                 <div class="offset-8 col-3 my-3">
@@ -129,6 +145,7 @@
             </div>
           </form>
     <%@ include file="../ModalCloseTab.jsp" %>
+
     <%@ include file="../ModalDisplayOpenTab.jsp" %>
         <table class="offset-1 col-10 table table-striped">
             <tr>
@@ -159,10 +176,12 @@
             </div>
         </div>
     <%@ include file="../ModalCloseTab.jsp" %>
+    
     <%@ include file="../ModalEditOpenTab.jsp" %>
           <form action="FrontController" method="POST">
             <input type="text" name="class_name" value="employee.ShiftUpdateAction" hidden>
             <input type="text" id="edit_id" name="id" value="" hidden>
+            <input type="text" name="flag" value="signup" hidden>
             <table class="offset-1 col-10 table table-striped">
                 <tr>
                   <td class="field">従業員名</td>
@@ -250,33 +269,58 @@
     <%@ include file="../ModalCloseTab.jsp" %>
     <%@ include file="../enhance.jsp" %>
     <script>
+
         var shift_id = "";
+
         document.addEventListener('DOMContentLoaded', function() {
+
           var today = new Date();
           var y = today.getFullYear();
-          var m = ("00" + (today.getMonth()+1)).slice(-2);
+          var m = ("00" + (today.getMonth()+2)).slice(-2);
           var d = ("00" + today.getDate()).slice(-2);
+          var mon = "";
+
+          if (m<10) {
+
+            mon = m.slice(1);
+
+          } else {
+            
+            mon = m;
+
+          }
+          
+          document.getElementById("title").innerHTML = '<div class="my-5 h2 text-center">' + mon + '月シフト登録</div>';
 
           var calendarEl = document.getElementById('calendar');
 
           var calendar = new FullCalendar.Calendar(calendarEl, {
+
             initialDate: y + '-' + m + '-' + d,
             initialView: 'dayGridMonth',
             nowIndicator: true,
             headerToolbar: {
+
               left: 'prev,next today',
               center: 'title',
               right: 'dayGridMonth'
+
             },
             views: {
+
               timeGridDay: {
+
                 slotMinTime: '08:00:00',
-                slotMaxTime: '26:00:00'
+                slotMaxTime: '24:00:00'
+
               }
+
             },
             dateClick: function(info) {
+
                 $('#modal1').modal('show');
                 $('#signup_date').val(info.dateStr);
+
             },
             timeZone: 'Asia/Tokyo',
             locale: 'ja',
@@ -284,47 +328,61 @@
             editable: true,
             selectable: true,
             selectMirror: true,
-            dayMaxEvents: true,
-            <% if (shiftBeans.size() == 0) { %>
-            <% }else{ %>
+            dayMaxEvents: 2,
+            <% if (shiftBeans.size() != 0) { %>
+
             events: [
               <% for (int i=0; i < shiftBeans.size()-1; i++) { %>
+
               {
+
                 id: '<%= shiftBeans.get(i).getId() %>',
                 title: '<%= shiftBeans.get(i).getName() %>',
                 start: '<%= shiftBeans.get(i).getDate() %>T<%= shiftBeans.get(i).getStart() %>',
                 end: '<%= shiftBeans.get(i).getDate() %>T<%= shiftBeans.get(i).getEnd() %>'
+
               },
               <% } %>
               {
+
                 id: '<%= shiftBeans.get(shiftBeans.size()-1).getId() %>',
                 title: '<%= shiftBeans.get(shiftBeans.size()-1).getName() %>',
                 start: '<%= shiftBeans.get(shiftBeans.size()-1).getDate() %>T<%= shiftBeans.get(shiftBeans.size()-1).getStart() %>',
                 end: '<%= shiftBeans.get(shiftBeans.size()-1).getDate() %>T<%= shiftBeans.get(shiftBeans.size()-1).getEnd() %>'
+
               }
             ],
             <% } %>
             eventClick: function(info) { //イベントをクリックすると発動
+
                 $('#modal_display').modal('show');
                 $('#modal_name').val(info.event.title);
                 $('#modal_date').val(info.event.startStr.slice( 0, -9 ));
                 $('#modal_start').val(info.event.startStr.slice( 11, 16 ));
                 $('#modal_end').val(info.event.endStr.slice( 11, 16 ));
-                $('#delete').attr('href', 'FrontController?class_name=employee.ShiftDeleteAction&id=' + info.event.id);
+                $('#delete').attr('href', 'FrontController?class_name=employee.ShiftDeleteAction&id=' + info.event.id + '&flag=signup');
                 shift_id = info.event.id;
+
             }
+
           });
 
           calendar.render();
+
         });
 
         $(function () {
+
           $('#edit_btn').click(function() {
+
             $('#edit').modal('show');
+            $('#modal_display').modal('hide');
             $('#edit_id').val(shift_id);
             $('#edit_name').val($('#modal_name').val());
             $('#edit_date').val($('#modal_date').val());
+
           });
+
         });
 
     </script>

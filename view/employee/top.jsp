@@ -1,9 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="bean.ShiftBean" %>
+<%@ page import="bean.ShiftConfirmBean" %>
+<%@ page import="javax.servlet.http.HttpSession" %>
 <%
 
-    ArrayList<ShiftBean> shiftBeans = (ArrayList<ShiftBean>)request.getAttribute("shiftBeans");
+    String employee_id = (String) session.getAttribute("id");
+    ArrayList<ShiftConfirmBean> shiftConfirmBeans = (ArrayList<ShiftConfirmBean>)request.getAttribute("shiftConfirmBeans");
 
 %>
 <html lang="ja">
@@ -28,9 +30,11 @@
                         <div class="col-3 text-center">
                             <a class="btn btn-primary"  href="FrontController?class_name=employee.EmployeeIndexAction" role="button">従業員管理</a>
                         </div>
-                        <div class="offset-1 col-3 text-center">
-                            <a class="btn btn-primary"  href="FrontController?class_name=employee.ShiftCreateFormAction" role="button">シフト作成</a>
-                        </div>
+                        <% if (employee_id.equals("E01") || employee_id.equals("E02")) { %>
+                            <div class="offset-1 col-3 text-center">
+                                <a class="btn btn-primary"  href="FrontController?class_name=employee.ShiftCreateFormAction" role="button">シフト作成</a>
+                            </div>
+                        <% } %>
                         <div class="offset-1 col-3 text-center">
                             <a class="btn btn-primary"  href="FrontController?class_name=employee.ShiftFormAction" role="button">シフト予定登録</a>
                         </div>
@@ -48,7 +52,7 @@
             </div>
         </div>
     </body>
-    <%@ include file="../ModalOpenTab.jsp" %>
+    <%@ include file="../ModalDisplayOpenTab.jsp" %>
         <table class="offset-1 col-10 table table-striped">
             <tr>
               <td class="field">従業員名</td>
@@ -70,7 +74,9 @@
     <%@ include file="../ModalCloseTab.jsp" %>
     <%@ include file="../enhance.jsp" %>
     <script>
+      
         document.addEventListener('DOMContentLoaded', function() {
+
           var today = new Date();
           var y = today.getFullYear();
           var m = ("00" + (today.getMonth()+1)).slice(-2);
@@ -79,19 +85,27 @@
           var calendarEl = document.getElementById('calendar');
 
           var calendar = new FullCalendar.Calendar(calendarEl, {
+
             initialDate: y + '-' + m + '-' + d,
             initialView: 'timeGridDay',
             nowIndicator: true,
             headerToolbar: {
+
               left: 'prev,next today',
               center: 'title',
               right: 'dayGridMonth,timeGridDay,listWeek'
+
             },
+            dayMaxEvents: 2,
             views: {
+
               timeGridDay: {
+
                 slotMinTime: '08:00:00',
-                slotMaxTime: '26:00:00'
+                slotMaxTime: '24:00:00'
+
               }
+
             },
             timeZone: 'Asia/Tokyo',
             locale: 'ja',
@@ -99,36 +113,44 @@
             editable: true,
             selectable: true,
             selectMirror: true,
-            dayMaxEvents: true,
             contentHeight: 'auto',
             allDaySlot: false,
-            <% if (shiftBeans.size() == 0) { %>
-            <% }else{ %>
+            <% if (shiftConfirmBeans.size() != 0) { %>
             events: [
-              <% for (int i=0; i < shiftBeans.size()-1; i++) { %>
+              <% for (int i=0; i < shiftConfirmBeans.size()-1; i++) { %>
+
               {
-                title: '<%= shiftBeans.get(i).getName() %>',
-                start: '<%= shiftBeans.get(i).getDate() %>T<%= shiftBeans.get(i).getStart() %>',
-                end: '<%= shiftBeans.get(i).getDate() %>T<%= shiftBeans.get(i).getEnd() %>'
+
+                title: '<%= shiftConfirmBeans.get(i).getName() %>',
+                start: '<%= shiftConfirmBeans.get(i).getDate() %>T<%= shiftConfirmBeans.get(i).getStart() %>',
+                end: '<%= shiftConfirmBeans.get(i).getDate() %>T<%= shiftConfirmBeans.get(i).getEnd() %>'
+
               },
               <% } %>
               {
-                title: '<%= shiftBeans.get(shiftBeans.size()-1).getName() %>',
-                start: '<%= shiftBeans.get(shiftBeans.size()-1).getDate() %>T<%= shiftBeans.get(shiftBeans.size()-1).getStart() %>',
-                end: '<%= shiftBeans.get(shiftBeans.size()-1).getDate() %>T<%= shiftBeans.get(shiftBeans.size()-1).getEnd() %>'
+
+                title: '<%= shiftConfirmBeans.get(shiftConfirmBeans.size()-1).getName() %>',
+                start: '<%= shiftConfirmBeans.get(shiftConfirmBeans.size()-1).getDate() %>T<%= shiftConfirmBeans.get(shiftConfirmBeans.size()-1).getStart() %>',
+                end: '<%= shiftConfirmBeans.get(shiftConfirmBeans.size()-1).getDate() %>T<%= shiftConfirmBeans.get(shiftConfirmBeans.size()-1).getEnd() %>'
+
               }
             ],
             <% } %>
             eventClick: function(info) { //イベントをクリックすると発動
-                $('#modal1').modal('show');
+
+                $('#modal_display').modal('show');
                 $('#modal_name').val(info.event.title);
                 $('#modal_date').val(info.event.startStr.slice( 0, -9 ));
                 $('#modal_start').val(info.event.startStr.slice( 11, 16 ));
                 $('#modal_end').val(info.event.endStr.slice( 11, 16 ));
+
             }
+
           });
 
           calendar.render();
+
         });
+
     </script>
 </html>

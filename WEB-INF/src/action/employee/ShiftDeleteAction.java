@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import tool.Action;
 import dao.ShiftDAO;
 import bean.ShiftBean;
+import bean.ShiftConfirmBean;
 
 public class ShiftDeleteAction extends Action {
 
@@ -19,15 +20,29 @@ public class ShiftDeleteAction extends Action {
         String id = request.getParameter("id");
         HttpSession session = request.getSession(true);
         String employee_id = (String) session.getAttribute("id");
+        String flag = request.getParameter("flag");
         
         ShiftDAO shiftDAO = new ShiftDAO();
         shiftDAO.delete(id);
-        ArrayList<ShiftBean> shiftBeans = shiftDAO.search(employee_id);
-        shiftDAO.close();
+        if (flag.equals("confirm")) {
+            
+            ArrayList<ShiftBean> shiftBeans = shiftDAO.search("*");
+            ArrayList<ShiftConfirmBean> shiftConfirmBeans = shiftDAO.confirmDate();
+            shiftDAO.close();
+            
+            request.setAttribute("shiftBeans", shiftBeans);
+            request.setAttribute("shiftConfirmBeans", shiftConfirmBeans);
 
-        request.setAttribute("shiftBeans", shiftBeans);
+            return "/view/employee/shift_create.jsp";
 
-        return "/view/employee/shift_signup.jsp";
+        } else {
+
+            ArrayList<ShiftBean> shiftBeans = shiftDAO.search(employee_id);
+            request.setAttribute("shiftBeans", shiftBeans);
+            shiftDAO.close();
+
+            return "/view/employee/shift_signup.jsp";
+        }
         
     }
 

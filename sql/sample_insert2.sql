@@ -186,5 +186,42 @@ INSERT INTO shift VALUES
 INSERT INTO shift VALUES 
 ('0', 'A20', '2021-02-26', '13:00:00', '23:00:00');
 
+-- 3/1
+INSERT INTO shift VALUES 
+('0', 'E01', '2021-03-01', '09:00:00', '21:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'E03', '2021-03-01', '14:00:00', '23:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A01', '2021-03-01', '10:00:00', '22:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A02', '2021-03-01', '10:00:00', '22:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A03', '2021-03-01', '10:00:00', '22:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A04', '2021-03-01', '10:00:00', '22:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A05', '2021-03-01', '10:00:00', '22:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A06', '2021-03-01', '13:00:00', '23:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A07', '2021-03-01', '13:00:00', '23:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A08', '2021-03-01', '13:00:00', '23:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A09', '2021-03-01', '13:00:00', '23:00:00');
+
+INSERT INTO shift VALUES 
+('0', 'A10', '2021-03-01', '13:00:00', '23:00:00');
+
 
 set names cp932;
