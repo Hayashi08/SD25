@@ -48,7 +48,7 @@
                     <div class=" p-3 sub_title">
                         検索結果
                     </div>
-		            <form action="FrontController" method="POST">
+		            
                     <table class="col-12 table table-striped">
                         <tr>
                           <th class="field text-center">注文番号</th>
@@ -64,6 +64,9 @@
                         </tr>
                         
                         <% for (int i=0; i < taskBeans.size(); i++) { %>
+                        <form action="FrontController" method="POST">
+                            <input type="text" name="class_name" value="order.TaskCompleteAction" hidden>
+                        
                         
                         <tr>
                           <td class="text-center"><%= taskBeans.get(i).getTask_id() %></td>
@@ -101,8 +104,6 @@
 							
                           <td>
 		                    	
-		                        <input type="text" name="class_name" value="order.TaskCompleteAction" hidden>
-		                    
 		                        <input type="text" name="task_stn" value="complete" hidden>
                             <input type="text" name="task_id" value="<%= taskBeans.get(i).getTask_id() %>" hidden>
                             <input type="text" name="floor_id" value="<%= taskBeans.get(i).getFloor_id() %>" hidden>
@@ -114,9 +115,9 @@
                           </td>
                         </tr>
                         
+                        </form>
                         <%}%>
                     </table>
-                    </form>
                 </div>
                     
                     
