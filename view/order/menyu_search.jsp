@@ -1,5 +1,5 @@
-<%@ page contentType="text/html;c
-<%@ page import="java.util.ArrayList" %>harset=UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page import="java.util.ArrayList"  %>
 <%@ page import="bean.OrderBean" %>
 <%
 
@@ -43,6 +43,12 @@
                         </div>
                     
                     </form>	
+
+                    <% if (orderBeans.size() == 0) { %>
+                        <div class="h3 m-5 col text-center">
+                            検索結果はありませんでした
+                        </div>
+                    <% }else{ %>
                     <div class="offset-3 p-3 sub_title">
                         検索結果
                     </div>
@@ -66,6 +72,7 @@
                             </tr>
                         <% } %>
                     </table>
+                    <% } %>
                 </div>
 
                 <div class="offset-8 col-3 my-3">
