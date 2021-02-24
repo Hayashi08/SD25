@@ -107,9 +107,6 @@
                                         </div>
                                     </div>
                                 <% 
-                                    if(stockBeans.size() > j+1){
-                                    j++;
-                                    }
                                 } 
                                 %>
                                 <% 
