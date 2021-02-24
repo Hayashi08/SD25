@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html lang="ja">
+<link rel="stylesheet" href="../static/css/haikei.css">
     <head>
         <title>ログアウト 完了</title>
         <%@ include file="../head.jsp" %>
