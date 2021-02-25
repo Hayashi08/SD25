@@ -86,7 +86,7 @@ INSERT INTO stock VALUES
 INSERT INTO stock_detail VALUES 
 (0 , LAST_INSERT_ID() , 16 , (select item_min from item where item_id = 16)-1);
 
---E05
+-- E05
 INSERT INTO stock VALUES 
 (0,'E05',curdate());
 INSERT INTO stock_detail VALUES 
