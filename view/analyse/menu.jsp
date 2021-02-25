@@ -496,7 +496,7 @@
                                               <% if(yaxis.equals("sales")){ %>
                                                 '<%= unit_str %>円'
                                               <% }else{ %>
-                                                '<%= unit_str %>人'
+                                                '<%= unit_str %>個'
                                               <% } %>
                                             }
                                           }
