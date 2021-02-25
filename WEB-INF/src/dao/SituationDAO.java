@@ -59,7 +59,7 @@ public class SituationDAO extends DAO {
         ArrayList<FloorBean> floorBeans = new ArrayList<FloorBean>();
         
         // SQL文
-        String sql = "select * from floor where floor_id not in ( select floor_id from situation where situation_end is null )";
+        String sql = "select * from floor where floor_state = '済' and floor_id not in ( select floor_id from situation where situation_end is null )";
         // STATEMENTの生成
         PreparedStatement statement = this.connection.prepareStatement(sql);
         // 検索結果を受け取る
