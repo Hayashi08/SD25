@@ -25,48 +25,30 @@ public class MenuAction extends Action {
         if(yaxis == null){//最初の読み込み
         	yaxis = "sales";
         }
-        String date = request.getParameter("date");//また後でやる
+        String date = request.getParameter("date");
         if(date == null){
         	date = "";
         }
 
-        String age_lead = "";
-        age_lead = request.getParameter("age_lead");
-        String age_last = "";
-        age_last = request.getParameter("age_last");
-        int age_lead_int = 0;
-        int age_last_int = 0;
+        String age = "";
+        age = request.getParameter("age");
         String age_check_str = request.getParameter("age_check");
         boolean age_check = false;
-        if(age_lead == null){//最初の読み込み
+        if(age == null){//最初の読み込み
         	age_check = true;
         }
-        if(age_lead != null){//最初の読み込みでない場合
+        if(age != null){//最初の読み込みでない場合
         	if(age_check_str != null){//booleanに変換
         		age_check = true;
-	        	age_lead = "";
-	        	age_last = "";
+	        	age = "";
         	}
-	        if(age_lead.equals("") || age_last.equals("")){//入力欄に空欄があり、チェックがされていない場合
+	        if(age.equals("")){//入力欄に空欄があり、チェックがされていない場合
 	        	age_check = true;
-	        	age_lead = "";
-	        	age_last = "";
-	        }
-	        if(!age_lead.equals("") && !age_last.equals("")){//入力欄両方に入力されている場合
-	        	age_lead_int = Integer.parseInt(age_lead);
-	        	age_last_int = Integer.parseInt(age_last);
-		        if(age_lead_int > age_last_int){//入力に矛盾がある場合
-		        	age_check = true;
-		        	age_lead = "";
-		        	age_last = "";
-		        }
+	        	age = "";
 	        }
         }
-        if(age_lead == null){//最初の読み込み
-        	age_lead = "";
-        }
-        if(age_last == null){//最初の読み込み
-        	age_last = "";
+        if(age == null){//最初の読み込み
+        	age = "";
         }
         String sex = request.getParameter("sex");
         if(sex == null){//最初の読み込み
@@ -156,8 +138,7 @@ public class MenuAction extends Action {
         System.out.println("xaxis : " + xaxis);
         System.out.println("yaxis : " + yaxis);
         System.out.println("date : " + date);
-        System.out.println("age_lead : " + age_lead);
-        System.out.println("age_last : " + age_last);
+        System.out.println("age : " + age);
         System.out.println("age_check : " + age_check);
         System.out.println("sex : " + sex);
         System.out.println("time_lead : " + time_lead);
@@ -177,8 +158,7 @@ public class MenuAction extends Action {
         request.setAttribute("xaxis", xaxis);
         request.setAttribute("yaxis", yaxis);
         request.setAttribute("date", date);
-        request.setAttribute("age_lead", age_lead);
-        request.setAttribute("age_last", age_last);
+        request.setAttribute("age", age);
         request.setAttribute("age_check", age_check);
         request.setAttribute("sex", sex);
         request.setAttribute("time_lead", time_lead);
@@ -192,8 +172,8 @@ public class MenuAction extends Action {
         // DAOメソッドの実行
 	    ArrayList<String> datas = 
 	    				analyseDAO.analyse_menu(xaxis , yaxis , 
-	    						   date , age_lead ,
-	    						   age_last , age_check ,
+	    						   date , age ,
+	    						   age_check ,
 	    						   sex , time_lead ,
 	    						   time_last , timezone_check ,
 	    						   dotw , dotw_check , checked_menu,

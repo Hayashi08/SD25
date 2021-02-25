@@ -50,7 +50,7 @@ public class AnalyseDAO extends DAO {
     // メニュー別の売上分析
     public ArrayList<String> analyse_menu(
     		String xaxis , 		String yaxis , 		String date ,
-    		String age_lead , 	String age_last , 	Boolean age_check ,
+    		String age ,	  	Boolean age_check ,
     		String sex , 		String time_lead , 	String time_last , 
     		Boolean timezone_check ,String dotw , 	Boolean dotw_check ,
     		String[] checked_menu , String datestr
@@ -159,17 +159,6 @@ public class AnalyseDAO extends DAO {
         int mm = cal.get(Calendar.MONTH)+1;
         int dd = cal.get(Calendar.DATE);
         
-        //年齢の絞り込み
-        if(!age_check){
-        	age_lead_int = Integer.parseInt(age_lead);
-        	age_last_int = Integer.parseInt(age_last);
-
-        	birth_lead_int = yy - age_lead_int;
-        	birth_last_int = yy - age_last_int-1;
-
-        	birth_lead = birth_lead_int + "-" + mm + "-" + dd + " 23:59:59";
-        	birth_last = birth_last_int + "-" + mm + "-" + dd + " 00:00:00";
-        }
         
         //性別の絞り込み
         if(sex.equals("male")){
@@ -219,9 +208,7 @@ public class AnalyseDAO extends DAO {
             
             //年齢の絞り込み
             if(!age_check){
-            	statement.setString(wildcard_cnt, birth_last);
-            	wildcard_cnt++;
-            	statement.setString(wildcard_cnt, birth_lead);
+            	statement.setString(wildcard_cnt, age);
             	wildcard_cnt++;
             }
             //性別の絞り込み

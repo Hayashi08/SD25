@@ -548,17 +548,50 @@
                             </div>
                             <div class="row">
                                 <%
-                                            String age_lead = (String)request.getAttribute("age_lead");
-                                            String age_last = (String)request.getAttribute("age_last");
+                                            String age = "";
+                                            if((String)request.getAttribute("age")!=null)
+                                            {
+                                              age = (String)request.getAttribute("age");
+                                            }
                                 %>
-                                <div class="offset-2 col-4 my-3">
-                                        <input type="number" name="age_lead" class="form-control" min="0" value="<%= age_lead %>">
-                                </div>
-                                <div class="col-1 my-3 mr-3">
-                                        ～
-                                </div>
-                                <div class="col-4 my-3">
-                                        <input type="number" name="age_last" class="form-control" min="0" value="<%= age_last %>">
+                                <div class="offset-5 col-4 my-3">
+                                  <select name="age" size="1">
+                                      <option value="子ども" 
+                                      <% if(age.equals("子ども")){ %>
+                                      selected
+                                      <% } %>
+                                      >子ども
+                                      <option value="10代" 
+                                      <% if(age.equals("10代")){ %>
+                                      selected
+                                      <% } %>
+                                      >10代
+                                      <option value="20代" 
+                                      <% if(age.equals("20代")){ %>
+                                      selected
+                                      <% } %>
+                                      >20代
+                                      <option value="30代" 
+                                      <% if(age.equals("30代")){ %>
+                                      selected
+                                      <% } %>
+                                      >30代
+                                      <option value="40代" 
+                                      <% if(age.equals("40代")){ %>
+                                      selected
+                                      <% } %>
+                                      >40代
+                                      <option value="50代" 
+                                      <% if(age.equals("50代")){ %>
+                                      selected
+                                      <% } %>
+                                      >50代
+                                      <option value="シニア" 
+                                      <% if(age.equals("シニア")){ %>
+                                      selected
+                                      <% } %>
+                                      >シニア
+                                  </select>
                                 </div>
                             </div>
 
@@ -571,12 +604,12 @@
                                                 age_check = true;
                                             }
                                         %>
-                                        <input type="checkbox" class="custom-control-input" id="age" name="age_check" value="true"
+                                        <input type="checkbox" class="custom-control-input" id="age_c" name="age_check" value="true"
                                         <% if(age_check){ %>
                                         checked
                                         <% } %>
                                         >
-                                        <label class="custom-control-label" for="age">年齢層を指定しない</label>
+                                        <label class="custom-control-label" for="age_c">年齢層を指定しない</label>
                                     </div>
                                 </div>
                             </div>
@@ -629,7 +662,7 @@
                                     時間帯
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="ml-4 row">
                                 <%
                                     String time_lead = (String)request.getAttribute("time_lead");
                                     String time_last = (String)request.getAttribute("time_last");
