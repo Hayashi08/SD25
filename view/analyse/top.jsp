@@ -534,7 +534,7 @@
                             <div class="row">
                                 <a class="btn btn-primary"  href="FrontController?class_name=analyse.MenuAction" role="button">メニュー別売上</a>
                             </div>
-                            
+
                         </div>
 
                         <div class="col-4">
@@ -627,7 +627,7 @@
                                     時間帯
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row ml-4">
                                 <%
                                     String time_lead = (String)request.getAttribute("time_lead");
                                     String time_last = (String)request.getAttribute("time_last");
