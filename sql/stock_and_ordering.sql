@@ -130,7 +130,7 @@ INSERT INTO stock_detail VALUES
 
 
 -- ordering
---- E01
+-- E01
 INSERT INTO ordering VALUES 
 (0,'E01',curdate());
 INSERT INTO ordering_detail VALUES 
